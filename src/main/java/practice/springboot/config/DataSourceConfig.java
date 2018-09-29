@@ -12,9 +12,14 @@ import javax.sql.DataSource;
 
 /**
  * 多数据源-数据库配置
+ * http://www.spring4all.com/article/253
  */
 @Configuration
 public class DataSourceConfig {
+
+    public DataSourceConfig() {
+        System.out.println("**************************************************DataSourceConfig**************************************************");
+    }
 
     @Bean(name = "testDataSource")
     @Qualifier("testDataSource")
