@@ -6,24 +6,28 @@ import org.springframework.boot.jdbc.DataSourceBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 import javax.sql.DataSource;
 
+/**
+ * 多数据源-数据库配置
+ */
 @Configuration
 public class DataSourceConfig {
 
-    @Bean(name = "primaryDataSource")
-    @Qualifier("primaryDataSource")
-    @ConfigurationProperties(prefix = "spring.datasource.primary")
-    public DataSource primaryDataSource() {
+    @Bean(name = "testDataSource")
+    @Qualifier("testDataSource")
+    @Primary
+    @ConfigurationProperties(prefix = "spring.datasource.test")
+    public DataSource mysqlDataSource() {
         return DataSourceBuilder.create().build();
     }
 
-    @Bean(name = "secondaryDataSource")
-    @Qualifier("secondaryDataSource")
-    @Primary
-    @ConfigurationProperties(prefix = "spring.datasource.secondary")
-    public DataSource secondaryDataSource() {
+    @Bean(name = "yoongDataSource")
+    @Qualifier("yoongDataSource")
+    @ConfigurationProperties(prefix = "spring.datasource.yoong")
+    public DataSource yoongDataSource() {
         return DataSourceBuilder.create().build();
     }
 

@@ -8,11 +8,12 @@ import practice.springboot.domain.AttachmentRepository;
 @Service
 public class AttachmentService {
 
-    @Autowired
-    private AttachmentRepository attachmentRepository;
+//    @Autowired
+//    private AttachmentRepository attachmentRepository;
 
     public Long addAttachment(AttachmentInfo attachmentInfo) {
-        attachmentRepository.save(attachmentInfo);
-        return attachmentInfo.getId();
+//        attachmentRepository.save(attachmentInfo);
+//        return attachmentInfo.getId();
+        return  null;
     }
 }
