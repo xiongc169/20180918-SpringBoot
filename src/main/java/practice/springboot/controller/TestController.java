@@ -1,5 +1,7 @@
 package practice.springboot.controller;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.StringRedisTemplate;
@@ -18,6 +20,8 @@ import java.util.Date;
 @Controller
 @RequestMapping("/test")
 public class TestController {
+
+    private Logger logger = LoggerFactory.getLogger(TestController.class);
 
     @Autowired
     private DepartmentService deptService;
@@ -39,6 +43,7 @@ public class TestController {
     @RequestMapping("/welcome")
 
     public String welcome() {
+        logger.debug("2018年9月30日10:28:48");
         System.out.println("enter welcome");
         return "welcome";
     }
