@@ -6,13 +6,13 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class PracticeApplication {
+public class CommunityApplication {
 
-    private static Logger logger = LoggerFactory.getLogger(PracticeApplication.class);
+    private static Logger logger = LoggerFactory.getLogger(CommunityApplication.class);
 
     public static void main(String[] args) {
-        SpringApplication.run(PracticeApplication.class, args);
-//        System.out.println("启动成功");
-        logger.info("启动成功");
+        SpringApplication.run(CommunityApplication.class, args);
+        System.out.println("启动成功1");
+        logger.info("启动成功2");
     }
 }
