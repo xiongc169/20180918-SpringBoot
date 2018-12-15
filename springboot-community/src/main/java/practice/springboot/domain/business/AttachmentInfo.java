@@ -1,4 +1,4 @@
-package practice.springboot.domain;
+package practice.springboot.domain.business;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
@@ -7,23 +7,23 @@ import java.util.Objects;
 @Entity
 @Table(name = "attachment_info", schema = "post_loan", catalog = "")
 public class AttachmentInfo {
-    private long id;
+    private Long id;
     private Integer attachmentType;
     private Long businessObjectId;
     private String fileName;
     private String storagePath;
-    private int isDelete;
+    private Integer isDelete;
     private Timestamp createTime;
     private Timestamp modifyTime;
 
     @Id
     @Column(name = "id", nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -69,11 +69,11 @@ public class AttachmentInfo {
 
     @Basic
     @Column(name = "is_delete", nullable = false)
-    public int getIsDelete() {
+    public Integer getIsDelete() {
         return isDelete;
     }
 
-    public void setIsDelete(int isDelete) {
+    public void setIsDelete(Integer isDelete) {
         this.isDelete = isDelete;
     }
 

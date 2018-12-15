@@ -1,4 +1,4 @@
-package practice.springboot.config;
+package practice.springboot.config.datasource;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -7,6 +7,7 @@ import org.springframework.boot.autoconfigure.orm.jpa.JpaProperties;
 import org.springframework.boot.orm.jpa.EntityManagerFactoryBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Primary;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
@@ -19,25 +20,27 @@ import java.util.Map;
 
 @Configuration
 @EnableTransactionManagement
-@EnableJpaRepositories(entityManagerFactoryRef = "entityManagerFactoryYoong", transactionManagerRef = "transactionManagerYoong", basePackages = {"practice.springboot.domain.yoong"})
-public class YoongConfig {
+@EnableJpaRepositories(entityManagerFactoryRef = "entityManagerFactoryRehearsal", transactionManagerRef = "transactionManagerRehearsal", basePackages = {"practice.springboot.domain.rehearsal"})
+public class RehearsalConfig {
 
     @Autowired
-    @Qualifier("yoongDataSource")
-    private DataSource yoongDataSource;
+    @Qualifier("rehearsalDataSource")
+    private DataSource rehearsalDataSource;
 
-    @Bean(name = "entityManagerYoong")
+    @Primary
+    @Bean(name = "entityManagerTest")
     public EntityManager entityManager(EntityManagerFactoryBuilder builder) {
-        return entityManagerFactoryYoong(builder).getObject().createEntityManager();
+        return entityManagerFactoryRehearsal(builder).getObject().createEntityManager();
     }
 
-    @Bean(name = "entityManagerFactoryYoong")
-    public LocalContainerEntityManagerFactoryBean entityManagerFactoryYoong(EntityManagerFactoryBuilder builder) {
+    @Primary
+    @Bean(name = "entityManagerFactoryRehearsal")
+    public LocalContainerEntityManagerFactoryBean entityManagerFactoryRehearsal(EntityManagerFactoryBuilder builder) {
         return builder
-                .dataSource(yoongDataSource)
-                .properties(getVendorProperties(yoongDataSource))
-                .packages("practice.springboot.domain.yoong") //设置实体类所在位置
-                .persistenceUnit("yoongPersistenceUnit")
+                .dataSource(rehearsalDataSource)
+                .properties(getVendorProperties(rehearsalDataSource))
+                .packages("practice.springboot.domain.rehearsal") //设置实体类所在位置
+                .persistenceUnit("rehearsalPersistenceUnit")
                 .build();
     }
 
@@ -45,12 +48,13 @@ public class YoongConfig {
     private JpaProperties jpaProperties;
 
     private Map<String, Object> getVendorProperties(DataSource dataSource) {
-//        return jpaProperties.getHibernateProperties(dataSource);
+        //return jpaProperties.getHibernateProperties(dataSource);
         return jpaProperties.getHibernateProperties(new HibernateSettings());
     }
 
-    @Bean(name = "transactionManagerYoong")
-    PlatformTransactionManager transactionManagerSecondary(EntityManagerFactoryBuilder builder) {
-        return new JpaTransactionManager(entityManagerFactoryYoong(builder).getObject());
+    @Primary
+    @Bean(name = "transactionManagerRehearsal")
+    PlatformTransactionManager transactionManagerRehearsal(EntityManagerFactoryBuilder builder) {
+        return new JpaTransactionManager(entityManagerFactoryRehearsal(builder).getObject());
     }
 }

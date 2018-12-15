@@ -1,4 +1,4 @@
-package practice.springboot.domain.test;
+package practice.springboot.domain.rehearsal;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

@@ -1,4 +1,4 @@
-package practice.springboot.domain.yoong;
+package practice.springboot.domain.wong;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

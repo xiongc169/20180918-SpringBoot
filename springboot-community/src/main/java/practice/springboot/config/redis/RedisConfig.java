@@ -6,7 +6,7 @@ import org.springframework.data.redis.connection.RedisConnectionFactory;
 import org.springframework.data.redis.connection.jedis.JedisConnectionFactory;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.serializer.StringRedisSerializer;
-import practice.springboot.domain.dto.User;
+import practice.springboot.domain.rehearsal.User;
 
 /**
  * http://www.spring4all.com/article/254

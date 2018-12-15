@@ -1,9 +1,9 @@
-package practice.springboot.service.yoong;
+package practice.springboot.service.wong;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import practice.springboot.domain.yoong.Account;
-import practice.springboot.domain.yoong.AccountRepository;
+import practice.springboot.domain.wong.Account;
+import practice.springboot.domain.wong.AccountRepository;
 
 @Service
 public class AccountService {
@@ -11,8 +11,8 @@ public class AccountService {
     @Autowired
     private AccountRepository accountRepository;
 
-    public Long addAccount(Account account) {
+    public Account addAccount(Account account) {
         accountRepository.save(account);
-        return account.getId();
+        return account;
     }
 }

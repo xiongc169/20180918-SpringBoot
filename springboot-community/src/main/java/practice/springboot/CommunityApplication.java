@@ -5,6 +5,10 @@ import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+/**
+ * SpringBoot入门系列
+ * http://www.spring4all.com/article/246
+ */
 @SpringBootApplication
 public class CommunityApplication {
 

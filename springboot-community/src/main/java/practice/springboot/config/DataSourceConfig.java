@@ -25,18 +25,17 @@ public class DataSourceConfig {
 //    @Primary
 //    @Bean(name = "testDataSource")
 //    @Qualifier("testDataSource")
-//    @ConfigurationProperties(prefix = "spring.datasource.test")
+//    @ConfigurationProperties(prefix = "spring.datasource.rehearsal")
 //    public DataSource testDataSource() {
 //        return DataSourceBuilder.create().build();
 //    }
 //
 //    @Bean(name = "yoongDataSource")
 //    @Qualifier("yoongDataSource")
-//    @ConfigurationProperties(prefix = "spring.datasource.yoong")
+//    @ConfigurationProperties(prefix = "spring.datasource.business")
 //    public DataSource yoongDataSource() {
 //        return DataSourceBuilder.create().build();
 //    }
-
 
     /**
      * DataSource的两种配置方法
@@ -44,33 +43,49 @@ public class DataSourceConfig {
      *
      * @return
      */
+    @Bean(name = "wongDataSourceProperties")
+    @Qualifier("wongDataSourceProperties")
+    @ConfigurationProperties(prefix = "spring.datasource.wong")
+    public DataSourceProperties wongDataSourceProperties() {
+        return new DataSourceProperties();
+    }
+
+    @Bean(name = "wongDataSource")
+    @Qualifier("wongDataSource")
+    @ConfigurationProperties(prefix = "spring.datasource.wong")
+    public DataSource wongDataSource() {
+        return wongDataSourceProperties().initializeDataSourceBuilder().build();
+    }
+
+
+    @Bean(name = "businessDataSourceProperties")
+    @Qualifier("businessDataSourceProperties")
+    @ConfigurationProperties(prefix = "spring.datasource.business")
+    public DataSourceProperties businessDataSourceProperties() {
+        return new DataSourceProperties();
+    }
+
+    @Bean(name = "businessDataSource")
+    @Qualifier("businessDataSource")
+    @ConfigurationProperties(prefix = "spring.datasource.business")
+    public DataSource businessDataSource() {
+        return businessDataSourceProperties().initializeDataSourceBuilder().build();
+    }
+
+
     @Primary
-    @Bean(name = "testDataSourceProperties")
-    @Qualifier("testDataSourceProperties")
-    @ConfigurationProperties(prefix = "spring.datasource.test")
-    public DataSourceProperties testDataSourceProperties() {
+    @Bean(name = "rehearsalDataSourceProperties")
+    @Qualifier("rehearsalDataSourceProperties")
+    @ConfigurationProperties(prefix = "spring.datasource.rehearsal")
+    public DataSourceProperties rehearsalDataSourceProperties() {
         return new DataSourceProperties();
     }
 
     @Primary
-    @Bean(name = "testDataSource")
-    @Qualifier("testDataSource")
-    @ConfigurationProperties(prefix = "spring.datasource.test")
-    public DataSource test2DataSource() {
-        return testDataSourceProperties().initializeDataSourceBuilder().build();
-    }
-
-    @Bean(name = "yoongDataSourceProperties")
-    @Qualifier("yoongDataSourceProperties")
-    @ConfigurationProperties(prefix = "spring.datasource.yoong")
-    public DataSourceProperties yoongDataSourceProperties() {
-        return new DataSourceProperties();
-    }
-
-    @Bean(name = "yoongDataSource")
-    @Qualifier("yoongDataSource")
-    @ConfigurationProperties(prefix = "spring.datasource.yoong")
-    public DataSource yoong2DataSource() {
-        return yoongDataSourceProperties().initializeDataSourceBuilder().build();
+    @Bean(name = "rehearsalDataSource")
+    @Qualifier("rehearsalDataSource")
+    @ConfigurationProperties(prefix = "spring.datasource.rehearsal")
+    public DataSource rehearsalDataSource() {
+        return rehearsalDataSourceProperties().initializeDataSourceBuilder().build();
     }
 }

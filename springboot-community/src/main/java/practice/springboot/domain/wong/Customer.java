@@ -1,7 +1,6 @@
-package practice.springboot.domain.yoong;
+package practice.springboot.domain.wong;
 
 import javax.persistence.*;
-import java.sql.Timestamp;
 import java.util.Date;
 import java.util.Objects;
 

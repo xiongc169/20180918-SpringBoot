@@ -8,11 +8,13 @@ import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-import practice.springboot.domain.dto.User;
-import practice.springboot.domain.test.Department;
-import practice.springboot.domain.yoong.Account;
-import practice.springboot.service.test.DepartmentService;
-import practice.springboot.service.yoong.AccountService;
+import practice.springboot.domain.business.AttachmentInfo;
+import practice.springboot.domain.rehearsal.Department;
+import practice.springboot.domain.rehearsal.User;
+import practice.springboot.domain.wong.Account;
+import practice.springboot.service.business.AttachmentService;
+import practice.springboot.service.rehearsal.DepartmentService;
+import practice.springboot.service.wong.AccountService;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -24,10 +26,13 @@ public class TestController {
     private Logger logger = LoggerFactory.getLogger(TestController.class);
 
     @Autowired
-    private DepartmentService deptService;
+    private AccountService accountService;
 
     @Autowired
-    private AccountService accountService;
+    private AttachmentService attachmentService;
+
+    @Autowired
+    private DepartmentService deptService;
 
     @Autowired
     private StringRedisTemplate stringRedisTemplate;
@@ -65,28 +70,38 @@ public class TestController {
     }
 
     /**
-     * 多数据源测试：http://127.0.0.1:8080/test/addDept
+     * 多数据源测试：http://127.0.0.1:8080/test/multDataSource
      *
      * @return
      */
     @ResponseBody
-    @RequestMapping("/addDept")
+    @RequestMapping("/multDataSource")
     public void addDept() {
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMdd-HHmmssSSSS");
-        Department department = new Department();
-        department.setDeptName("部门11");
-        department.setNote("Note 11");
-        Long id = deptService.addDepartment(department);
-        System.out.println(id);
-
-        Account account = new Account();
-        account.setAccountId(dateFormat.format(new Date()));
-        account.setContactName("子账号11");
-        account.setCreateTime(new Date());
-        account.setModifyTime(new Date());
-        account.setIsDelete(0);
-        accountService.addAccount(account);
-        System.out.println(id);
+        try {
+            //添加子账号
+            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMdd-HHmmssSSSS");
+            Account account = new Account();
+            account.setAccountId(dateFormat.format(new Date()));
+            account.setContactName("子账号11");
+            account.setCreateTime(new Date());
+            account.setModifyTime(new Date());
+            account.setIsDelete(0);
+            accountService.addAccount(account);
+            System.out.println("AccountId: " + account.getId());
+            //添加附件
+            AttachmentInfo attachment = new AttachmentInfo();
+            attachment.setFileName("git stash.png");
+            attachment = attachmentService.addAttachment(attachment);
+            System.out.println("AttachmentId: " + attachment.getId());
+            //添加部门
+            Department department = new Department();
+            department.setDeptName("部门11");
+            department.setNote("Note 11");
+            department = deptService.addDepartment(department);
+            System.out.println("DepartmentId: " + department.getId());
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
     }
 
     /**
@@ -107,8 +122,8 @@ public class TestController {
 
             User superMan = new User("SuperMan", 100);
             User batMan = new User("BatMan", 50);
-            userRedisTemplate.opsForValue().set(superMan.getUsername(), superMan);
-            userRedisTemplate.opsForValue().set(batMan.getUsername(), batMan);
+            userRedisTemplate.opsForValue().set(superMan.getName(), superMan);
+            userRedisTemplate.opsForValue().set(batMan.getName(), batMan);
 
         } catch (Exception ex) {
             ex.printStackTrace();

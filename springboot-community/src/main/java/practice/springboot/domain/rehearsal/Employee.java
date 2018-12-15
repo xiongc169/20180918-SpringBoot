@@ -1,4 +1,4 @@
-package practice.springboot.domain.test;
+package practice.springboot.domain.rehearsal;
 
 import javax.persistence.*;
 import java.util.Objects;
@@ -52,7 +52,6 @@ public class Employee {
 
     @Override
     public int hashCode() {
-
         return Objects.hash(id, name, deptId);
     }
 }
