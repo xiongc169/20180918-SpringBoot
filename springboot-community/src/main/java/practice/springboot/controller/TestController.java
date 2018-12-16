@@ -130,4 +130,8 @@ public class TestController {
         }
         return "Success";
     }
+
+    //访问Actuator
+    //http://127.0.0.1:8080/actuator/health
+
 }
