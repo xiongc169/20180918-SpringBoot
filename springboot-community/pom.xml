@@ -9,7 +9,6 @@
     <name>springboot-community</name>
     <description>Demo project for Spring Boot</description>
 
-    <!--创建Spring Boot项目的第1种方式-->
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
@@ -95,25 +94,6 @@
         </dependency>
 
     </dependencies>
-
-    <!--创建Spring Boot项目的第2种方式-->
-    <!--<dependencyManagement>-->
-    <!--<dependencies>-->
-    <!--<dependency>-->
-    <!--<groupId>org.springframework.boot</groupId>-->
-    <!--<artifactId>spring-boot-dependencies</artifactId>-->
-    <!--<version>2.0.5.RELEASE</version>-->
-    <!--<type>pom</type>-->
-    <!--<scope>import</scope>-->
-    <!--</dependency>-->
-
-    <!--<dependency>-->
-    <!--<groupId>org.springframework.boot</groupId>-->
-    <!--<artifactId>spring-boot-actuator-autoconfigure</artifactId>-->
-    <!--<version>2.0.5.RELEASE</version>-->
-    <!--</dependency>-->
-    <!--</dependencies>-->
-    <!--</dependencyManagement>-->
 
     <build>
         <plugins>
