@@ -9,18 +9,19 @@ import org.springframework.data.redis.serializer.StringRedisSerializer;
 import springboot.community.domain.rehearsal.User;
 
 /**
+ * Spring Boot 使用NoSQL数据库 Redis
  * http://www.spring4all.com/article/254
  */
 @Configuration
 public class RedisConfig {
 
     public RedisConfig() {
-        System.out.println("**************************************************RedisConfig**************************************************");
+        System.out.println("*********************************************   RedisConfig   ***********************************************");
     }
 
     @Bean
     JedisConnectionFactory jedisConnectionFactory() {
-        System.out.println("**************************************************jedisConnectionFactory**************************************************");
+        System.out.println("*********************************************   jedisConnectionFactory   *********************************************");
         return new JedisConnectionFactory();
     }
 

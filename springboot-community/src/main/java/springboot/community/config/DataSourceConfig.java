@@ -12,10 +12,10 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import javax.sql.DataSource;
 
 /**
- * SpringBoot配置多数据源两种方法
+ * SpringBoot配置多数据源两种方法(DataSourceBuilder、DataSourceProperties)
  * https://blog.csdn.net/newhanzhe/article/details/80763581
  * <p>
- * 多数据源-数据库配置
+ * Spring Boot 两种多数据源配置：JdbcTemplate、Spring-data-jpa
  * http://www.spring4all.com/article/253
  */
 @Configuration
@@ -71,7 +71,7 @@ public class DataSourceConfig {
     // region spring.datasource.wong.url
 
     /**
-     * DataSource的两种配置方法
+     * SpringBoot配置多数据源两种方法(DataSourceBuilder、DataSourceProperties)
      * https://blog.csdn.net/newhanzhe/article/details/80763581
      * 数据源一
      *
