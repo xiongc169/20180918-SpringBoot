@@ -7,6 +7,7 @@ import org.springframework.boot.autoconfigure.orm.jpa.JpaProperties;
 import org.springframework.boot.orm.jpa.EntityManagerFactoryBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Primary;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
@@ -19,24 +20,29 @@ import java.util.Map;
 
 @Configuration
 @EnableTransactionManagement
-@EnableJpaRepositories(entityManagerFactoryRef = "entityManagerFactoryWong", transactionManagerRef = "transactionManagerWong", basePackages = {"practice.springboot.domain.wong"})
+@EnableJpaRepositories(entityManagerFactoryRef = "entityManagerFactoryWong", transactionManagerRef = "transactionManagerWong", basePackages = {"springboot.community.domain.wong"})
 public class WongConfig {
 
+    /**
+     * 注入Wong数据源
+     */
     @Autowired
     @Qualifier("wongDataSource")
     private DataSource wongDataSource;
 
+    @Primary
     @Bean(name = "entityManagerWong")
-    public EntityManager entityManager(EntityManagerFactoryBuilder builder) {
-        return entityManagerFactoryYoong(builder).getObject().createEntityManager();
+    public EntityManager entityManagerWong(EntityManagerFactoryBuilder builder) {
+        return entityManagerFactoryWong(builder).getObject().createEntityManager();
     }
 
+    @Primary
     @Bean(name = "entityManagerFactoryWong")
-    public LocalContainerEntityManagerFactoryBean entityManagerFactoryYoong(EntityManagerFactoryBuilder builder) {
+    public LocalContainerEntityManagerFactoryBean entityManagerFactoryWong(EntityManagerFactoryBuilder builder) {
         return builder
                 .dataSource(wongDataSource)
                 .properties(getVendorProperties(wongDataSource))
-                .packages("practice.springboot.domain.wong") //设置实体类所在位置
+                .packages("springboot.community.domain.wong") //设置实体类所在位置
                 .persistenceUnit("wongPersistenceUnit")
                 .build();
     }
@@ -49,8 +55,9 @@ public class WongConfig {
         return jpaProperties.getHibernateProperties(new HibernateSettings());
     }
 
+    @Primary
     @Bean(name = "transactionManagerWong")
-    PlatformTransactionManager transactionManagerSecondary(EntityManagerFactoryBuilder builder) {
-        return new JpaTransactionManager(entityManagerFactoryYoong(builder).getObject());
+    PlatformTransactionManager transactionManagerWong(EntityManagerFactoryBuilder builder) {
+        return new JpaTransactionManager(entityManagerFactoryWong(builder).getObject());
     }
 }

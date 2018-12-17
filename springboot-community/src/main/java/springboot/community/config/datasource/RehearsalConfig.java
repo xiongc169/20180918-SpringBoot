@@ -20,26 +20,24 @@ import java.util.Map;
 
 @Configuration
 @EnableTransactionManagement
-@EnableJpaRepositories(entityManagerFactoryRef = "entityManagerFactoryRehearsal", transactionManagerRef = "transactionManagerRehearsal", basePackages = {"practice.springboot.domain.rehearsal"})
+@EnableJpaRepositories(entityManagerFactoryRef = "entityManagerFactoryRehearsal", transactionManagerRef = "transactionManagerRehearsal", basePackages = {"springboot.community.domain.rehearsal"})
 public class RehearsalConfig {
 
     @Autowired
     @Qualifier("rehearsalDataSource")
     private DataSource rehearsalDataSource;
 
-    @Primary
     @Bean(name = "entityManagerTest")
-    public EntityManager entityManager(EntityManagerFactoryBuilder builder) {
+    public EntityManager entityManagerRehearsal(EntityManagerFactoryBuilder builder) {
         return entityManagerFactoryRehearsal(builder).getObject().createEntityManager();
     }
 
-    @Primary
     @Bean(name = "entityManagerFactoryRehearsal")
     public LocalContainerEntityManagerFactoryBean entityManagerFactoryRehearsal(EntityManagerFactoryBuilder builder) {
         return builder
                 .dataSource(rehearsalDataSource)
                 .properties(getVendorProperties(rehearsalDataSource))
-                .packages("practice.springboot.domain.rehearsal") //设置实体类所在位置
+                .packages("springboot.community.domain.rehearsal") //设置实体类所在位置
                 .persistenceUnit("rehearsalPersistenceUnit")
                 .build();
     }
@@ -52,7 +50,6 @@ public class RehearsalConfig {
         return jpaProperties.getHibernateProperties(new HibernateSettings());
     }
 
-    @Primary
     @Bean(name = "transactionManagerRehearsal")
     PlatformTransactionManager transactionManagerRehearsal(EntityManagerFactoryBuilder builder) {
         return new JpaTransactionManager(entityManagerFactoryRehearsal(builder).getObject());

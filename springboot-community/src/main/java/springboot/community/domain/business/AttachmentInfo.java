@@ -5,7 +5,7 @@ import java.sql.Timestamp;
 import java.util.Objects;
 
 @Entity
-@Table(name = "attachment_info", schema = "post_loan", catalog = "")
+//@Table(name = "attachment_info", schema = "post_loan", catalog = "")
 public class AttachmentInfo {
     private Long id;
     private Integer attachmentType;

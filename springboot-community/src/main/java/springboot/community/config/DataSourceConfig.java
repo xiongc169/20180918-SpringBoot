@@ -12,6 +12,9 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import javax.sql.DataSource;
 
 /**
+ * SpringBoot配置多数据源两种方法
+ * https://blog.csdn.net/newhanzhe/article/details/80763581
+ * <p>
  * 多数据源-数据库配置
  * http://www.spring4all.com/article/253
  */
@@ -19,33 +22,65 @@ import javax.sql.DataSource;
 public class DataSourceConfig {
 
     public DataSourceConfig() {
-        System.out.println("**************************************************DataSourceConfig**************************************************");
+        System.out.println("**********************************************  DataSourceConfig  *******************************************");
     }
 
-//    @Primary
-//    @Bean(name = "testDataSource")
-//    @Qualifier("testDataSource")
-//    @ConfigurationProperties(prefix = "spring.datasource.rehearsal")
-//    public DataSource testDataSource() {
+    // region spring.datasource.wong.jdbc-url
+
+    /**
+     * Spring Data JPA多数据源配置
+     * https://www.jianshu.com/p/9f812e651319
+     * 数据源一
+     *
+     * @return
+     */
+//    @Primary    //配置该数据源为主数据源
+//    @Bean(name = "wongDataSource")
+//    @Qualifier("wongDataSource")
+//    @ConfigurationProperties(prefix = "spring.datasource.wong")     //配置文件中该数据源配置的前缀
+//    public DataSource wongDataSource1() {
 //        return DataSourceBuilder.create().build();
 //    }
 //
-//    @Bean(name = "yoongDataSource")
-//    @Qualifier("yoongDataSource")
+//    /**
+//     * 数据源一
+//     *
+//     * @return
+//     */
+//    @Bean(name = "businessDataSource")
+//    @Qualifier("businessDataSource")
 //    @ConfigurationProperties(prefix = "spring.datasource.business")
-//    public DataSource yoongDataSource() {
+//    public DataSource businessDataSource1() {
 //        return DataSourceBuilder.create().build();
 //    }
+//
+//    /**
+//     * 数据源一
+//     *
+//     * @return
+//     */
+//    @Bean(name = "rehearsalDataSource")
+//    @Qualifier("rehearsalDataSource")
+//    @ConfigurationProperties(prefix = "spring.datasource.rehearsal")
+//    public DataSource rehearsalDataSource1() {
+//        return DataSourceBuilder.create().build();
+//    }
+
+    //endregion
+
+    // region spring.datasource.wong.url
 
     /**
      * DataSource的两种配置方法
      * https://blog.csdn.net/newhanzhe/article/details/80763581
+     * 数据源一
      *
      * @return
      */
+    @Primary    //配置该数据源为主数据源
     @Bean(name = "wongDataSourceProperties")
     @Qualifier("wongDataSourceProperties")
-    @ConfigurationProperties(prefix = "spring.datasource.wong")
+    @ConfigurationProperties(prefix = "spring.datasource.wong")     //配置文件中该数据源配置的前缀
     public DataSourceProperties wongDataSourceProperties() {
         return new DataSourceProperties();
     }
@@ -58,6 +93,11 @@ public class DataSourceConfig {
     }
 
 
+    /**
+     * 数据源二
+     *
+     * @return
+     */
     @Bean(name = "businessDataSourceProperties")
     @Qualifier("businessDataSourceProperties")
     @ConfigurationProperties(prefix = "spring.datasource.business")
@@ -73,7 +113,11 @@ public class DataSourceConfig {
     }
 
 
-    @Primary
+    /**
+     * 数据源三
+     *
+     * @return
+     */
     @Bean(name = "rehearsalDataSourceProperties")
     @Qualifier("rehearsalDataSourceProperties")
     @ConfigurationProperties(prefix = "spring.datasource.rehearsal")
@@ -88,4 +132,7 @@ public class DataSourceConfig {
     public DataSource rehearsalDataSource() {
         return rehearsalDataSourceProperties().initializeDataSourceBuilder().build();
     }
+
+    //endregion
+
 }

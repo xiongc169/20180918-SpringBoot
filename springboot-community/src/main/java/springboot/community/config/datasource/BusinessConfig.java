@@ -19,7 +19,9 @@ import java.util.Map;
 
 @Configuration
 @EnableTransactionManagement
-@EnableJpaRepositories(entityManagerFactoryRef = "entityManagerFactoryBusiness", transactionManagerRef = "transactionManagerBusiness", basePackages = {"practice.springboot.domain.business"})
+@EnableJpaRepositories(entityManagerFactoryRef = "entityManagerFactoryBusiness",
+        transactionManagerRef = "transactionManagerBusiness",
+        basePackages = {"springboot.community.domain.business"})//设置Repository所在位置
 public class BusinessConfig {
 
     @Autowired
@@ -27,7 +29,7 @@ public class BusinessConfig {
     private DataSource businessDataSource;
 
     @Bean(name = "entityManagerBusiness")
-    public EntityManager entityManager(EntityManagerFactoryBuilder builder) {
+    public EntityManager entityManagerBusiness(EntityManagerFactoryBuilder builder) {
         return entityManagerFactoryBusiness(builder).getObject().createEntityManager();
     }
 
@@ -36,7 +38,7 @@ public class BusinessConfig {
         return builder
                 .dataSource(businessDataSource)
                 .properties(getVendorProperties(businessDataSource))
-                .packages("practice.springboot.domain.business") //设置实体类所在位置
+                .packages("springboot.community.domain.business")//设置实体类所在位置
                 .persistenceUnit("businessPersistenceUnit")
                 .build();
     }
@@ -50,7 +52,7 @@ public class BusinessConfig {
     }
 
     @Bean(name = "transactionManagerBusiness")
-    PlatformTransactionManager transactionManagerSecondary(EntityManagerFactoryBuilder builder) {
+    PlatformTransactionManager transactionManagerBusiness(EntityManagerFactoryBuilder builder) {
         return new JpaTransactionManager(entityManagerFactoryBusiness(builder).getObject());
     }
 }

@@ -11,13 +11,18 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
- * Hello world!
+ * SpringBoot入门
  */
 //@Controller
 //@EnableAutoConfiguration
 @SpringBootApplication
 public class App {
 
+    /**
+     * 入口函数
+     *
+     * @param args
+     */
     public static void main(String[] args) {
         System.out.println("Hello World!");
         SpringApplication.run(App.class, args);
