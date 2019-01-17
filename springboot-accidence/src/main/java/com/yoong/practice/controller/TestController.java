@@ -17,7 +17,7 @@ public class TestController {
     @Autowired
     private ICustomerRepository customerRepository;
 
-    private SimpleDateFormat format = new SimpleDateFormat("yyyyMMddHHmmss");
+    private SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss:SSSS");
 
     /**
      * http://127.0.0.1:8080/test/getReport
@@ -40,10 +40,12 @@ public class TestController {
     @ResponseBody
     @RequestMapping("/addCustomer")
     public Customer addCustomer() {
+        SimpleDateFormat format = new SimpleDateFormat("yyyyMMddHHmmssSSSS");
+
         Customer customer = new Customer();
         String customerId = format.format(new Date());
         customer.setCustomerId(customerId);
-        customer.setCustomerName("Name" + customerId);
+        customer.setCustomerName("Name-" + customerId);
         customer.setCreateTime(new Date());
         customerRepository.saveAndFlush(customer);
         System.out.println(customer.getId());

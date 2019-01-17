@@ -8,10 +8,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * https://www.jb51.net/books/500699.html
  */
 @SpringBootApplication
-public class LiteratureApplication {
+public class LiteratureApp {
 
     public static void main(String[] args) {
-        SpringApplication.run(LiteratureApplication.class, args);
+        SpringApplication.run(LiteratureApp.class, args);
     }
 
 }

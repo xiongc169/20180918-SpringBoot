@@ -46,7 +46,6 @@ public class TestController {
      * @return
      */
     @RequestMapping("/welcome")
-
     public String welcome() {
         logger.debug("2018年9月30日10:28:48");
         System.out.println("enter welcome");

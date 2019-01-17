@@ -10,12 +10,12 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * http://www.spring4all.com/article/246
  */
 @SpringBootApplication
-public class CommunityApplication {
+public class CommunityApp {
 
-    private static Logger logger = LoggerFactory.getLogger(CommunityApplication.class);
+    private static Logger logger = LoggerFactory.getLogger(CommunityApp.class);
 
     public static void main(String[] args) {
-        SpringApplication.run(CommunityApplication.class, args);
+        SpringApplication.run(CommunityApp.class, args);
         System.out.println("启动成功1");
         logger.info("启动成功2");
     }

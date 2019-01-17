@@ -16,7 +16,7 @@ import java.util.Date;
 //@Controller
 //@EnableAutoConfiguration
 @SpringBootApplication
-public class App {
+public class AccidenceApp {
 
     /**
      * 入口函数
@@ -25,7 +25,7 @@ public class App {
      */
     public static void main(String[] args) {
         System.out.println("Hello World!");
-        SpringApplication.run(App.class, args);
+        SpringApplication.run(AccidenceApp.class, args);
     }
 
     /**
@@ -40,7 +40,6 @@ public class App {
         String result = "App: " + format.format(new Date());
         System.out.println(result);
         return result;
-
     }
 
 }
