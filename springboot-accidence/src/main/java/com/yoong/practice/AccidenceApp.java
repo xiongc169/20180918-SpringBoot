@@ -29,6 +29,7 @@ public class AccidenceApp {
     }
 
     /**
+     * 启用AccidenceApp类的@Controller注解即可
      * http://127.0.0.1:8080/getApp
      *
      * @return
