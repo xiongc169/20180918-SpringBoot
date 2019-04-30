@@ -1,20 +1,31 @@
 package com.yoong.practice;
 
-import static org.junit.Assert.assertTrue;
-
+import com.yoong.practice.dao.RedisDao;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringRunner;
 
 /**
  * Unit test for simple App.
  */
-public class MavenAppTest
-{
+@RunWith(SpringRunner.class)
+@SpringBootTest
+public class MavenAppTest {
+
     /**
      * Rigorous Test :-)
      */
+    @Autowired
+    private RedisDao redisDao;
+
     @Test
-    public void shouldAnswerWithTrue()
-    {
-        assertTrue( true );
+    public void redisTest() {
+        String name = redisDao.getValue("name");
+        System.out.println(name);
+        redisDao.setKey("name", "yoong");
+        String name2 = redisDao.getValue("name");
+        System.out.println(name2);
     }
 }

@@ -16,17 +16,17 @@ import org.springframework.data.redis.core.StringRedisTemplate;
 @Configuration
 public class RedisConfig {
 
-    @Bean
-    @ConfigurationProperties(prefix = "spring.redis")
-    public JedisConnectionFactory getConnectionFactory() {
-        JedisConnectionFactory factory = new JedisConnectionFactory();
-        return factory;
-    }
-
-    @Bean
-    public RedisTemplate<?, ?> getRedisTemplate() {
-        JedisConnectionFactory factory = getConnectionFactory();
-        RedisTemplate<?, ?> redisTemplate = new StringRedisTemplate(factory);
-        return redisTemplate;
-    }
+//    @Bean
+//    @ConfigurationProperties(prefix = "spring.redis")
+//    public JedisConnectionFactory getConnectionFactory() {
+//        JedisConnectionFactory factory = new JedisConnectionFactory();
+//        return factory;
+//    }
+//
+//    @Bean
+//    public RedisTemplate<?, ?> getRedisTemplate() {
+//        JedisConnectionFactory factory = getConnectionFactory();
+//        RedisTemplate<?, ?> redisTemplate = new StringRedisTemplate(factory);
+//        return redisTemplate;
+//    }
 }

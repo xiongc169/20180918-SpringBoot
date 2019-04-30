@@ -1,6 +1,7 @@
 package com.yoong.practice.controller;
 
 import com.yoong.practice.dao.ApiServiceRecordRepository;
+import com.yoong.practice.dao.RedisDao;
 import com.yoong.practice.domain.ApiServiceRecord;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
@@ -32,6 +33,9 @@ public class TestController {
 
     @Autowired
     private RedisTemplate redisTemplate;
+
+    @Autowired
+    private RedisDao redisDao;
 
     /**
      * http://127.0.0.1:8080/test/getTime
@@ -69,14 +73,47 @@ public class TestController {
         return "save failure";
     }
 
-
     /**
-     * http://127.0.0.1:8080/test/saveRedis?key=name
+     * http://127.0.0.1:8080/test/getRedis?key=name
      *
      * @return
      */
     @ResponseBody
-    @RequestMapping("/saveRedis")
+    @RequestMapping("/getRedis")
+    public String getRedis(String key) {
+        try {
+            String result = redisDao.getValue(key);
+            return result;
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        return "query failure";
+    }
+
+    /**
+     * http://127.0.0.1:8080/test/setRedis?key=name&value=chaochaochao
+     *
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping("/setRedis")
+    public String setRedis(String key, String value) {
+        try {
+            redisDao.setKey(key, value);
+            return "save success";
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        return "save failure";
+    }
+
+    /**
+     * http://127.0.0.1:8080/test/getRedis2?key=name
+     *
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping("/getRedis2")
     public String saveRedis(String key) {
         try {
             String result = (String) redisTemplate.execute(new RedisCallback<String>() {
@@ -91,6 +128,6 @@ public class TestController {
         } catch (Exception ex) {
             ex.printStackTrace();
         }
-        return "save failure";
+        return "query2 failure";
     }
 }
