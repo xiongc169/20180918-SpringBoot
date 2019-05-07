@@ -1,7 +1,7 @@
 package com.yoong.practice.controller;
 
-import com.yoong.practice.domain.Customer;
-import com.yoong.practice.domain.ICustomerRepository;
+import com.yoong.practice.domain.wong.Customer;
+import com.yoong.practice.domain.wong.ICustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;

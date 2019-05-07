@@ -1,4 +1,4 @@
-package com.yoong.practice.domain;
+package com.yoong.practice.domain.wong;
 
 import javax.persistence.*;
 import java.util.Date;
