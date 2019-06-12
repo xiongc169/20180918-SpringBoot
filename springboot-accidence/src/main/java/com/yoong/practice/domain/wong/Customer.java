@@ -1,9 +1,13 @@
 package com.yoong.practice.domain.wong;
 
+import org.hibernate.annotations.GenericGenerator;
+
 import javax.persistence.*;
 import java.util.Date;
 
+@Table
 @Entity
+@GenericGenerator(name = "", strategy = "")
 public class Customer {
     private Long id;
     private String customerId;
