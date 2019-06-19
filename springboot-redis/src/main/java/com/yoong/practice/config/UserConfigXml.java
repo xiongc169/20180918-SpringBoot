@@ -4,7 +4,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.ImportResource;
 
 /**
- * @Desc UserConfig
+ * @Desc UserConfigXml
  * @Author
  * @Date
  * @Version 1.0

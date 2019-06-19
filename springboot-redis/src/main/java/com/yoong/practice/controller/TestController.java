@@ -23,7 +23,7 @@ public class TestController {
     private User user;
 
 //    @Autowired
-//    private RedisTemplate<Object, Object> redisTemplate;
+//    private RedisTemplate<Object, Object> redisTemplate1;
 
     @Autowired
     private RedisTemplate<String, Object> redisTemplate;
