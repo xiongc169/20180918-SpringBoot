@@ -28,7 +28,13 @@ public class BusinessDb {
 
     @Bean(name = "entityManagerBusiness")
     public EntityManager entityManagerBusiness(EntityManagerFactoryBuilder builder) {
-        return entityManagerFactoryBusiness(builder).getObject().createEntityManager();
+        try {
+            EntityManager entityManager = entityManagerFactoryBusiness(builder).getObject().createEntityManager();
+            return entityManager;
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        return null;
     }
 
     @Bean(name = "entityManagerFactoryBusiness")
