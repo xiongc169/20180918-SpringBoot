@@ -1,4 +1,4 @@
-package springboot.literature.controller;
+package com.yoong.literature.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
