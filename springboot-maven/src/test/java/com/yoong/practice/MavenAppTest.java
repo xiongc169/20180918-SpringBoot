@@ -1,6 +1,6 @@
 package com.yoong.practice;
 
-import com.yoong.practice.dao.RedisDao;
+import com.yoong.maven.dao.RedisDao;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
