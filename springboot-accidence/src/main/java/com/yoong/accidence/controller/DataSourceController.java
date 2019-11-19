@@ -1,4 +1,4 @@
-package com.yoong.practice.controller;
+package com.yoong.accidence.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;

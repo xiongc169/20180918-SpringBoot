@@ -1,4 +1,4 @@
-package com.yoong.practice.config;
+package com.yoong.accidence.config;
 
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.context.properties.ConfigurationProperties;

@@ -1,7 +1,7 @@
-package com.yoong.practice.controller;
+package com.yoong.accidence.controller;
 
-import com.yoong.practice.domain.wong.Customer;
-import com.yoong.practice.domain.wong.ICustomerRepository;
+import com.yoong.accidence.domain.wong.Customer;
+import com.yoong.accidence.domain.wong.ICustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;

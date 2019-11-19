@@ -1,4 +1,4 @@
-package com.yoong.practice.domain.yoong;
+package com.yoong.accidence.domain.yoong;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;

@@ -1,4 +1,4 @@
-package com.yoong.practice.domain.yoong;
+package com.yoong.accidence.domain.yoong;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
