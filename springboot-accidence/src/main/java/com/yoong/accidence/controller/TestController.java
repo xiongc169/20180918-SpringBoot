@@ -19,10 +19,10 @@ public class TestController {
 
     private SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss:SSSS");
 
+    private SimpleDateFormat format2 = new SimpleDateFormat("yyyyMMddHHmmssSSSS");
+
     /**
-     * http://127.0.0.1:8080/test/getReport
-     *
-     * @return
+     * http://127.0.0.1:8081/test/getReport
      */
     @ResponseBody
     @RequestMapping("/getReport")
@@ -33,17 +33,13 @@ public class TestController {
     }
 
     /**
-     * http://127.0.0.1:8080/test/addCustomer
-     *
-     * @return
+     * http://127.0.0.1:8081/test/addCustomer
      */
     @ResponseBody
     @RequestMapping("/addCustomer")
     public Customer addCustomer() {
-        SimpleDateFormat format = new SimpleDateFormat("yyyyMMddHHmmssSSSS");
-
         Customer customer = new Customer();
-        String customerId = format.format(new Date());
+        String customerId = format2.format(new Date());
         customer.setCustomerId(customerId);
         customer.setCustomerName("Name-" + customerId);
         customer.setCreateTime(new Date());

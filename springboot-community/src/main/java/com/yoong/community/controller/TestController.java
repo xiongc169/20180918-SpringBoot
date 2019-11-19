@@ -42,8 +42,6 @@ public class TestController {
 
     /**
      * 页面测试：http://127.0.0.1:8080/test/welcome
-     *
-     * @return
      */
     @RequestMapping("/welcome")
     public String welcome() {
@@ -54,10 +52,6 @@ public class TestController {
 
     /**
      * 传参测试：http://127.0.0.1:8080/test/login
-     *
-     * @param name
-     * @param password
-     * @return
      */
     @ResponseBody
     @RequestMapping("/login")
@@ -69,13 +63,11 @@ public class TestController {
     }
 
     /**
-     * 多数据源测试：http://127.0.0.1:8080/test/multDataSource
-     *
-     * @return
+     * 多数据源测试：http://127.0.0.1:8080/test/multiDataSource
      */
     @ResponseBody
-    @RequestMapping("/multDataSource")
-    public void addDept() {
+    @RequestMapping("/multiDataSource")
+    public void multiDataSource() {
         try {
             //添加子账号
             SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMdd-HHmmssSSSS");
@@ -102,35 +94,4 @@ public class TestController {
             ex.printStackTrace();
         }
     }
-
-    /**
-     * Redis测试：http://127.0.0.1:8080/test/add2Redis
-     *
-     * @param name
-     * @param password
-     * @return
-     */
-    @ResponseBody
-    @RequestMapping("/add2Redis")
-    public String redis(String name, String password) {
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMdd-HHmmssSSSS");
-        String currentDate = dateFormat.format(new Date());
-        System.out.println(currentDate);
-        try {
-            stringRedisTemplate.opsForValue().set("name", currentDate);
-
-            User superMan = new User("SuperMan", 100);
-            User batMan = new User("BatMan", 50);
-            userRedisTemplate.opsForValue().set(superMan.getName(), superMan);
-            userRedisTemplate.opsForValue().set(batMan.getName(), batMan);
-
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
-        return "Success";
-    }
-
-    //访问Actuator
-    //http://127.0.0.1:8080/actuator/health
-
 }

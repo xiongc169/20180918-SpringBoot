@@ -6,12 +6,11 @@ import org.springframework.boot.jdbc.DataSourceBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
-import org.springframework.jdbc.core.JdbcTemplate;
 
 import javax.sql.DataSource;
 
 /**
- * @Desc 配置多数据源一
+ * @Desc Spring Boot 两种多数据源配置：JdbcTemplate、Spring-data-jpa
  * http://www.spring4all.com/article/253
  * @Author
  * @Date
@@ -25,7 +24,7 @@ public class DataSourceConfig {
     @Qualifier("wongSource")
     @ConfigurationProperties(prefix = "spring.datasource.wong")
     public DataSource wongSource() {
-        System.out.println("wongSource");
+        System.out.println("DataSourceConfig.wongSource");
         return DataSourceBuilder.create().build();
     }
 
@@ -33,19 +32,7 @@ public class DataSourceConfig {
     @Qualifier("yoongSource")
     @ConfigurationProperties(prefix = "spring.datasource.yoong")
     public DataSource yoongSource() {
-        System.out.println("yoongSource");
+        System.out.println("DataSourceConfig.yoongSource");
         return DataSourceBuilder.create().build();
-    }
-
-    @Bean(name = "wongTemplate")
-    public JdbcTemplate wongTemplate(@Qualifier("wongSource") DataSource wongSource) {
-        System.out.println("wongTemplate");
-        return new JdbcTemplate(wongSource);
-    }
-
-    @Bean(name = "yoongTemplate")
-    public JdbcTemplate yoongTemplate(@Qualifier("yoongSource") DataSource yoongSource) {
-        System.out.println("yoongTemplate");
-        return new JdbcTemplate(yoongSource);
     }
 }

@@ -18,9 +18,6 @@ public class RedisObjectSerializer implements RedisSerializer<Object> {
 
     /**
      * 反序列化
-     *
-     * @param bytes
-     * @return
      */
     public Object deserialize(byte[] bytes) {
         if (isEmpty(bytes)) {
@@ -35,9 +32,6 @@ public class RedisObjectSerializer implements RedisSerializer<Object> {
 
     /**
      * 序列化
-     *
-     * @param object
-     * @return
      */
     public byte[] serialize(Object object) {
         if (object == null) {

@@ -20,25 +20,27 @@ import java.util.Map;
 
 @Configuration
 @EnableTransactionManagement
-@EnableJpaRepositories(entityManagerFactoryRef = "entityManagerFactoryRehearsal", transactionManagerRef = "transactionManagerRehearsal", basePackages = {"springboot.community.domain.rehearsal"})
-public class RehearsalConfig {
+@EnableJpaRepositories(entityManagerFactoryRef = "entityManagerFactoryWong", transactionManagerRef = "transactionManagerWong", basePackages = {"com.yoong.community.domain.wong"})
+public class WongDb {
 
     @Autowired
-    @Qualifier("rehearsalDataSource")
-    private DataSource rehearsalDataSource;
+    @Qualifier("wongDataSource")
+    private DataSource wongDataSource;
 
-    @Bean(name = "entityManagerTest")
-    public EntityManager entityManagerRehearsal(EntityManagerFactoryBuilder builder) {
-        return entityManagerFactoryRehearsal(builder).getObject().createEntityManager();
+    @Primary
+    @Bean(name = "entityManagerWong")
+    public EntityManager entityManagerWong(EntityManagerFactoryBuilder builder) {
+        return entityManagerFactoryWong(builder).getObject().createEntityManager();
     }
 
-    @Bean(name = "entityManagerFactoryRehearsal")
-    public LocalContainerEntityManagerFactoryBean entityManagerFactoryRehearsal(EntityManagerFactoryBuilder builder) {
+    @Primary
+    @Bean(name = "entityManagerFactoryWong")
+    public LocalContainerEntityManagerFactoryBean entityManagerFactoryWong(EntityManagerFactoryBuilder builder) {
         return builder
-                .dataSource(rehearsalDataSource)
-                .properties(getVendorProperties(rehearsalDataSource))
-                .packages("springboot.community.domain.rehearsal") //设置实体类所在位置
-                .persistenceUnit("rehearsalPersistenceUnit")
+                .dataSource(wongDataSource)
+                .properties(getVendorProperties(wongDataSource))
+                .packages("com.yoong.community.domain.wong") //设置实体类所在位置
+                .persistenceUnit("wongPersistenceUnit")
                 .build();
     }
 
@@ -50,8 +52,9 @@ public class RehearsalConfig {
         return jpaProperties.getHibernateProperties(new HibernateSettings());
     }
 
-    @Bean(name = "transactionManagerRehearsal")
-    PlatformTransactionManager transactionManagerRehearsal(EntityManagerFactoryBuilder builder) {
-        return new JpaTransactionManager(entityManagerFactoryRehearsal(builder).getObject());
+    @Primary
+    @Bean(name = "transactionManagerWong")
+    PlatformTransactionManager transactionManagerWong(EntityManagerFactoryBuilder builder) {
+        return new JpaTransactionManager(entityManagerFactoryWong(builder).getObject());
     }
 }
