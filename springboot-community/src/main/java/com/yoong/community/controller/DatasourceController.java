@@ -20,10 +20,10 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 @Controller
-@RequestMapping("/test")
-public class TestController {
+@RequestMapping("/datasource")
+public class DatasourceController {
 
-    private Logger logger = LoggerFactory.getLogger(TestController.class);
+    private Logger logger = LoggerFactory.getLogger(DatasourceController.class);
 
     @Autowired
     private AccountService accountService;
@@ -41,7 +41,7 @@ public class TestController {
     private RedisTemplate<String, User> userRedisTemplate;
 
     /**
-     * 页面测试：http://127.0.0.1:8080/test/welcome
+     * 页面测试：http://127.0.0.1:8090/datasource/welcome
      */
     @RequestMapping("/welcome")
     public String welcome() {
@@ -51,7 +51,7 @@ public class TestController {
     }
 
     /**
-     * 传参测试：http://127.0.0.1:8080/test/login
+     * 传参测试：http://127.0.0.1:8090/datasource/login
      */
     @ResponseBody
     @RequestMapping("/login")
@@ -63,7 +63,7 @@ public class TestController {
     }
 
     /**
-     * 多数据源测试：http://127.0.0.1:8080/test/multiDataSource
+     * 多数据源测试：http://127.0.0.1:8090/datasource/multiDataSource
      */
     @ResponseBody
     @RequestMapping("/multiDataSource")

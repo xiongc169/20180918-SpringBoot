@@ -8,14 +8,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
- * @Desc DataSourceController
+ * @Desc MultiDataSourceController
  * @Author
  * @Date
  * @Version 1.0
  */
 @Controller
-@RequestMapping("/datasource")
-public class DataSourceController {
+@RequestMapping("/mDatasource")
+public class MultiDataSourceController {
 
     @Autowired
     @Qualifier("wongTemplate")
@@ -26,7 +26,7 @@ public class DataSourceController {
     private JdbcTemplate yoongTemplate;
 
     /**
-     * http://127.0.0.1:8083/datasource/multiDataSource
+     * http://127.0.0.1:8080/mDatasource/multiDataSource
      */
     @ResponseBody
     @RequestMapping("/multiDataSource")

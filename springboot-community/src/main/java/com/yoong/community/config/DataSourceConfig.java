@@ -25,6 +25,8 @@ public class DataSourceConfig {
 
     /* Spring Boot 两种多数据源配置：JdbcTemplate、Spring-data-jpa
      * http://www.spring4all.com/article/253
+     * Spring Boot多数据源配置与使用
+     * http://blog.didispace.com/springbootmultidatasource/
      * Spring Data JPA多数据源配置
      * https://www.jianshu.com/p/9f812e651319
      */
@@ -86,8 +88,6 @@ public class DataSourceConfig {
     /**
      * SpringBoot配置多数据源两种方法(DataSourceBuilder、DataSourceProperties)
      * https://blog.csdn.net/newhanzhe/article/details/80763581
-     * Spring Boot多数据源配置与使用
-     * http://blog.didispace.com/springbootmultidatasource/
      */
 
 //    /**

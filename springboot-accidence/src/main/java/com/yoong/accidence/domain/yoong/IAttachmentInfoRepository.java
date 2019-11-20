@@ -8,13 +8,12 @@ import java.sql.Timestamp;
 import java.util.Objects;
 
 /**
- * @Desc AttachmentInfo
+ * @Desc IAttachmentInfoRepository
  * @Author
  * @Date
  * @Version 1.0
  */
 @Repository
 public interface IAttachmentInfoRepository extends JpaRepository<AttachmentInfo, Long> {
-
 
 }

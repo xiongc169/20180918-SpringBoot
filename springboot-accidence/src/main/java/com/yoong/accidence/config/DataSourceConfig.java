@@ -24,15 +24,17 @@ public class DataSourceConfig {
     @Qualifier("wongSource")
     @ConfigurationProperties(prefix = "spring.datasource.wong")
     public DataSource wongSource() {
-        System.out.println("DataSourceConfig.wongSource");
-        return DataSourceBuilder.create().build();
+        //System.out.println("DataSourceConfig.wongSource");
+        DataSource dataSource = DataSourceBuilder.create().build();
+        return dataSource;
     }
 
     @Bean(name = "yoongSource")
     @Qualifier("yoongSource")
     @ConfigurationProperties(prefix = "spring.datasource.yoong")
     public DataSource yoongSource() {
-        System.out.println("DataSourceConfig.yoongSource");
-        return DataSourceBuilder.create().build();
+        //System.out.println("DataSourceConfig.yoongSource");
+        DataSource dataSource = DataSourceBuilder.create().build();
+        return dataSource;
     }
 }

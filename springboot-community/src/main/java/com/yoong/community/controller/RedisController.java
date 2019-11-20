@@ -12,7 +12,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 @Controller
-@RequestMapping("/test")
+@RequestMapping("/redis")
 public class RedisController {
 
     @Autowired
@@ -22,7 +22,7 @@ public class RedisController {
     private RedisTemplate<String, User> userRedisTemplate;
 
     /**
-     * Redis测试：http://127.0.0.1:8080/test/add2Redis
+     * Redis测试：http://127.0.0.1:8090/redis/add2Redis
      */
     @ResponseBody
     @RequestMapping("/add2Redis")
@@ -45,6 +45,6 @@ public class RedisController {
     }
 
     //访问Actuator
-    //http://127.0.0.1:8080/actuator/health
+    //http://127.0.0.1:8090/actuator/health
 
 }

@@ -17,13 +17,15 @@ public class DataSource {
 
     @Bean(name = "wongTemplate")
     public JdbcTemplate wongTemplate(@Qualifier("wongSource") javax.sql.DataSource wongSource) {
-        System.out.println("DataSource.wongTemplate");
-        return new JdbcTemplate(wongSource);
+        //System.out.println("DataSource.wongTemplate");
+        JdbcTemplate template = new JdbcTemplate(wongSource);
+        return template;
     }
 
     @Bean(name = "yoongTemplate")
     public JdbcTemplate yoongTemplate(@Qualifier("yoongSource") javax.sql.DataSource yoongSource) {
-        System.out.println("DataSource.yoongTemplate");
-        return new JdbcTemplate(yoongSource);
+        //System.out.println("DataSource.yoongTemplate");
+        JdbcTemplate template = new JdbcTemplate(yoongSource);
+        return template;
     }
 }

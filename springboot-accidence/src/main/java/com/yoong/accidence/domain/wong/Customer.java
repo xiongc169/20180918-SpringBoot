@@ -5,6 +5,12 @@ import org.hibernate.annotations.GenericGenerator;
 import javax.persistence.*;
 import java.util.Date;
 
+/**
+ * @Desc Customer
+ * @Author
+ * @Date
+ * @Version 1.0
+ */
 @Table
 @Entity
 @GenericGenerator(name = "", strategy = "")

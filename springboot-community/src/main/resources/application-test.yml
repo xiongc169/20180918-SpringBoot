@@ -1,7 +1,6 @@
 server:
-  port: 8084
-
+  port: 8092
 
 spring:
   application:
-    name: springboot-rehearsal
+    name: community-test

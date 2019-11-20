@@ -1,11 +1,75 @@
 server:
-  port: 8082
+  port: 8091
 
 spring:
   application:
-    name: springboot-dev
+    name: community-dev
+  # Redis 配置
+  redis:
+    host: 127.0.0.1
+    port: 6379
+    database: 0
+    password: admin
+    timeout: 5000ms
+    pool:
+      max-active: 8
+      max-wait: -1
+      max-idle: 8
+      min-idle: 0
+  # Freemarker 配置
+  freemarker:
+    template-loader-path: classpath:/web/
+    cache: false
+    charset: UTF-8
+    check-template-location: true
+    content-type: text/html
+    expose-request-attributes: true
+    expose-session-attributes: true
+    request-context-attribute: request
+    suffix: .ftl
+  datasource:
+    # 单数据源-数据库配置，数据库驱动：com.mysql.jdbc.Driver、com.mysql.cj.jdbc.Driver；
+    url: jdbc:mysql://127.0.0.1:3306/wong_user?characterEncoding=utf8&useSSL=false&serverTimezone=UTC
+    username: root
+    password: 123456
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    database-platform: org.hibernate.dialect.MySQL5Dialect
+    # 数据源1
+    wong:
+      url: jdbc:mysql://127.0.0.1:3306/wong_user?characterEncoding=utf8&useSSL=false&serverTimezone=UTC
+      username: root
+      password: 123456
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      database-platform: org.hibernate.dialect.MySQL5Dialect
+    # 数据源2
+    business:
+      url: jdbc:mysql://127.0.0.1:3306/yoong_business?characterEncoding=utf8&useSSL=false&serverTimezone=UTC
+      username: root
+      password: 123456
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      database-platform: org.hibernate.dialect.MySQL5Dialect
+    # 数据源3
+    rehearsal:
+      url: jdbc:mysql://127.0.0.1:3306/yoong_rehearsal?characterEncoding=utf8&useSSL=false&serverTimezone=UTC
+      username: root
+      password: 123456
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      database-platform: org.hibernate.dialect.MySQL5Dialect
 
+#日志配置
+logging:
+  config: classpath:logback-spring-1.xml
+  path: /yoong/log/
+  level:
+    root: INFO
 
+endpoints:
+  enabled: true
+  info:
+    sensitive: false
+  health:
+    sensitive: false
 
-
-
+management:
+  context-path: /
+  port: 8081
