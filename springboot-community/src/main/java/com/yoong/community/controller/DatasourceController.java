@@ -34,12 +34,6 @@ public class DatasourceController {
     @Autowired
     private DepartmentService deptService;
 
-    @Autowired
-    private StringRedisTemplate stringRedisTemplate;
-
-    @Autowired
-    private RedisTemplate<String, User> userRedisTemplate;
-
     /**
      * 页面测试：http://127.0.0.1:8090/datasource/welcome
      */

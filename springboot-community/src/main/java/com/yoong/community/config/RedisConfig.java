@@ -1,5 +1,6 @@
-package com.yoong.community.config.redis;
+package com.yoong.community.config;
 
+import com.yoong.community.config.redis.RedisObjectSerializer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
@@ -15,14 +16,10 @@ import com.yoong.community.domain.rehearsal.User;
 @Configuration
 public class RedisConfig {
 
-    public RedisConfig() {
-        System.out.println("*********************************************   RedisConfig   ***********************************************");
-    }
-
     @Bean
     JedisConnectionFactory jedisConnectionFactory() {
-        System.out.println("*********************************************   jedisConnectionFactory   *********************************************");
-        return new JedisConnectionFactory();
+        JedisConnectionFactory connectionFactory = new JedisConnectionFactory();
+        return connectionFactory;
     }
 
 //    @Bean

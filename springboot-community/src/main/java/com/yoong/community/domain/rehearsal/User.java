@@ -1,10 +1,14 @@
 package com.yoong.community.domain.rehearsal;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Objects;
 
 @Entity
-public class User {
+public class User implements Serializable {
+
+    private static final long serialVersionUID = -5222373080339175477L;
+
     private Long id;
     private String name;
     private Integer age;

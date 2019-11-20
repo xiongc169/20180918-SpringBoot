@@ -15,6 +15,8 @@ import java.util.Date;
 @RequestMapping("/redis")
 public class RedisController {
 
+    private SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMdd-HHmmssSSSS");
+
     @Autowired
     private StringRedisTemplate stringRedisTemplate;
 
@@ -22,22 +24,25 @@ public class RedisController {
     private RedisTemplate<String, User> userRedisTemplate;
 
     /**
-     * Redis测试：http://127.0.0.1:8090/redis/add2Redis
+     * Redis测试：http://127.0.0.1:8091/redis/add2Redis
      */
     @ResponseBody
     @RequestMapping("/add2Redis")
-    public String redis(String name, String password) {
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMdd-HHmmssSSSS");
-        String currentDate = dateFormat.format(new Date());
-        System.out.println(currentDate);
+    public String redis() {
         try {
+            //保存字符串
+            String currentDate = dateFormat.format(new Date());
             stringRedisTemplate.opsForValue().set("name", currentDate);
-
+            String name = stringRedisTemplate.opsForValue().get("name");
+            System.out.println(name);
+            //保存对象
             User superMan = new User("SuperMan", 100);
             User batMan = new User("BatMan", 50);
             userRedisTemplate.opsForValue().set(superMan.getName(), superMan);
             userRedisTemplate.opsForValue().set(batMan.getName(), batMan);
-
+            //查看对象
+            User superMan2 = userRedisTemplate.opsForValue().get(superMan.getName());
+            System.out.println(superMan2.getAge());
         } catch (Exception ex) {
             ex.printStackTrace();
         }
