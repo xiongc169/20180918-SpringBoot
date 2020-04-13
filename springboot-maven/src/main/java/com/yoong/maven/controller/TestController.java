@@ -2,6 +2,7 @@ package com.yoong.maven.controller;
 
 import com.yoong.maven.dao.ApiServiceRecordRepository;
 import com.yoong.maven.dao.RedisDao;
+import com.yoong.maven.distLock.DistributeLock;
 import com.yoong.maven.domain.ApiServiceRecord;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
@@ -36,6 +37,9 @@ public class TestController {
 
     @Autowired
     private RedisDao redisDao;
+
+    @Autowired
+    private DistributeLock distributeLock;
 
     /**
      * http://127.0.0.1:8080/test/getTime
@@ -129,5 +133,27 @@ public class TestController {
             ex.printStackTrace();
         }
         return "query2 failure";
+    }
+
+    /**
+     * http://127.0.0.1:8080/test/getRedis2?key=name
+     *
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping("/distLock")
+    public void distLock(String key) {
+        try {
+            if (distributeLock.lock(key, key, 1000l, 1)) {
+                System.out.println(Thread.currentThread().getId() + "，获取分布式锁：" + key);
+                Thread.sleep(2000);
+                distributeLock.releaseLock(key);
+                System.out.println(Thread.currentThread().getId() + "，释放分布式锁：" + key);
+            } else {
+                System.out.println(Thread.currentThread().getId() + "，获取锁失败，退出：" + key);
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
     }
 }
