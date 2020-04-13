@@ -1,4 +1,4 @@
-package com.yoong.practice;
+package com.yoong.maven;
 
 import com.yoong.maven.dao.RedisDao;
 import org.junit.Test;

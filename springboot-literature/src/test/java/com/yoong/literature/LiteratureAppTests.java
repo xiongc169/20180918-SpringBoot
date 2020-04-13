@@ -1,4 +1,4 @@
-package springboot.community;
+package com.yoong.literature;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -7,10 +7,11 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class CommunityAppTests {
+public class LiteratureAppTests {
 
     @Test
     public void contextLoads() {
     }
 
 }
+

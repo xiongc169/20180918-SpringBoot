@@ -1,4 +1,4 @@
-package com.yoong.practice;
+package com.yoong.redis;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

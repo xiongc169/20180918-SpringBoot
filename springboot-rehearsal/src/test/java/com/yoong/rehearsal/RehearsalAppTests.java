@@ -1,4 +1,4 @@
-package practice.springboot.rehearsal;
+package com.yoong.rehearsal;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
