@@ -1,4 +1,4 @@
-package com.yoong.accidence.domain.fruit;
+package com.yoong.autoconfig.domain.fruit;
 
 import lombok.Data;
 

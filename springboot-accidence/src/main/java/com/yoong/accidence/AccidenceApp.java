@@ -3,6 +3,7 @@ package com.yoong.accidence;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,7 +26,7 @@ public class AccidenceApp {
      */
     public static void main(String[] args) {
         System.out.println("AccidenceApp Start...");
-        SpringApplication.run(AccidenceApp.class, args);
+        ConfigurableApplicationContext configurableApplicationContext = SpringApplication.run(AccidenceApp.class, args);
         System.out.println("AccidenceApp Finished");
     }
 

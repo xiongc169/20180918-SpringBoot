@@ -1,9 +1,7 @@
-package com.yoong.accidence.config.properties;
+package com.yoong.autoconfig.config.autoconfig01;
 
-import com.yoong.accidence.domain.fruit.Apple;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.yoong.autoconfig.domain.fruit.Apple;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
@@ -17,13 +15,11 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 @EnableConfigurationProperties(BananaProperties.class)
 @ConditionalOnMissingBean(Apple.class)
-//@ConditionalOnBean(Apple.class)
-public class BananaAutoConfiguration {
+@ConditionalOnBean(Apple.class)
+public class BananaAutoConfig {
 
-    public BananaAutoConfiguration() {
-        System.out.println("BananaAutoConfiguration()");
+    public BananaAutoConfig() {
+        System.out.println("***************************************** BananaAutoConfig() *****************************************");
     }
-
-    private BananaProperties bananaProperties;
 
 }

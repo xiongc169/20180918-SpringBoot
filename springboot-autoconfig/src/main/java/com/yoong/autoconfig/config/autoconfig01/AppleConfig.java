@@ -1,6 +1,6 @@
-package com.yoong.accidence.config;
+package com.yoong.autoconfig.config.autoconfig01;
 
-import com.yoong.accidence.domain.fruit.Apple;
+import com.yoong.autoconfig.domain.fruit.Apple;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -15,7 +15,7 @@ import org.springframework.context.annotation.Configuration;
 public class AppleConfig {
 
     public AppleConfig() {
-        System.out.println("AppleConfig");
+        System.out.println("***************************************** AppleConfig() **************************************************");
     }
 
     @Bean

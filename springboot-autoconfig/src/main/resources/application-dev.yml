@@ -1,0 +1,11 @@
+domain:
+  apple:
+    app01:
+      appId: a01-Id
+      appName: a01-Name
+  banana:
+    ban01:
+      banId: ban01-Id
+      banName: ban01-Name
+
+

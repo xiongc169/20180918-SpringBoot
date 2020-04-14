@@ -20,16 +20,6 @@ spring:
   jpa:
     database-platform: org.hibernate.dialect.MySQL5Dialect
 
-domain:
-  apple:
-    app01:
-      appId: a01-Id
-      appName: a01-Name
-  banana:
-    ban01:
-      banId: ban01-Id
-      banName: ban01-Name
-
 #Actuator: auditevents,beans,caches,conditions,configprops,env,flyway,health,info,liquibase,metrics,mappings,scheduledtasks,sessions,shutdown,threaddump,httptrace
 #版本：<springboot.version>1.5.10.RELEASE</springboot.version>
 #访问：http://127.0.0.1:8080/beans
