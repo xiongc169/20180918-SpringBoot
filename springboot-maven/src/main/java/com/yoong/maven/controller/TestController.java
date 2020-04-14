@@ -1,15 +1,8 @@
 package com.yoong.maven.controller;
 
 import com.yoong.maven.dao.ApiServiceRecordRepository;
-import com.yoong.maven.dao.RedisDao;
-import com.yoong.maven.distLock.DistributeLock;
 import com.yoong.maven.domain.ApiServiceRecord;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.dao.DataAccessException;
-import org.springframework.data.redis.connection.RedisConnection;
-import org.springframework.data.redis.core.RedisCallback;
-import org.springframework.data.redis.core.RedisTemplate;
-import org.springframework.data.redis.serializer.RedisSerializer;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -32,14 +25,7 @@ public class TestController {
     @Autowired
     private ApiServiceRecordRepository apiServiceRecordDao;
 
-    @Autowired
-    private RedisTemplate redisTemplate;
-
-    @Autowired
-    private RedisDao redisDao;
-
-    @Autowired
-    private DistributeLock distributeLock;
+    private SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss:SSSS");
 
     /**
      * http://127.0.0.1:8080/test/getTime
@@ -49,7 +35,6 @@ public class TestController {
     @ResponseBody
     @RequestMapping("/getTime")
     public String getTime() {
-        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss:SSSS");
         String time = format.format(new Date());
         System.out.println(time);
         return time;
@@ -75,85 +60,5 @@ public class TestController {
             ex.printStackTrace();
         }
         return "save failure";
-    }
-
-    /**
-     * http://127.0.0.1:8080/test/getRedis?key=name
-     *
-     * @return
-     */
-    @ResponseBody
-    @RequestMapping("/getRedis")
-    public String getRedis(String key) {
-        try {
-            String result = redisDao.getValue(key);
-            return result;
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
-        return "query failure";
-    }
-
-    /**
-     * http://127.0.0.1:8080/test/setRedis?key=name&value=chaochaochao
-     *
-     * @return
-     */
-    @ResponseBody
-    @RequestMapping("/setRedis")
-    public String setRedis(String key, String value) {
-        try {
-            redisDao.setKey(key, value);
-            return "save success";
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
-        return "save failure";
-    }
-
-    /**
-     * http://127.0.0.1:8080/test/getRedis2?key=name
-     *
-     * @return
-     */
-    @ResponseBody
-    @RequestMapping("/getRedis2")
-    public String saveRedis(String key) {
-        try {
-            String result = (String) redisTemplate.execute(new RedisCallback<String>() {
-                @Override
-                public String doInRedis(RedisConnection connection) throws DataAccessException {
-                    RedisSerializer<String> serializer = redisTemplate.getStringSerializer();
-                    byte[] value = connection.get(serializer.serialize(key));
-                    return serializer.deserialize(value);
-                }
-            });
-            return result;
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
-        return "query2 failure";
-    }
-
-    /**
-     * http://127.0.0.1:8080/test/getRedis2?key=name
-     *
-     * @return
-     */
-    @ResponseBody
-    @RequestMapping("/distLock")
-    public void distLock(String key) {
-        try {
-            if (distributeLock.lock(key, key, 1000l, 1)) {
-                System.out.println(Thread.currentThread().getId() + "，获取分布式锁：" + key);
-                Thread.sleep(2000);
-                distributeLock.releaseLock(key);
-                System.out.println(Thread.currentThread().getId() + "，释放分布式锁：" + key);
-            } else {
-                System.out.println(Thread.currentThread().getId() + "，获取锁失败，退出：" + key);
-            }
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
     }
 }

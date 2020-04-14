@@ -1,6 +1,6 @@
 package com.yoong.maven;
 
-import com.yoong.maven.dao.RedisDao;
+import com.yoong.maven.dao.RedisUtils;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,14 +18,14 @@ public class MavenAppTest {
      * Rigorous Test :-)
      */
     @Autowired
-    private RedisDao redisDao;
+    private RedisUtils redisUtils;
 
     @Test
     public void redisTest() {
-        String name = redisDao.getValue("name");
+        String name = redisUtils.getValue("name");
         System.out.println(name);
-        redisDao.setKey("name", "yoong");
-        String name2 = redisDao.getValue("name");
+        redisUtils.setKey("name", "yoong");
+        String name2 = redisUtils.getValue("name");
         System.out.println(name2);
     }
 }
