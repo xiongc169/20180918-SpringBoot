@@ -15,7 +15,7 @@ import org.springframework.stereotype.Component;
 @Data
 @ConfigurationProperties(prefix = "domain.banana.ban01")
 @PropertySource("classpath:application-dev.yml")
-//@Component
+@Component
 public class BananaProperties {
 
     public BananaProperties() {

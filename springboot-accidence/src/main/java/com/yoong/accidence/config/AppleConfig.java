@@ -15,7 +15,7 @@ import org.springframework.context.annotation.Configuration;
 public class AppleConfig {
 
     public AppleConfig() {
-        System.out.println("DomainConfig");
+        System.out.println("AppleConfig");
     }
 
     @Bean

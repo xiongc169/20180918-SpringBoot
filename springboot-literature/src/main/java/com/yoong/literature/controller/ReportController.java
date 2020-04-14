@@ -11,10 +11,11 @@ import java.util.Date;
 @RequestMapping("/report")
 public class ReportController {
 
+    private SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss:SSSS");
+
     @ResponseBody
     @RequestMapping("/getReport")
     public String getReport() {
-        SimpleDateFormat format = new SimpleDateFormat("yyyyMMddHHmmss");
         String result = "Report: " + format.format(new Date());
         System.out.println(result);
         return result;

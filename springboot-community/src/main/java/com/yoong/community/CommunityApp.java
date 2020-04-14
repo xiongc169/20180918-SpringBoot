@@ -14,9 +14,13 @@ public class CommunityApp {
 
     private static Logger logger = LoggerFactory.getLogger(CommunityApp.class);
 
+    /**
+     * 入口函数
+     */
     public static void main(String[] args) {
+        System.out.println("CommunityApp Start...");
         SpringApplication.run(CommunityApp.class, args);
-        System.out.println("启动成功1");
-        logger.info("启动成功2");
+        System.out.println("CommunityApp Finished");
+        logger.info("CommunityApp Finished");
     }
 }

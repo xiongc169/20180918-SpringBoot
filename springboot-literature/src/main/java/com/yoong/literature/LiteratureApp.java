@@ -10,8 +10,13 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class LiteratureApp {
 
+    /**
+     * 入口函数
+     */
     public static void main(String[] args) {
+        System.out.println("LiteratureApp Start...");
         SpringApplication.run(LiteratureApp.class, args);
+        System.out.println("LiteratureApp Finished");
     }
 
 }

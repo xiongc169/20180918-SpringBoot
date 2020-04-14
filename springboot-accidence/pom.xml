@@ -9,7 +9,9 @@
     <url>http://www.example.com</url>
     <description>web + jpa</description>
 
-    <!--创建Spring Boot项目的第一种方式(定义Spring Boot的版本信息：1.5.10.RELEASE、2.1.0.RELEASE)-->
+    <!-- 创建Spring Boot项目的第一种方式(定义Spring Boot的版本信息，比dependency优先级高) -->
+    <!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-parent -->
+    <!-- 1.x.x.RELEASE ~ 2.2.6.RELEASE -->
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
@@ -79,8 +81,9 @@
 
     <dependencyManagement>
         <dependencies>
-            <!--创建Spring Boot项目的第二种方式(定义Spring Boot的版本信息，比parent优先级低)-->
+            <!-- 创建Spring Boot项目的第二种方式(定义Spring Boot的版本信息，比parent优先级低) -->
             <!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-dependencies -->
+            <!-- 1.x.x.RELEASE ~ 2.2.6.RELEASE -->
             <!--<dependency>-->
                 <!--<groupId>org.springframework.boot</groupId>-->
                 <!--<artifactId>spring-boot-dependencies</artifactId>-->
