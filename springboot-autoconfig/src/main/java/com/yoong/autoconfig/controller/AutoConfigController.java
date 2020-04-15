@@ -21,7 +21,7 @@ import java.util.Date;
  * @Version 1.0
  */
 @Controller
-@RequestMapping("autoConfig")
+@RequestMapping("/autoConfig")
 public class AutoConfigController {
 
     private SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss:SSSS");

@@ -9,3 +9,22 @@ domain:
       banName: ban01-Name
 
 
+#SpringBoot 1.0 Actuator配置
+#Actuator: auditevents,beans,caches,conditions,configprops,env,flyway,health,info,liquibase,metrics,mappings,scheduledtasks,sessions,shutdown,threaddump,httptrace
+#访问：http://127.0.0.1:8080/beans
+management:
+  port: 8080
+  security:
+    enabled: false
+
+#SpringBoot 2.0 Actuator配置
+#访问 http://127.0.0.1:8081/actuator，会返回所有端点的信息
+#management:
+#  server:
+#    port: 8081
+#  endpoints:
+#    web:
+#      base-path: /actuator
+#      exposure:
+#        include: '*'
+
