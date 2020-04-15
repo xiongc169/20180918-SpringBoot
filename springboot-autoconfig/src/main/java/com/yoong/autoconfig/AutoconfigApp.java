@@ -9,11 +9,11 @@ import org.springframework.context.ConfigurableApplicationContext;
  * @Desc SpringBoot自动配置的实现原理
  * https://www.cnblogs.com/lfjjava/p/6096884.html
  * https://www.cnblogs.com/leihuazhe/p/7743479.html
- * <br/>
+ * <p/>
  * @Author yoong
- * <br/>
+ * <p/>
  * @Date 2019年4月14日19:30:00
- * <br/>
+ * <p/>
  * @Version 1.0
  */
 @SpringBootApplication

@@ -6,15 +6,15 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 /**
- * @Desc AppleConfig
+ * @Desc Apple配置类
  * @Author
  * @Date
  * @Version 1.0
  */
-@Configuration
-public class AppleConfig {
+//@Configuration
+public class AppleConfiguration {
 
-    public AppleConfig() {
+    public AppleConfiguration() {
         System.out.println("***************************************** AppleConfig() **************************************************");
     }
 

@@ -85,11 +85,11 @@
             <!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-dependencies -->
             <!-- 1.x.x.RELEASE ~ 2.2.6.RELEASE -->
             <!--<dependency>-->
-                <!--<groupId>org.springframework.boot</groupId>-->
-                <!--<artifactId>spring-boot-dependencies</artifactId>-->
-                <!--<version>2.1.4.RELEASE</version>-->
-                <!--<type>pom</type>-->
-                <!--<scope>import</scope>-->
+            <!--    <groupId>org.springframework.boot</groupId>-->
+            <!--    <artifactId>spring-boot-dependencies</artifactId>-->
+            <!--    <version>2.1.4.RELEASE</version>-->
+            <!--    <type>pom</type>-->
+            <!--    <scope>import</scope>-->
             <!--</dependency>-->
         </dependencies>
     </dependencyManagement>

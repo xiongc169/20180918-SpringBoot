@@ -2,9 +2,11 @@ package com.yoong.autoconfig.config.autoconfig01;
 
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.context.annotation.PropertySource;
+import org.springframework.stereotype.Component;
 
 /**
- * @Desc 属性类
+ * @Desc Banana属性类
  * PS: @ConfigurationProperties 需要和 @EnableConfigurationProperties 或 @Component 关联使用
  * @Author
  * @Date

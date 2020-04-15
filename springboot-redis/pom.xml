@@ -7,7 +7,7 @@
         <artifactId>spring-boot-starter-parent</artifactId>
         <!--<version>2.1.5.RELEASE</version>-->
         <version>1.5.20.RELEASE</version>
-        <relativePath/> <!-- lookup parent from repository -->
+        <relativePath/>
     </parent>
     <groupId>com.yoong.practice</groupId>
     <artifactId>springboot-redis</artifactId>
@@ -98,5 +98,20 @@
             </plugin>
         </plugins>
     </build>
+
+    <repositories>
+        <repository>
+            <id>nexus-aliyun</id>
+            <name>Nexus aliyun</name>
+            <layout>default</layout>
+            <url>http://maven.aliyun.com/nexus/content/groups/public</url>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+        </repository>
+    </repositories>
 
 </project>

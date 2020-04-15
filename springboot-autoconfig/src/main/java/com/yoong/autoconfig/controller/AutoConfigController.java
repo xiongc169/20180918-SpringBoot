@@ -3,6 +3,7 @@ package com.yoong.autoconfig.controller;
 import com.yoong.autoconfig.config.autoconfig01.BananaProperties;
 import com.yoong.autoconfig.domain.fruit.Apple;
 import com.yoong.autoconfig.utils.SpringUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -11,7 +12,13 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
- * 自动配置控制器
+ * @Desc 自动配置控制器
+ * <p/>
+ * @Author yoong
+ * <p/>
+ * @Date 2018-4-15 10:14:46
+ * <p/>
+ * @Version 1.0
  */
 @Controller
 @RequestMapping("autoConfig")
@@ -22,8 +29,26 @@ public class AutoConfigController {
     //@Autowired
     //private Apple apple;
 
-    //@Autowired
-    //private BananaProperties bananaProperties;
+    @Autowired
+    private BananaProperties bananaProperties;
+
+
+    /**
+     * http://127.0.0.1:8080/autoConfig/getProperty
+     */
+    @ResponseBody
+    @RequestMapping("/getProperty")
+    public String getProperty() {
+        //输出：default-banId default-banName
+        BananaProperties properties = new BananaProperties();
+        String result = properties.getBanId() + " " + properties.getBanName();
+        System.out.println(result);
+
+        //输出：ban01-Id ban01-Name
+        String result02 = bananaProperties.getBanId() + " " + bananaProperties.getBanName();
+        System.out.println(result02);
+        return result;
+    }
 
     /**
      * http://127.0.0.1:8080/autoConfig/getConfig
