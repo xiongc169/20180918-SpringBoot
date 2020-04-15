@@ -22,17 +22,17 @@ public class RedisConfig {
         return connectionFactory;
     }
 
-//    @Bean
-//    public RedisTemplate<String, String> stringRedisTemplate(RedisConnectionFactory factory) {
-//        RedisTemplate<String, String> template = new RedisTemplate<String, String>();
-//        template.setConnectionFactory(jedisConnectionFactory());
-//        template.setKeySerializer(new StringRedisSerializer());
-//        template.setValueSerializer(new RedisObjectSerializer());
-//        return template;
-//    }
+    @Bean
+    public RedisTemplate<String, String> stringRedisTemplate() {
+        RedisTemplate<String, String> template = new RedisTemplate<String, String>();
+        template.setConnectionFactory(jedisConnectionFactory());
+        template.setKeySerializer(new StringRedisSerializer());
+        template.setValueSerializer(new RedisObjectSerializer());
+        return template;
+    }
 
     @Bean
-    public RedisTemplate<String, User> redisTemplate(RedisConnectionFactory factory) {
+    public RedisTemplate<String, User> userRedisTemplate() {
         RedisTemplate<String, User> template = new RedisTemplate<String, User>();
         template.setConnectionFactory(jedisConnectionFactory());
         template.setKeySerializer(new StringRedisSerializer());

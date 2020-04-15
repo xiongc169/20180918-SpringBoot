@@ -21,6 +21,9 @@ public class RedisController {
     private StringRedisTemplate stringRedisTemplate;
 
     @Autowired
+    private RedisTemplate redisTemplate;
+
+    @Autowired
     private RedisTemplate<String, User> userRedisTemplate;
 
     /**

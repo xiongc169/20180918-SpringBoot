@@ -3,8 +3,6 @@ package com.yoong.community.controller;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.redis.core.RedisTemplate;
-import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -71,7 +69,7 @@ public class DatasourceController {
             account.setCreateTime(new Date());
             account.setModifyTime(new Date());
             account.setIsDelete(0);
-            accountService.addAccount(account);
+            account = accountService.addAccount(account);
             System.out.println("AccountId: " + account.getId());
             //添加附件
             AttachmentInfo attachment = new AttachmentInfo();

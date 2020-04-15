@@ -58,7 +58,7 @@ public class SingleDataSourceController {
         System.out.println(customer.getId());
 
         AttachmentInfo attachmentInfo = new AttachmentInfo();
-        attachmentInfoRepository.saveAndFlush(attachmentInfo);
+        attachmentInfoRepository.saveAndFlush(attachmentInfo);//会向wong_user.attachment_info表中新增，抛出异常
         return customer;
     }
 

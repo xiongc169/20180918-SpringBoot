@@ -18,16 +18,14 @@ import javax.sql.DataSource;
 public class DataSourceConfig {
 
     public DataSourceConfig() {
-        System.out.println("**********************************************  DataSourceConfig  *******************************************");
+        System.out.println("**********************************************  DataSourceConfig()  *******************************************");
     }
 
-    //region spring.datasource.wong.jdbc-url
-
-    /* Spring Boot 两种多数据源配置：JdbcTemplate、Spring-data-jpa
+    //region DataSource dataSource = DataSourceBuilder.create().build();
+    /**
+     * Spring Boot 两种多数据源配置：JdbcTemplate、Spring-data-jpa
      * http://www.spring4all.com/article/253
-     * Spring Boot多数据源配置与使用
      * http://blog.didispace.com/springbootmultidatasource/
-     * Spring Data JPA多数据源配置
      * https://www.jianshu.com/p/9f812e651319
      */
 
@@ -79,12 +77,10 @@ public class DataSourceConfig {
         }
         return null;
     }
-
     //endregion
 
 
-    // region spring.datasource.wong.url
-
+    // region DataSource dataSource = new DataSourceProperties().initializeDataSourceBuilder().build();
     /**
      * SpringBoot配置多数据源两种方法(DataSourceBuilder、DataSourceProperties)
      * https://blog.csdn.net/newhanzhe/article/details/80763581
@@ -160,6 +156,16 @@ public class DataSourceConfig {
 //    public DataSource rehearsalDataSource() {
 //        return rehearsalDataSourceProperties().initializeDataSourceBuilder().build();
 //    }
+    //endregion
+
+
+    // region DataSource dataSource = new DruidDataSource();
+
+    /**
+     * SpringBoot2.0 jpa多数据源配置
+     * PS：Druid
+     * https://blog.csdn.net/tianyaleixiaowu/article/details/78905149
+     */
 
     //endregion
 
