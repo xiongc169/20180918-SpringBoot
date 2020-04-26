@@ -1,6 +1,6 @@
 package com.yoong.maven;
 
-import com.yoong.maven.dao.RedisUtils;
+import com.yoong.maven.utils.RedisUtils;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,10 +22,10 @@ public class MavenAppTest {
 
     @Test
     public void redisTest() {
-        String name = redisUtils.getValue("name");
+        String name = redisUtils.stringRedisTemplateGet("name");
         System.out.println(name);
-        redisUtils.setKey("name", "yoong");
-        String name2 = redisUtils.getValue("name");
+        redisUtils.stringRedisTemplateSet("name", "yoong");
+        String name2 = redisUtils.stringRedisTemplateGet("name");
         System.out.println(name2);
     }
 }

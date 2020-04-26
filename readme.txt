@@ -1,0 +1,8 @@
+springboot-maven: [8000, 8010)
+springboot-accidence: [8010, 8020)
+springboot-community: [8020, 8030)
+springboot-literature: [8030, 8040)
+springboot-redis: [8040, 8050)
+springboot-autoconfig: [8050, 8060)
+springboot-practice: [8060,8070)
+springboot-rehearsal: [8070,8080)

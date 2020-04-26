@@ -1,6 +1,7 @@
 package com.yoong.maven.controller;
 
-import com.yoong.maven.dao.RedisUtils;
+import com.chesheng.lock.redis.spring.boot.autoconfigure.lock.DistributedLock;
+import com.yoong.maven.utils.RedisUtils;
 import com.yoong.maven.distLock.DistributeLock;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -20,6 +21,9 @@ public class RedisController {
     @Autowired
     private DistributeLock distributeLock;
 
+    @Autowired
+    private DistributedLock distributedLock;
+
     private SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss:SSSS");
 
     /**
@@ -29,16 +33,16 @@ public class RedisController {
     @RequestMapping("/getRedis")
     public String getRedis(String key) {
         try {
-            String result = redisUtils.getValue(key);
+            String result = redisUtils.stringRedisTemplateGet(key);
             System.out.println(result);
 
             String value = format.format(new Date());
-            redisUtils.setKey(key, value);
-            String result02 = redisUtils.getValue(key);
+            redisUtils.stringRedisTemplateSet(key, value);
+            String result02 = redisUtils.stringRedisTemplateGet(key);
             System.out.println(result02);
 
-            redisUtils.deleteKey(key);
-            String result03 = redisUtils.getValue(key);
+            redisUtils.stringRedisTemplateDel(key);
+            String result03 = redisUtils.stringRedisTemplateGet(key);
             System.out.println(result03);
             return result02;
         } catch (Exception ex) {
@@ -54,16 +58,16 @@ public class RedisController {
     @RequestMapping("/getRedis02")
     public String getRedis02(String key) {
         try {
-            String result = redisUtils.getValue01(key);
+            String result = redisUtils.redisTemplateGet(key);
             System.out.println(result);
 
             String value = format.format(new Date());
-            redisUtils.setKey01(key, value, 1000000l);
-            String result02 = redisUtils.getValue01(key);
+            redisUtils.redisTemplateSet(key, value, 10000l);
+            String result02 = redisUtils.redisTemplateGet(key);
             System.out.println(result02);
 
-            redisUtils.deleteKey(key);
-            String result03 = redisUtils.getValue01(key);
+            redisUtils.stringRedisTemplateDel(key);
+            String result03 = redisUtils.redisTemplateGet(key);
             System.out.println(result03);
             return result02;
         } catch (Exception ex) {
@@ -73,13 +77,13 @@ public class RedisController {
     }
 
     /**
-     * http://127.0.0.1:8080/redis/getRedis2?key=name
+     * http://127.0.0.1:8080/redis/distLock?key=name
      */
     @ResponseBody
     @RequestMapping("/distLock")
     public void distLock(String key) {
         try {
-            if (distributeLock.lock(key, key, 1000l, 1)) {
+            if (distributeLock.lock(key, 1000l, 1)) {
                 System.out.println(format.format(new Date()) + " " + Thread.currentThread().getId() + " 获取分布式锁 " + key);
                 Thread.sleep(2000);
                 distributeLock.releaseLock(key);

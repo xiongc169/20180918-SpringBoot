@@ -56,6 +56,13 @@
             <version>8.0.15</version>
         </dependency>
 
+        <!--Deprecated as of 1.4 in favor of spring-boot-starter-data-redis-->
+        <!--<dependency>-->
+        <!--    <groupId>org.springframework.boot</groupId>-->
+        <!--    <artifactId>spring-boot-starter-redis</artifactId>-->
+        <!--    <version>1.4.7.RELEASE</version>-->
+        <!--</dependency>-->
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-redis</artifactId>
@@ -72,12 +79,11 @@
             <artifactId>jedis</artifactId>
         </dependency>
 
-        <!--<dependency>-->
-        <!--    <groupId>org.springframework.boot</groupId>-->
-        <!--    <artifactId>spring-boot-starter-redis</artifactId>-->
-        <!--    <version>1.4.7.RELEASE</version>-->
-        <!--</dependency>-->
-
+        <dependency>
+            <groupId>com.chesheng</groupId>
+            <artifactId>lock-redis-spring-boot-autoconfigure</artifactId>
+            <version>1.0.0-SNAPSHOT</version>
+        </dependency>
     </dependencies>
 
     <dependencyManagement>

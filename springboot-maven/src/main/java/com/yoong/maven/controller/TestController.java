@@ -29,8 +29,6 @@ public class TestController {
 
     /**
      * http://127.0.0.1:8080/test/getTime
-     *
-     * @return
      */
     @ResponseBody
     @RequestMapping("/getTime")
@@ -42,8 +40,6 @@ public class TestController {
 
     /**
      * http://127.0.0.1:8080/test/saveServiceRecord
-     *
-     * @return
      */
     @ResponseBody
     @RequestMapping("/saveServiceRecord")

@@ -1,6 +1,6 @@
 package com.yoong.maven.distLock;
 
-import com.yoong.maven.dao.RedisUtils;
+import com.yoong.maven.utils.RedisUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
@@ -16,26 +16,26 @@ public class DistributeLock {
 
     private static Object object = new Object();
 
-    public boolean lock(String key, String value, Long timeOut, int retryTimes) {
-        do {
-            if (!StringUtils.isEmpty(redisUtils.getValue(key))) {
-                retryTimes--;
-            } else {
-                break;
-            }
-        } while (retryTimes >= 0);
+    public boolean lock(String key, Long timeOut, int retryTimes) {
+//        do {
+//            if (!StringUtils.isEmpty(redisUtils.stringRedisTemplateGet(key))) {
+//                retryTimes--;
+//            } else {
+//                break;
+//            }
+//        } while (retryTimes >= 0);
 
-//        synchronized (object) {
-        if (StringUtils.isEmpty(redisUtils.getValue(key))) {
-            redisUtils.setKey02(key, value, timeOut);
-            return true;
+        synchronized (object) {
+            if (StringUtils.isEmpty(redisUtils.stringRedisTemplateGet(key))) {
+                redisUtils.jedisPoolSet(key, key, timeOut);
+                return true;
+            }
         }
-//        }
         return false;
     }
 
     public Boolean releaseLock(String key) {
-        Boolean result = redisUtils.deleteKey(key);
+        Boolean result = redisUtils.stringRedisTemplateDel(key);
         return result;
     }
 }

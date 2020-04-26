@@ -21,13 +21,15 @@ import java.util.Date;
 //@SpringBootApplication
 public class AccidenceApp {
 
+    private static SimpleDateFormat sdFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss:SSS");
+
     /**
      * 入口函数
      */
     public static void main(String[] args) {
-        System.out.println("AccidenceApp Start...");
+        System.out.println(sdFormat.format(new Date()) + " AccidenceApp Start...");
         ConfigurableApplicationContext configurableApplicationContext = SpringApplication.run(AccidenceApp.class, args);
-        System.out.println("AccidenceApp Finished");
+        System.out.println(sdFormat.format(new Date()) + " AccidenceApp Finished");
     }
 
     /**
@@ -42,5 +44,4 @@ public class AccidenceApp {
         System.out.println(result);
         return result;
     }
-
 }
