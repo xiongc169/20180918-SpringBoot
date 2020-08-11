@@ -22,16 +22,16 @@ public class RedisController {
     private DistributeLock distributeLock;
 
     @Autowired
-    private DistributedLock distributedLock;
+    private DistributedLock csDistributeLock;
 
     private SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss:SSSS");
 
     /**
-     * http://127.0.0.1:8080/redis/getRedis?key=name
+     * http://127.0.0.1:8080/redis/stringRedisTpl?key=name
      */
     @ResponseBody
-    @RequestMapping("/getRedis")
-    public String getRedis(String key) {
+    @RequestMapping("/stringRedisTpl")
+    public String stringRedisTemplateDemo(String key) {
         try {
             String result = redisUtils.stringRedisTemplateGet(key);
             System.out.println(result);
@@ -52,11 +52,11 @@ public class RedisController {
     }
 
     /**
-     * http://127.0.0.1:8080/redis/getRedis02?key=name
+     * http://127.0.0.1:8080/redis/redisTpl?key=name
      */
     @ResponseBody
-    @RequestMapping("/getRedis02")
-    public String getRedis02(String key) {
+    @RequestMapping("/redisTpl")
+    public String redisTemplateDemo(String key) {
         try {
             String result = redisUtils.redisTemplateGet(key);
             System.out.println(result);
@@ -77,11 +77,46 @@ public class RedisController {
     }
 
     /**
-     * http://127.0.0.1:8080/redis/distLock?key=name
+     * http://127.0.0.1:8080/redis/jedisDemo?key=name
      */
     @ResponseBody
-    @RequestMapping("/distLock")
-    public void distLock(String key) {
+    @RequestMapping("/jedisDemo")
+    public String jedisDemo(String key) {
+        try {
+            boolean setResult = redisUtils.jedisPoolSet(key, key, 10000l);
+            System.out.println(setResult);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        return "query3 failure";
+    }
+
+    /**
+     * http://127.0.0.1:8080/redis/csDistLock?key=name
+     */
+    @ResponseBody
+    @RequestMapping("/csDistLock")
+    public void csDistLock(String key) {
+        try {
+            if (csDistributeLock.lock(key, 600l, 1)) {
+                System.out.println(format.format(new Date()) + " " + Thread.currentThread().getId() + " 获取分布式锁 " + key);
+                Thread.sleep(500);
+                csDistributeLock.releaseLock(key);
+                System.out.println(format.format(new Date()) + " " + Thread.currentThread().getId() + " 释放分布式锁 " + key);
+            } else {
+                //System.out.println(format.format(new Date()) + " " + Thread.currentThread().getId() + " 获取锁失败，退出 " + key);
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    /**
+     * http://127.0.0.1:8080/redis/myDistLock?key=name
+     */
+    @ResponseBody
+    @RequestMapping("/myDistLock")
+    public void myDistLock(String key) {
         try {
             if (distributeLock.lock(key, 1000l, 1)) {
                 System.out.println(format.format(new Date()) + " " + Thread.currentThread().getId() + " 获取分布式锁 " + key);
@@ -89,7 +124,27 @@ public class RedisController {
                 distributeLock.releaseLock(key);
                 System.out.println(format.format(new Date()) + " " + Thread.currentThread().getId() + " 释放分布式锁 " + key);
             } else {
-                System.out.println(format.format(new Date()) + " " + Thread.currentThread().getId() + " 获取锁失败，退出 " + key);
+                //System.out.println(format.format(new Date()) + " " + Thread.currentThread().getId() + " 获取锁失败，退出 " + key);
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    /**
+     * http://127.0.0.1:8080/redis/myDistLock02?key=name
+     */
+    @ResponseBody
+    @RequestMapping("/myDistLock02")
+    public void myDistLock02(String key) {
+        try {
+            if (distributeLock.lock2(key, key, 600l, 1)) {
+                System.out.println(format.format(new Date()) + " " + Thread.currentThread().getId() + " 获取分布式锁 " + key);
+                Thread.sleep(500);
+                distributeLock.releaseLock2(key);
+                System.out.println(format.format(new Date()) + " " + Thread.currentThread().getId() + " 释放分布式锁 " + key);
+            } else {
+                //System.out.println(format.format(new Date()) + " " + Thread.currentThread().getId() + " 获取锁失败，退出 " + key);
             }
         } catch (Exception ex) {
             ex.printStackTrace();

@@ -26,26 +26,26 @@ import java.util.concurrent.TimeUnit;
 @Component
 public class RedisUtils {
 
-    /**
-     * SpringBoot自动注入
-     */
+    //#region SpringBoot自动注入
     @Autowired
     private StringRedisTemplate stringRedisTemplate;
 
     @Autowired
     private RedisTemplate redisTemplate;
+    //#endregion
 
-    /**
-     * XML配置手动注入
-     */
+
+    //#region  XML配置手动注入
     @Autowired
     private Jedis jedis;
 
     @Autowired
     private JedisPool jedisPool;
+    //#endregion
 
     public void stringRedisTemplateSet(String key, String value) {
         ValueOperations<String, String> ops = stringRedisTemplate.opsForValue();
+        Boolean setResult = ops.setIfAbsent(key, value, 10000l, TimeUnit.MILLISECONDS);
         ops.set(key, value, 1, TimeUnit.MINUTES);
     }
 
