@@ -1,12 +1,12 @@
 package com.yoong.redis.controller;
 
 import com.yoong.redis.domain.User;
-import com.yoong.redis.utils.RedisUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import java.text.SimpleDateFormat;
 
 /**
  * @Desc TestController
@@ -21,19 +21,19 @@ public class TestController {
     @Autowired
     private User user;
 
-//    @Autowired
-//    private RedisTemplate<Object, Object> redisTemplate1;
+    //@Autowired
+    //private RedisTemplate<Object, Object> redisTemplate1;
 
-    @Autowired
-    private RedisTemplate<String, Object> redisTemplate;
+    //@Autowired
+    //private RedisTemplate<String, Object> redisTemplate;
 
-    @Autowired
-    private RedisUtils redisUtils;
+    //@Autowired
+    //private RedisUtils redisUtils;
+
+    private SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss:SSSS");
 
     /**
      * http://127.0.0.1:8090/test/getUser
-     *
-     * @return
      */
     @ResponseBody
     @RequestMapping("/getUser")
@@ -44,8 +44,6 @@ public class TestController {
 
     /**
      * http://127.0.0.1:8090/test/getRedis
-     *
-     * @return
      */
     @ResponseBody
     @RequestMapping("/getRedis")
@@ -54,8 +52,8 @@ public class TestController {
         //boolean exist = redisTemplate.hasKey("name");
         //System.out.println(exist);
 
-        String name = redisUtils.get("name").toString();
-        System.out.println(name);
+//        String name = redisUtils.get("name").toString();
+//        System.out.println(name);
 
         return "Success ";
     }
