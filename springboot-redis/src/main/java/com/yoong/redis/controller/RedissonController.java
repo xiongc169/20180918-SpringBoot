@@ -42,18 +42,20 @@ public class RedissonController {
      */
     @ResponseBody
     @RequestMapping("/myDistLock02")
-    public void myDistLock02(String key) {
+    public String myDistLock02(String key) {
         try {
             if (redissonClient.getLock(key).tryLock()) {
                 System.out.println(format.format(new Date()) + " " + Thread.currentThread().getId() + " 获取分布式锁 " + key);
                 Thread.sleep(500);
                 redissonClient.getLock(key).unlock();
                 System.out.println(format.format(new Date()) + " " + Thread.currentThread().getId() + " 释放分布式锁 " + key);
+                return Thread.currentThread().getId() + " 获取锁成功";
             } else {
-                //System.out.println(format.format(new Date()) + " " + Thread.currentThread().getId() + " 获取锁失败，退出 " + key);
+                System.out.println(format.format(new Date()) + " " + Thread.currentThread().getId() + " 获取锁失败，退出 " + key);
             }
         } catch (Exception ex) {
             ex.printStackTrace();
         }
+        return Thread.currentThread().getId() + " 获取锁失败";
     }
 }
