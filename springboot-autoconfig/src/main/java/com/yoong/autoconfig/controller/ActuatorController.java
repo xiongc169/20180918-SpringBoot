@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class ActuatorController {
 
     /**
-     * 访问 http://127.0.0.1:8081/actuator，会返回所有端点的信息
+     * 访问 http://127.0.0.1:8050/actuator，会返回所有端点的信息
      */
     @RequestMapping("/getEndPoint")
     public String getAllEndPoint() {

@@ -7,7 +7,7 @@ import javax.persistence.Id;
 import java.util.Objects;
 
 /**
- * @Desc TODO
+ * @Desc Employee
  * @Author
  * @Date
  * @Version 1.0

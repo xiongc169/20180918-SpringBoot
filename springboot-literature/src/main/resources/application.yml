@@ -1,2 +1,6 @@
 server:
-  port: 8081
+  port: 8031
+
+spring:
+  application:
+    name: springboot-literature

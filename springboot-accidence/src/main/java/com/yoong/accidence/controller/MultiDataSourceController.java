@@ -4,6 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.transaction.interceptor.TransactionAspectSupport;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -26,10 +28,11 @@ public class MultiDataSourceController {
     private JdbcTemplate yoongTemplate;
 
     /**
-     * http://127.0.0.1:8080/mDatasource/multiDataSource
+     * http://127.0.0.1:8082/mDatasource/multiDataSource
      */
     @ResponseBody
     @RequestMapping("/multiDataSource")
+    @Transactional
     public void multiDataSource() {
         try {
             String addAccount = "INSERT INTO `account` (`account_id`, `password`, `contact_name`, `mobile`, `phone`, `email`, `customer_id`, `customer_no`, `customer_name`, `create_time`, `modify_time`, `note1`, `note2`, `is_delete`) VALUES ('111111111', 'password', 'name', 'mobile', NULL, NULL, NULL, NULL, NULL, NOW(), NOW(), NULL, NULL, '0');";
@@ -38,9 +41,11 @@ public class MultiDataSourceController {
             String deleteAttachment = "delete from attachment_info";
 
             wongTemplate.execute(addAccount);
+            //int result = 100 / 0;
             yoongTemplate.execute(addAttachment);
         } catch (Exception ex) {
             ex.printStackTrace();
+            TransactionAspectSupport.currentTransactionStatus().setRollbackOnly();
         }
     }
 }

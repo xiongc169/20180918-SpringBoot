@@ -6,7 +6,6 @@
     <artifactId>springboot-autoconfig</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>springboot-autoconfig</name>
-    <description>Demo project for Spring Boot</description>
 
     <!-- 创建Spring Boot项目的第一种方式(定义Spring Boot的版本信息，比dependency优先级高) -->
     <!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-parent -->
@@ -71,6 +70,7 @@
     </dependencyManagement>
 
     <build>
+        <finalName>springboot-autoconfig</finalName>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>

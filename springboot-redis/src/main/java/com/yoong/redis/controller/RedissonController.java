@@ -38,7 +38,7 @@ public class RedissonController {
     private SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss:SSSS");
 
     /**
-     * http://127.0.0.1:8090/redisson/myDistLock02?key=name
+     * http://127.0.0.1:8040/redisson/myDistLock02?key=name
      */
     @ResponseBody
     @RequestMapping("/myDistLock02")

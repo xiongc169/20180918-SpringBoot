@@ -14,11 +14,10 @@ import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisCommands;
 import redis.clients.jedis.JedisPool;
 
-import java.util.UUID;
 import java.util.concurrent.TimeUnit;
 
 /**
- * @Desc RedisDao
+ * @Desc RedisUtils
  * @Author
  * @Date
  * @Version 1.0

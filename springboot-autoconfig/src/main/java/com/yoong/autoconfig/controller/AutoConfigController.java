@@ -34,7 +34,7 @@ public class AutoConfigController {
 
 
     /**
-     * http://127.0.0.1:8080/autoConfig/getProperty
+     * http://127.0.0.1:8050/autoConfig/getProperty
      */
     @ResponseBody
     @RequestMapping("/getProperty")
@@ -51,7 +51,7 @@ public class AutoConfigController {
     }
 
     /**
-     * http://127.0.0.1:8080/autoConfig/getConfig
+     * http://127.0.0.1:8050/autoConfig/getConfig
      */
     @ResponseBody
     @RequestMapping("/getConfig")

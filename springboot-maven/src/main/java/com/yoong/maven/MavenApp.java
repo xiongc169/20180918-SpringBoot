@@ -10,8 +10,8 @@ import java.util.Date;
 /**
  * MavenApp
  */
-@SpringBootApplication
 @ImportResource("classpath*:redis-config.xml")
+@SpringBootApplication
 public class MavenApp {
 
     private static SimpleDateFormat sdFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss:SSS");

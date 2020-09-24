@@ -1,13 +1,8 @@
-domain:
-  apple:
-    app01:
-      appId: a01-Id
-      appName: a01-Name
-  banana:
-    ban01:
-      banId: ban01-Id
-      banName: ban01-Name
-
+server:
+  port: 8051
+spring:
+  application:
+    name: springboot-autoconfig
 
 #SpringBoot 1.0 Actuator配置
 #Actuator: auditevents,beans,caches,conditions,configprops,env,flyway,health,info,liquibase,metrics,mappings,scheduledtasks,sessions,shutdown,threaddump,httptrace
@@ -27,4 +22,14 @@ management:
 #      base-path: /actuator
 #      exposure:
 #        include: '*'
+
+domain:
+  apple:
+    app01:
+      appId: a01-Id
+      appName: a01-Name
+  banana:
+    ban01:
+      banId: ban01-Id
+      banName: ban01-Name
 

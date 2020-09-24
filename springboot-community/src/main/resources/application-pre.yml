@@ -1,6 +1,6 @@
 server:
-  port: 8093
+  port: 8023
 
 spring:
   application:
-    name: community-pre
+    name: springboot-community

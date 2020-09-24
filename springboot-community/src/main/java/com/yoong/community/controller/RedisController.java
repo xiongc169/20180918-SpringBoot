@@ -38,7 +38,7 @@ public class RedisController {
     //http://127.0.0.1:8091/actuator/health
 
     /**
-     * Redis测试：http://127.0.0.1:8090/redis/saveRedis
+     * Redis测试：http://127.0.0.1:8021/redis/saveRedis
      */
     @ResponseBody
     @RequestMapping("/saveRedis")
@@ -64,7 +64,7 @@ public class RedisController {
     }
 
     /**
-     * Redis测试：http://127.0.0.1:8090/redis/saveRedis2
+     * Redis测试：http://127.0.0.1:8021/redis/saveRedis2
      */
     @ResponseBody
     @RequestMapping("/saveRedis2")

@@ -33,7 +33,7 @@ public class DatasourceController {
     private DepartmentService deptService;
 
     /**
-     * 页面测试：http://127.0.0.1:8090/datasource/welcome
+     * 页面测试：http://127.0.0.1:8021/datasource/welcome
      */
     @RequestMapping("/welcome")
     public String welcome() {
@@ -43,7 +43,7 @@ public class DatasourceController {
     }
 
     /**
-     * 传参测试：http://127.0.0.1:8090/datasource/login
+     * 传参测试：http://127.0.0.1:8021/datasource/login
      */
     @ResponseBody
     @RequestMapping("/login")
@@ -55,7 +55,7 @@ public class DatasourceController {
     }
 
     /**
-     * 多数据源测试：http://127.0.0.1:8090/datasource/multiDataSource
+     * 多数据源测试：http://127.0.0.1:8021/datasource/multiDataSource
      */
     @ResponseBody
     @RequestMapping("/multiDataSource")

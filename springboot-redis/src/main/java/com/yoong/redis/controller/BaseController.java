@@ -9,14 +9,14 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import java.text.SimpleDateFormat;
 
 /**
- * @Desc TestController
+ * @Desc BaseController
  * @Author
  * @Date
  * @Version 1.0
  */
 @Controller
-@RequestMapping("/test")
-public class TestController {
+@RequestMapping("/base")
+public class BaseController {
 
     @Autowired
     private User user;
@@ -33,7 +33,7 @@ public class TestController {
     private SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss:SSSS");
 
     /**
-     * http://127.0.0.1:8090/test/getUser
+     * http://127.0.0.1:8040/base/getUser
      */
     @ResponseBody
     @RequestMapping("/getUser")
@@ -43,7 +43,7 @@ public class TestController {
     }
 
     /**
-     * http://127.0.0.1:8090/test/getRedis
+     * http://127.0.0.1:8040/base/getRedis
      */
     @ResponseBody
     @RequestMapping("/getRedis")

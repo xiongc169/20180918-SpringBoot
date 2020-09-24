@@ -1,9 +1,9 @@
 server:
-  port: 8090
+  port: 8021
 
 spring:
   application:
-    name: community-dev
+    name: springboot-community
   # Redis 配置
   redis:
     host: 127.0.0.1
