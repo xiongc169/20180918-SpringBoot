@@ -7,12 +7,6 @@ import org.springframework.data.redis.connection.jedis.JedisConnectionFactory;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.StringRedisTemplate;
 
-/**
- * @Desc RedisConfig
- * @Author
- * @Date
- * @Version 1.0
- */
 @Configuration
 public class RedisConfig {
 

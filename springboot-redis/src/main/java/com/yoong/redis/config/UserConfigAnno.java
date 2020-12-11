@@ -4,12 +4,6 @@ import com.yoong.redis.domain.User;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-/**
- * @Desc UserConfigAnno
- * @Author
- * @Date
- * @Version 1.0
- */
 @Configuration
 public class UserConfigAnno {
 

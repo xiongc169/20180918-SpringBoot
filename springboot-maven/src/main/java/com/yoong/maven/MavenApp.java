@@ -8,7 +8,13 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
- * MavenApp
+ * @Desc MavenApp
+ * <p>
+ * @Author yoong
+ * <p>
+ * @Date 2018-8-30
+ * <p>
+ * @Version 1.0
  */
 @ImportResource("classpath*:redis-config.xml")
 @SpringBootApplication

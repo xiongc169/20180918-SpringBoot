@@ -6,6 +6,15 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+/**
+ * @Desc RehearsalApp
+ * <p>
+ * @Author yoong
+ * <p>
+ * @Date 2018-8-30
+ * <p>
+ * @Version 1.0
+ */
 @SpringBootApplication
 public class RehearsalApp {
 

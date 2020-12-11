@@ -9,16 +9,6 @@ import org.springframework.context.annotation.Primary;
 
 import javax.sql.DataSource;
 
-/**
- * @Desc Spring Boot 两种多数据源配置：JdbcTemplate、Spring-data-jpa
- * http://www.spring4all.com/article/253
- * <p>
- * @Author xc
- * <p>
- * @Date 2018-8-30
- * <p>
- * @Version 1.0
- */
 @Configuration
 public class DataSourceConfig {
 

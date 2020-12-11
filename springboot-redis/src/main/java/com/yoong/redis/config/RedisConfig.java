@@ -1,23 +1,18 @@
 package com.yoong.redis.config;
 
-import com.fasterxml.jackson.annotation.JsonAutoDetect;
-import com.fasterxml.jackson.annotation.PropertyAccessor;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import org.redisson.Redisson;
 import org.redisson.api.RedissonClient;
-import org.redisson.client.RedisClient;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.data.redis.connection.RedisConnectionFactory;
-import org.springframework.data.redis.core.RedisTemplate;
-import org.springframework.data.redis.serializer.Jackson2JsonRedisSerializer;
-import org.springframework.data.redis.serializer.StringRedisSerializer;
 
 /**
  * @Desc RedisConfig
  * https://www.cnblogs.com/zeng1994/p/03303c805731afc9aa9c60dbbd32a323.html
- * @Author
- * @Date
+ * <p>
+ * @Author yoong
+ * <p>
+ * @Date 2018-8-30
+ * <p>
  * @Version 1.0
  */
 @Configuration

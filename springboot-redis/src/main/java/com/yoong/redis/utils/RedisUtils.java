@@ -1,6 +1,5 @@
 package com.yoong.redis.utils;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Component;
 import org.springframework.util.CollectionUtils;
@@ -11,16 +10,19 @@ import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
 /**
- * @Desc RedisUtils
+ * @Desc RedisConfig
  * https://www.cnblogs.com/zeng1994/p/03303c805731afc9aa9c60dbbd32a323.html
- * @Author
- * @Date
+ * <p>
+ * @Author yoong
+ * <p>
+ * @Date 2018-8-30
+ * <p>
  * @Version 1.0
  */
 @Component
 public class RedisUtils {
 
-//    @Autowired
+    //    @Autowired
     private RedisTemplate<String, Object> redisTemplate;
 
     // =============================common============================

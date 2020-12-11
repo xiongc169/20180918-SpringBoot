@@ -6,12 +6,6 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import java.util.Objects;
 
-/**
- * @Desc User
- * @Author
- * @Date
- * @Version 1.0
- */
 @Entity
 public class User {
     private long id;

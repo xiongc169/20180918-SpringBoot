@@ -10,7 +10,13 @@ import org.springframework.util.StringUtils;
 import java.util.concurrent.TimeUnit;
 
 /**
- * 分布式锁
+ * @Desc 分布式锁
+ * <p>
+ * @Author yoong
+ * <p>
+ * @Date 2018-8-30
+ * <p>
+ * @Version 1.0
  */
 @Component
 public class DistributeLock {
