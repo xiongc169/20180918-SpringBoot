@@ -8,8 +8,11 @@ import org.springframework.context.annotation.Configuration;
 
 /**
  * @Desc Cherry自动配置类
- * @Author
- * @Date
+ * <p>
+ * @Author yoong
+ * <p>
+ * @Date 2018-4-15 10:14:46
+ * <p>
  * @Version 1.0
  */
 @Configuration
@@ -23,7 +26,6 @@ public class CherryAutoConfiguration {
 
     public CherryAutoConfiguration() {
         System.out.println("***************************************** CherryAutoConfig() ******************************************************************");
-
     }
 
     @Bean

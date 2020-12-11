@@ -4,14 +4,19 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.ConfigurableApplicationContext;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
- * SpringBoot入门系列
+ * @Desc SpringBoot入门系列
  * http://www.spring4all.com/article/246
+ * <p>
+ * @Author yoong
+ * <p>
+ * @Date 2018-8-30
+ * <p>
+ * @Version 1.0
  */
 @SpringBootApplication
 public class CommunityApp {

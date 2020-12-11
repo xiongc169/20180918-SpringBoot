@@ -2,12 +2,6 @@ package com.yoong.autoconfig.domain.fruit;
 
 import lombok.Data;
 
-/**
- * @Desc Apple
- * @Author
- * @Date
- * @Version 1.0
- */
 @Data
 public class Apple {
     private String appId;

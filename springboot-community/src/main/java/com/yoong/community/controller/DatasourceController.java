@@ -17,6 +17,15 @@ import com.yoong.community.service.wong.AccountService;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+/**
+ * @Desc DatasourceController
+ * <p>
+ * @Author yoong
+ * <p>
+ * @Date 2018-8-30
+ * <p>
+ * @Version 1.0
+ */
 @Controller
 @RequestMapping("/datasource")
 public class DatasourceController {

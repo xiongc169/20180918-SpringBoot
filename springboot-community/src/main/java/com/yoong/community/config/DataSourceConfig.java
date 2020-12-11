@@ -12,7 +12,13 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import javax.sql.DataSource;
 
 /**
- * SpringBoot配置多数据源
+ * @Desc SpringBoot配置多数据源
+ * <p>
+ * @Author yoong
+ * <p>
+ * @Date 2018-8-30
+ * <p>
+ * @Version 1.0
  */
 @Configuration
 public class DataSourceConfig {

@@ -16,8 +16,14 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
- * Spring Boot 使用NoSQL数据库 Redis
+ * @Desc Spring Boot 使用NoSQL数据库 Redis
  * http://www.spring4all.com/article/254
+ * <p>
+ * @Author yoong
+ * <p>
+ * @Date 2018-8-30
+ * <p>
+ * @Version 1.0
  */
 @Controller
 @RequestMapping("/redis")

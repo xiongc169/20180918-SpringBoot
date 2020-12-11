@@ -1,12 +1,21 @@
 package com.yoong.community.controller;
 
+import com.yoong.community.domain.business.AttachmentInfo;
+import com.yoong.community.service.business.AttachmentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-import com.yoong.community.domain.business.AttachmentInfo;
-import com.yoong.community.service.business.AttachmentService;
 
+/**
+ * @Desc AttachmentController
+ * <p>
+ * @Author yoong
+ * <p>
+ * @Date 2018-8-30
+ * <p>
+ * @Version 1.0
+ */
 @Controller
 @RequestMapping("/attachment")
 public class AttachmentController {

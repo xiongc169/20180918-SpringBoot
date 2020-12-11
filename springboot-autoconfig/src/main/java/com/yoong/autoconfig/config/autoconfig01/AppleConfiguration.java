@@ -7,8 +7,11 @@ import org.springframework.context.annotation.Configuration;
 
 /**
  * @Desc Apple配置类
- * @Author
- * @Date
+ * <p>
+ * @Author yoong
+ * <p>
+ * @Date 2018-4-15 10:14:46
+ * <p>
  * @Version 1.0
  */
 //@Configuration

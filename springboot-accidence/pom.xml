@@ -6,8 +6,6 @@
     <artifactId>springboot-accidence</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>springboot-accidence</name>
-    <url>http://www.example.com</url>
-    <description>web + jpa</description>
 
     <!-- Spring Boot版本信息的优先级：dependency_version > parent_version > dependencyManagement_version -->
     <!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-parent -->

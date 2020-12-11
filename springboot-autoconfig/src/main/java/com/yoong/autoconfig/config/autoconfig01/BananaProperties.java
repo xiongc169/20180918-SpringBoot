@@ -8,8 +8,11 @@ import org.springframework.stereotype.Component;
 /**
  * @Desc Banana属性类
  * PS: @ConfigurationProperties 需要和 @EnableConfigurationProperties 或 @Component 关联使用
- * @Author
- * @Date
+ * <p>
+ * @Author yoong
+ * <p>
+ * @Date 2018-4-15 10:14:46
+ * <p>
  * @Version 1.0
  */
 @Data

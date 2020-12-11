@@ -7,6 +7,15 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+/**
+ * @Desc ReportController
+ * <p>
+ * @Author yoong
+ * <p>
+ * @Date 2018-8-30
+ * <p>
+ * @Version 1.0
+ */
 @Controller
 @RequestMapping("/report")
 public class ReportController {

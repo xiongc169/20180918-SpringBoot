@@ -7,8 +7,14 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
- * 《SpringBoot实战》丁雪丰译
+ * @Desc 《SpringBoot实战》丁雪丰译
  * https://www.jb51.net/books/500699.html
+ * <p>
+ * @Author yoong
+ * <p>
+ * @Date 2018-8-30
+ * <p>
+ * @Version 1.0
  */
 @SpringBootApplication
 public class LiteratureApp {
