@@ -2,6 +2,8 @@ package com.yoong.accidence.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.boot.autoconfigure.orm.jpa.HibernateProperties;
+import org.springframework.boot.autoconfigure.orm.jpa.HibernateSettings;
 import org.springframework.boot.autoconfigure.orm.jpa.JpaProperties;
 import org.springframework.boot.orm.jpa.EntityManagerFactoryBuilder;
 import org.springframework.context.annotation.Bean;
@@ -17,20 +19,14 @@ import javax.persistence.EntityManager;
 import javax.sql.DataSource;
 import java.util.Map;
 
-/**
- * @Desc Spring Boot 两种多数据源配置：JdbcTemplate、Spring-data-jpa
- * http://www.spring4all.com/article/253
- * @Author
- * @Date
- * @Version 1.0
- */
-@Configuration
-@EnableTransactionManagement
-@EnableJpaRepositories(
-        entityManagerFactoryRef = "entityManagerFactorySecondary",
-        transactionManagerRef = "transactionManagerSecondary",
-        basePackages = {"com.yoong.accidence.domain.yoong"}) //设置Repository所在位置
-public class JpaBConfig {
+//TODO: 启动报错：No bean named 'org.springframework.context.annotation.ConfigurationClassPostProcessor.importRegistry' available
+//@Configuration
+//@EnableTransactionManagement
+//@EnableJpaRepositories(
+//        entityManagerFactoryRef = "entityManagerFactorySecondary",
+//        transactionManagerRef = "transactionManagerSecondary",
+//        basePackages = {"com.yoong.accidence.domain.yoong"}) //设置Repository所在位置
+public class JpaYoongConfig {
 
     @Autowired
     @Qualifier("yoongSource")
@@ -42,22 +38,22 @@ public class JpaBConfig {
         return entityManagerFactoryPrimary(builder).getObject().createEntityManager();
     }
 
-    @Primary
-    @Bean(name = "entityManagerFactorySecondary")
-    public LocalContainerEntityManagerFactoryBean entityManagerFactoryPrimary(EntityManagerFactoryBuilder builder) {
-        return builder
-                .dataSource(secondaryDataSource)
-                .properties(getVendorProperties(secondaryDataSource))
-                .packages("com.yoong.accidence.domain.wong") //设置实体类所在位置
-                .persistenceUnit("secondaryPersistenceUnit")
-                .build();
-    }
-
     @Autowired
     private JpaProperties jpaProperties;
 
-    private Map<String, String> getVendorProperties(DataSource dataSource) {
-        return jpaProperties.getHibernateProperties(dataSource);
+    @Autowired
+    private HibernateProperties hibernateProperties;
+
+    @Primary
+    @Bean(name = "entityManagerFactorySecondary")
+    public LocalContainerEntityManagerFactoryBean entityManagerFactoryPrimary(EntityManagerFactoryBuilder builder) {
+        Map<String, Object> properties = hibernateProperties.determineHibernateProperties(jpaProperties.getProperties(), new HibernateSettings());
+        return builder
+                .dataSource(secondaryDataSource)
+                .properties(properties)
+                .packages("com.yoong.accidence.domain.yoong") //设置实体类所在位置
+                .persistenceUnit("secondaryPersistenceUnit")
+                .build();
     }
 
     @Primary

@@ -6,15 +6,17 @@ import org.springframework.boot.jdbc.DataSourceBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
-import org.springframework.jdbc.core.JdbcTemplate;
 
 import javax.sql.DataSource;
 
 /**
  * @Desc Spring Boot 两种多数据源配置：JdbcTemplate、Spring-data-jpa
  * http://www.spring4all.com/article/253
- * @Author
- * @Date
+ * <p>
+ * @Author xc
+ * <p>
+ * @Date 2018-8-30
+ * <p>
  * @Version 1.0
  */
 @Configuration

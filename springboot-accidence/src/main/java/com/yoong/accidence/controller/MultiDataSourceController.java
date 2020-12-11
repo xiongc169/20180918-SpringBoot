@@ -11,8 +11,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
  * @Desc MultiDataSourceController
- * @Author
- * @Date
+ * <p>
+ * @Author xc
+ * <p>
+ * @Date 2018-8-30
+ * <p>
  * @Version 1.0
  */
 @Controller
@@ -28,7 +31,7 @@ public class MultiDataSourceController {
     private JdbcTemplate yoongTemplate;
 
     /**
-     * http://127.0.0.1:8082/mDatasource/multiDataSource
+     * http://127.0.0.1:8012/mDatasource/multiDataSource
      */
     @ResponseBody
     @RequestMapping("/multiDataSource")

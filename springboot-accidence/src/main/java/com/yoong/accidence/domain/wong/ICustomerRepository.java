@@ -1,13 +1,9 @@
 package com.yoong.accidence.domain.wong;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
-/**
- * @Desc ICustomerRepository
- * @Author
- * @Date
- * @Version 1.0
- */
+@Repository
 public interface ICustomerRepository extends JpaRepository<Customer, Long> {
 
 }

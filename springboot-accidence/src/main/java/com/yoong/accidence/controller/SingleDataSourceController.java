@@ -14,8 +14,11 @@ import java.util.Date;
 
 /**
  * @Desc SingleDataSourceController
- * @Author
- * @Date
+ * <p>
+ * @Author xc
+ * <p>
+ * @Date 2018-8-30
+ * <p>
  * @Version 1.0
  */
 @Controller
@@ -33,33 +36,33 @@ public class SingleDataSourceController {
     private SimpleDateFormat format2 = new SimpleDateFormat("yyyyMMddHHmmssSSSS");
 
     /**
-     * http://127.0.0.1:8082/sDatasource/getReport
+     * http://127.0.0.1:8082/sDatasource/getTime
      */
     @ResponseBody
-    @RequestMapping("/getReport")
-    public String getReport() {
-        String result = "Report: " + format.format(new Date());
-        System.out.println(result);
-        return result;
+    @RequestMapping("/getTime")
+    public String getTime() {
+        String time = "Time: " + format.format(new Date());
+        System.out.println(time);
+        return time;
     }
 
     /**
-     * http://127.0.0.1:8082/sDatasource/addCustomer
+     * http://127.0.0.1:8012/sDatasource/addCustomer
      */
     @ResponseBody
     @RequestMapping("/addCustomer")
-    public Customer addCustomer() {
+    public String addCustomer() {
         Customer customer = new Customer();
         String customerId = format2.format(new Date());
         customer.setCustomerId(customerId);
         customer.setCustomerName("Name-" + customerId);
-        customer.setCreateTime(new Date());
+        customer.setIsDelete(0);
         customerRepository.saveAndFlush(customer);
         System.out.println(customer.getId());
 
         AttachmentInfo attachmentInfo = new AttachmentInfo();
         attachmentInfoRepository.saveAndFlush(attachmentInfo);//会向wong_user.attachment_info表中新增，抛出异常
-        return customer;
+        return null;
     }
 
 }

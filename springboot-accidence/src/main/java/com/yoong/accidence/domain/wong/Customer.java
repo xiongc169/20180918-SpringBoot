@@ -5,12 +5,6 @@ import org.hibernate.annotations.GenericGenerator;
 import javax.persistence.*;
 import java.util.Date;
 
-/**
- * @Desc Customer
- * @Author
- * @Date
- * @Version 1.0
- */
 @Table
 @Entity
 @GenericGenerator(name = "", strategy = "")
@@ -28,7 +22,7 @@ public class Customer {
     private int isDelete;
 
     @Id
-    @Column(name = "id", nullable = false)
+    @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Long getId() {
         return id;
@@ -39,7 +33,7 @@ public class Customer {
     }
 
     @Basic
-    @Column(name = "customer_id", nullable = false, length = 50)
+    @Column(name = "customer_id", length = 50)
     public String getCustomerId() {
         return customerId;
     }
@@ -49,7 +43,7 @@ public class Customer {
     }
 
     @Basic
-    @Column(name = "customer_name", nullable = false, length = 50)
+    @Column(name = "customer_name", length = 50)
     public String getCustomerName() {
         return customerName;
     }
@@ -59,7 +53,7 @@ public class Customer {
     }
 
     @Basic
-    @Column(name = "password", nullable = true, length = 100)
+    @Column(name = "password", length = 100)
     public String getPassword() {
         return password;
     }
@@ -69,7 +63,7 @@ public class Customer {
     }
 
     @Basic
-    @Column(name = "mobile", nullable = true, length = 20)
+    @Column(name = "mobile", length = 20)
     public String getMobile() {
         return mobile;
     }
@@ -79,7 +73,7 @@ public class Customer {
     }
 
     @Basic
-    @Column(name = "email", nullable = true, length = 50)
+    @Column(name = "email", length = 50)
     public String getEmail() {
         return email;
     }
@@ -89,7 +83,7 @@ public class Customer {
     }
 
     @Basic
-    @Column(name = "create_time", nullable = false)
+    @Column(name = "create_time")
     public Date getCreateTime() {
         return createTime;
     }
@@ -99,7 +93,7 @@ public class Customer {
     }
 
     @Basic
-    @Column(name = "modify_time", nullable = false)
+    @Column(name = "modify_time")
     public Date getModifyTime() {
         return modifyTime;
     }
@@ -109,7 +103,7 @@ public class Customer {
     }
 
     @Basic
-    @Column(name = "note1", nullable = true, length = 200)
+    @Column(name = "note1", length = 200)
     public String getNote1() {
         return note1;
     }
@@ -119,7 +113,7 @@ public class Customer {
     }
 
     @Basic
-    @Column(name = "note2", nullable = true, length = 200)
+    @Column(name = "note2", length = 200)
     public String getNote2() {
         return note2;
     }
@@ -129,7 +123,7 @@ public class Customer {
     }
 
     @Basic
-    @Column(name = "is_delete", nullable = false)
+    @Column(name = "is_delete")
     public int getIsDelete() {
         return isDelete;
     }

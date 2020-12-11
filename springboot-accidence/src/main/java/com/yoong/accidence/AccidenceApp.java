@@ -5,6 +5,7 @@ import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -16,9 +17,10 @@ import java.util.Date;
  * SpringBoot入门
  */
 @Controller
-@EnableAutoConfiguration
-@ComponentScan
-//@SpringBootApplication
+//@Configuration
+//@EnableAutoConfiguration
+//@ComponentScan
+@SpringBootApplication
 public class AccidenceApp {
 
     private static SimpleDateFormat sdFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss:SSS");
@@ -34,7 +36,7 @@ public class AccidenceApp {
 
     /**
      * 启用AccidenceApp类的@Controller注解即可
-     * http://127.0.0.1:8082/getApp
+     * http://127.0.0.1:8010/getApp
      */
     @ResponseBody
     @RequestMapping("/getApp")

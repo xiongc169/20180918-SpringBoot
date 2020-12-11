@@ -1,17 +1,14 @@
 package com.yoong.accidence.domain.yoong;
 
+import org.hibernate.annotations.GenericGenerator;
+
 import javax.persistence.*;
 import java.sql.Timestamp;
 import java.util.Objects;
 
-/**
- * @Desc AttachmentInfo
- * @Author
- * @Date
- * @Version 1.0
- */
 @Entity
 @Table(name = "attachment_info", schema = "yoong_business", catalog = "")
+@GenericGenerator(name = "", strategy = "")
 public class AttachmentInfo {
     private long id;
     private Integer attachmentType;
@@ -23,7 +20,7 @@ public class AttachmentInfo {
     private Timestamp modifyTime;
 
     @Id
-    @Column(name = "id", nullable = false)
+    @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     public long getId() {
         return id;
@@ -34,7 +31,7 @@ public class AttachmentInfo {
     }
 
     @Basic
-    @Column(name = "attachment_type", nullable = true)
+    @Column(name = "attachment_type")
     public Integer getAttachmentType() {
         return attachmentType;
     }
@@ -44,7 +41,7 @@ public class AttachmentInfo {
     }
 
     @Basic
-    @Column(name = "business_object_id", nullable = true)
+    @Column(name = "business_object_id")
     public Long getBusinessObjectId() {
         return businessObjectId;
     }
@@ -54,7 +51,7 @@ public class AttachmentInfo {
     }
 
     @Basic
-    @Column(name = "file_name", nullable = true, length = 200)
+    @Column(name = "file_name", length = 200)
     public String getFileName() {
         return fileName;
     }
@@ -64,7 +61,7 @@ public class AttachmentInfo {
     }
 
     @Basic
-    @Column(name = "storage_path", nullable = true, length = 500)
+    @Column(name = "storage_path", length = 500)
     public String getStoragePath() {
         return storagePath;
     }
@@ -74,7 +71,7 @@ public class AttachmentInfo {
     }
 
     @Basic
-    @Column(name = "is_delete", nullable = false)
+    @Column(name = "is_delete")
     public int getIsDelete() {
         return isDelete;
     }
@@ -84,7 +81,7 @@ public class AttachmentInfo {
     }
 
     @Basic
-    @Column(name = "create_time", nullable = true)
+    @Column(name = "create_time")
     public Timestamp getCreateTime() {
         return createTime;
     }
@@ -94,7 +91,7 @@ public class AttachmentInfo {
     }
 
     @Basic
-    @Column(name = "modify_time", nullable = false)
+    @Column(name = "modify_time")
     public Timestamp getModifyTime() {
         return modifyTime;
     }
