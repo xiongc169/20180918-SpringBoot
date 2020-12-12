@@ -90,6 +90,7 @@ public class DataSourceConfig {
     /**
      * SpringBoot配置多数据源两种方法(DataSourceBuilder、DataSourceProperties)
      * https://blog.csdn.net/newhanzhe/article/details/80763581
+     * https://blog.csdn.net/week_ed/article/details/80753801
      */
 
 //    /**

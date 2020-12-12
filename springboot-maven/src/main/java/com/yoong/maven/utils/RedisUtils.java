@@ -11,8 +11,9 @@ import org.springframework.data.redis.serializer.RedisSerializer;
 import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 import redis.clients.jedis.Jedis;
-import redis.clients.jedis.JedisCommands;
 import redis.clients.jedis.JedisPool;
+import redis.clients.jedis.commands.JedisCommands;
+import redis.clients.jedis.params.SetParams;
 
 import java.util.concurrent.TimeUnit;
 
@@ -68,7 +69,8 @@ public class RedisUtils {
                 public String doInRedis(RedisConnection conn) throws DataAccessException {
                     JedisCommands commands = (JedisCommands) conn.getNativeConnection();
                     //String uuid = UUID.randomUUID().toString();
-                    return commands.set(key, value, "NX", "PX", timeOut);
+                    //return commands.set(key, value, "NX", "PX", timeOut);
+                    return commands.set(key, value, SetParams.setParams());
                 }
             });
             return !StringUtils.isEmpty(result);

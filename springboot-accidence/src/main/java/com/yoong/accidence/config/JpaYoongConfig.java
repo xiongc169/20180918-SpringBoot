@@ -18,6 +18,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 import javax.persistence.EntityManager;
 import javax.sql.DataSource;
 import java.util.Map;
+import java.util.Properties;
 
 //TODO: 启动报错：No bean named 'org.springframework.context.annotation.ConfigurationClassPostProcessor.importRegistry' available
 //@Configuration
@@ -39,21 +40,27 @@ public class JpaYoongConfig {
     }
 
     @Autowired
-    private JpaProperties jpaProperties;
+    private Properties jpaProperties;
 
-    @Autowired
-    private HibernateProperties hibernateProperties;
+    //@Autowired
+    //private JpaProperties jpaProperties;
+
+    //@Autowired
+    //private HibernateProperties hibernateProperties;
 
     @Primary
     @Bean(name = "entityManagerFactorySecondary")
     public LocalContainerEntityManagerFactoryBean entityManagerFactoryPrimary(EntityManagerFactoryBuilder builder) {
-        Map<String, Object> properties = hibernateProperties.determineHibernateProperties(jpaProperties.getProperties(), new HibernateSettings());
-        return builder
+        //SpringBoot 2.0
+        //Map<String, Object> properties = hibernateProperties.determineHibernateProperties(jpaProperties.getProperties(), new HibernateSettings());
+        LocalContainerEntityManagerFactoryBean entityManagerFactoryBean = builder
                 .dataSource(secondaryDataSource)
-                .properties(properties)
+                //.properties(properties)
                 .packages("com.yoong.accidence.domain.yoong") //设置实体类所在位置
                 .persistenceUnit("secondaryPersistenceUnit")
                 .build();
+        entityManagerFactoryBean.setJpaProperties(jpaProperties);
+        return entityManagerFactoryBean;
     }
 
     @Primary

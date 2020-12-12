@@ -2,6 +2,7 @@ package com.yoong.community.config.datasource;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.boot.autoconfigure.orm.jpa.HibernateProperties;
 import org.springframework.boot.autoconfigure.orm.jpa.HibernateSettings;
 import org.springframework.boot.autoconfigure.orm.jpa.JpaProperties;
 import org.springframework.boot.orm.jpa.EntityManagerFactoryBuilder;
@@ -47,9 +48,15 @@ public class WongDb {
     @Autowired
     private JpaProperties jpaProperties;
 
+    @Autowired
+    private HibernateProperties hibernateProperties;
+
     private Map<String, Object> getVendorProperties(DataSource dataSource) {
-        //return jpaProperties.getHibernateProperties(dataSource);
-        return jpaProperties.getHibernateProperties(new HibernateSettings());
+        //SpringBoot 1.5
+        //return jpaProperties.getHibernateProperties(new HibernateSettings());
+        //SpringBoot 2.0
+        Map<String, Object> properties = hibernateProperties.determineHibernateProperties(jpaProperties.getProperties(), new HibernateSettings());
+        return properties;
     }
 
     @Primary

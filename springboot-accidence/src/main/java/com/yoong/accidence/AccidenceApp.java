@@ -17,7 +17,7 @@ import java.util.Date;
  * @Desc Spring Boot 两种多数据源配置：JdbcTemplate、Spring-data-jpa
  * http://www.spring4all.com/article/253
  * <p>
- * @Author xc
+ * @Author yoong
  * <p>
  * @Date 2018-8-30
  * <p>
@@ -43,7 +43,7 @@ public class AccidenceApp {
 
     /**
      * 启用AccidenceApp类的@Controller注解即可
-     * http://127.0.0.1:8010/getApp
+     * http://127.0.0.1:8012/getApp
      */
     @ResponseBody
     @RequestMapping("/getApp")

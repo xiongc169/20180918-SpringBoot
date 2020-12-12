@@ -15,7 +15,7 @@ import java.util.Date;
 /**
  * @Desc SingleDataSourceController
  * <p>
- * @Author xc
+ * @Author yoong
  * <p>
  * @Date 2018-8-30
  * <p>
@@ -36,7 +36,7 @@ public class SingleDataSourceController {
     private SimpleDateFormat format2 = new SimpleDateFormat("yyyyMMddHHmmssSSSS");
 
     /**
-     * http://127.0.0.1:8082/sDatasource/getTime
+     * http://127.0.0.1:8012/sDatasource/getTime
      */
     @ResponseBody
     @RequestMapping("/getTime")
@@ -61,7 +61,8 @@ public class SingleDataSourceController {
         System.out.println(customer.getId());
 
         AttachmentInfo attachmentInfo = new AttachmentInfo();
-        attachmentInfoRepository.saveAndFlush(attachmentInfo);//会向wong_user.attachment_info表中新增，抛出异常
+        //会向wong_user.attachment_info表中新增，抛出异常：Table 'wong_user.attachment_info' doesn't exist
+        attachmentInfoRepository.saveAndFlush(attachmentInfo);
         return null;
     }
 }
