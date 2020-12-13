@@ -1,0 +1,816 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yoong.dist.service.core.mapper.a1902_biz.LoanProjectExtMapper" >
+  <resultMap id="BaseResultMap" type="com.yoong.dist.api.domain.a1902_biz.LoanProjectExt" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="project_id" property="projectId" jdbcType="BIGINT" />
+    <result column="external_serial_no" property="externalSerialNo" jdbcType="VARCHAR" />
+    <result column="pledge_estimate_id" property="pledgeEstimateId" jdbcType="BIGINT" />
+    <result column="sign_result" property="signResult" jdbcType="INTEGER" />
+    <result column="outer_sign_result" property="outerSignResult" jdbcType="INTEGER" />
+    <result column="fund_org_business_status" property="fundOrgBusinessStatus" jdbcType="INTEGER" />
+    <result column="sign_finish_time" property="signFinishTime" jdbcType="TIMESTAMP" />
+    <result column="auth_result" property="authResult" jdbcType="INTEGER" />
+    <result column="yuntu_order_no" property="yuntuOrderNo" jdbcType="VARCHAR" />
+    <result column="yuntu_order_result" property="yuntuOrderResult" jdbcType="INTEGER" />
+    <result column="patch_record_no" property="patchRecordNo" jdbcType="VARCHAR" />
+    <result column="patch_record_status" property="patchRecordStatus" jdbcType="INTEGER" />
+    <result column="settle_status" property="settleStatus" jdbcType="INTEGER" />
+    <result column="loan_status" property="loanStatus" jdbcType="INTEGER" />
+    <result column="loan_result" property="loanResult" jdbcType="INTEGER" />
+    <result column="payment_status" property="paymentStatus" jdbcType="INTEGER" />
+    <result column="overdue_status" property="overdueStatus" jdbcType="INTEGER" />
+    <result column="interview_id" property="interviewId" jdbcType="BIGINT" />
+    <result column="signing_authorize_link_total" property="signingAuthorizeLinkTotal" jdbcType="VARCHAR" />
+    <result column="interview_status" property="interviewStatus" jdbcType="INTEGER" />
+    <result column="interview_verify_result" property="interviewVerifyResult" jdbcType="INTEGER" />
+    <result column="flow_type" property="flowType" jdbcType="VARCHAR" />
+    <result column="flow_node_key" property="flowNodeKey" jdbcType="VARCHAR" />
+    <result column="flow_node_index" property="flowNodeIndex" jdbcType="INTEGER" />
+    <result column="flow_node_name" property="flowNodeName" jdbcType="VARCHAR" />
+    <result column="data_review_time" property="dataReviewTime" jdbcType="TIMESTAMP" />
+    <result column="flow_create_time" property="flowCreateTime" jdbcType="TIMESTAMP" />
+    <result column="business_approval_time" property="businessApprovalTime" jdbcType="TIMESTAMP" />
+    <result column="loan_approval_time" property="loanApprovalTime" jdbcType="TIMESTAMP" />
+    <result column="payment_loan_date" property="paymentLoanDate" jdbcType="TIMESTAMP" />
+    <result column="flow_finish_time" property="flowFinishTime" jdbcType="TIMESTAMP" />
+    <result column="bank_sub_account" property="bankSubAccount" jdbcType="VARCHAR" />
+    <result column="mango_acct_no" property="mangoAcctNo" jdbcType="VARCHAR" />
+    <result column="host_cust_no" property="hostCustNo" jdbcType="VARCHAR" />
+    <result column="bank_card_no" property="bankCardNo" jdbcType="VARCHAR" />
+    <result column="bank_card_get_type" property="bankCardGetType" jdbcType="INTEGER" />
+    <result column="loan_purpose" property="loanPurpose" jdbcType="VARCHAR" />
+    <result column="extra_loan_purpose" property="extraLoanPurpose" jdbcType="VARCHAR" />
+    <result column="lawsuit_status" property="lawsuitStatus" jdbcType="INTEGER" />
+    <result column="is_inuse" property="isInuse" jdbcType="BIT" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="modify_time" property="modifyTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, project_id, external_serial_no, pledge_estimate_id, sign_result, outer_sign_result, 
+    fund_org_business_status, sign_finish_time, auth_result, yuntu_order_no, yuntu_order_result, 
+    patch_record_no, patch_record_status, settle_status, loan_status, loan_result, payment_status, 
+    overdue_status, interview_id, signing_authorize_link_total, interview_status, interview_verify_result, 
+    flow_type, flow_node_key, flow_node_index, flow_node_name, data_review_time, flow_create_time, 
+    business_approval_time, loan_approval_time, payment_loan_date, flow_finish_time, 
+    bank_sub_account, mango_acct_no, host_cust_no, bank_card_no, bank_card_get_type, 
+    loan_purpose, extra_loan_purpose, lawsuit_status, is_inuse, create_time, modify_time
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.yoong.dist.api.domain.a1902_biz.LoanProjectExtExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from loan_project_ext
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from loan_project_ext
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from loan_project_ext
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.yoong.dist.api.domain.a1902_biz.LoanProjectExtExample" >
+    delete from loan_project_ext
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.yoong.dist.api.domain.a1902_biz.LoanProjectExt" >
+    insert into loan_project_ext (id, project_id, external_serial_no, 
+      pledge_estimate_id, sign_result, outer_sign_result, 
+      fund_org_business_status, sign_finish_time, 
+      auth_result, yuntu_order_no, yuntu_order_result, 
+      patch_record_no, patch_record_status, settle_status, 
+      loan_status, loan_result, payment_status, 
+      overdue_status, interview_id, signing_authorize_link_total, 
+      interview_status, interview_verify_result, 
+      flow_type, flow_node_key, flow_node_index, 
+      flow_node_name, data_review_time, flow_create_time, 
+      business_approval_time, loan_approval_time, 
+      payment_loan_date, flow_finish_time, bank_sub_account, 
+      mango_acct_no, host_cust_no, bank_card_no, 
+      bank_card_get_type, loan_purpose, extra_loan_purpose, 
+      lawsuit_status, is_inuse, create_time, 
+      modify_time)
+    values (#{id,jdbcType=BIGINT}, #{projectId,jdbcType=BIGINT}, #{externalSerialNo,jdbcType=VARCHAR}, 
+      #{pledgeEstimateId,jdbcType=BIGINT}, #{signResult,jdbcType=INTEGER}, #{outerSignResult,jdbcType=INTEGER}, 
+      #{fundOrgBusinessStatus,jdbcType=INTEGER}, #{signFinishTime,jdbcType=TIMESTAMP}, 
+      #{authResult,jdbcType=INTEGER}, #{yuntuOrderNo,jdbcType=VARCHAR}, #{yuntuOrderResult,jdbcType=INTEGER}, 
+      #{patchRecordNo,jdbcType=VARCHAR}, #{patchRecordStatus,jdbcType=INTEGER}, #{settleStatus,jdbcType=INTEGER}, 
+      #{loanStatus,jdbcType=INTEGER}, #{loanResult,jdbcType=INTEGER}, #{paymentStatus,jdbcType=INTEGER}, 
+      #{overdueStatus,jdbcType=INTEGER}, #{interviewId,jdbcType=BIGINT}, #{signingAuthorizeLinkTotal,jdbcType=VARCHAR}, 
+      #{interviewStatus,jdbcType=INTEGER}, #{interviewVerifyResult,jdbcType=INTEGER}, 
+      #{flowType,jdbcType=VARCHAR}, #{flowNodeKey,jdbcType=VARCHAR}, #{flowNodeIndex,jdbcType=INTEGER}, 
+      #{flowNodeName,jdbcType=VARCHAR}, #{dataReviewTime,jdbcType=TIMESTAMP}, #{flowCreateTime,jdbcType=TIMESTAMP}, 
+      #{businessApprovalTime,jdbcType=TIMESTAMP}, #{loanApprovalTime,jdbcType=TIMESTAMP}, 
+      #{paymentLoanDate,jdbcType=TIMESTAMP}, #{flowFinishTime,jdbcType=TIMESTAMP}, #{bankSubAccount,jdbcType=VARCHAR}, 
+      #{mangoAcctNo,jdbcType=VARCHAR}, #{hostCustNo,jdbcType=VARCHAR}, #{bankCardNo,jdbcType=VARCHAR}, 
+      #{bankCardGetType,jdbcType=INTEGER}, #{loanPurpose,jdbcType=VARCHAR}, #{extraLoanPurpose,jdbcType=VARCHAR}, 
+      #{lawsuitStatus,jdbcType=INTEGER}, #{isInuse,jdbcType=BIT}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{modifyTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.yoong.dist.api.domain.a1902_biz.LoanProjectExt" >
+    insert into loan_project_ext
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="projectId != null" >
+        project_id,
+      </if>
+      <if test="externalSerialNo != null" >
+        external_serial_no,
+      </if>
+      <if test="pledgeEstimateId != null" >
+        pledge_estimate_id,
+      </if>
+      <if test="signResult != null" >
+        sign_result,
+      </if>
+      <if test="outerSignResult != null" >
+        outer_sign_result,
+      </if>
+      <if test="fundOrgBusinessStatus != null" >
+        fund_org_business_status,
+      </if>
+      <if test="signFinishTime != null" >
+        sign_finish_time,
+      </if>
+      <if test="authResult != null" >
+        auth_result,
+      </if>
+      <if test="yuntuOrderNo != null" >
+        yuntu_order_no,
+      </if>
+      <if test="yuntuOrderResult != null" >
+        yuntu_order_result,
+      </if>
+      <if test="patchRecordNo != null" >
+        patch_record_no,
+      </if>
+      <if test="patchRecordStatus != null" >
+        patch_record_status,
+      </if>
+      <if test="settleStatus != null" >
+        settle_status,
+      </if>
+      <if test="loanStatus != null" >
+        loan_status,
+      </if>
+      <if test="loanResult != null" >
+        loan_result,
+      </if>
+      <if test="paymentStatus != null" >
+        payment_status,
+      </if>
+      <if test="overdueStatus != null" >
+        overdue_status,
+      </if>
+      <if test="interviewId != null" >
+        interview_id,
+      </if>
+      <if test="signingAuthorizeLinkTotal != null" >
+        signing_authorize_link_total,
+      </if>
+      <if test="interviewStatus != null" >
+        interview_status,
+      </if>
+      <if test="interviewVerifyResult != null" >
+        interview_verify_result,
+      </if>
+      <if test="flowType != null" >
+        flow_type,
+      </if>
+      <if test="flowNodeKey != null" >
+        flow_node_key,
+      </if>
+      <if test="flowNodeIndex != null" >
+        flow_node_index,
+      </if>
+      <if test="flowNodeName != null" >
+        flow_node_name,
+      </if>
+      <if test="dataReviewTime != null" >
+        data_review_time,
+      </if>
+      <if test="flowCreateTime != null" >
+        flow_create_time,
+      </if>
+      <if test="businessApprovalTime != null" >
+        business_approval_time,
+      </if>
+      <if test="loanApprovalTime != null" >
+        loan_approval_time,
+      </if>
+      <if test="paymentLoanDate != null" >
+        payment_loan_date,
+      </if>
+      <if test="flowFinishTime != null" >
+        flow_finish_time,
+      </if>
+      <if test="bankSubAccount != null" >
+        bank_sub_account,
+      </if>
+      <if test="mangoAcctNo != null" >
+        mango_acct_no,
+      </if>
+      <if test="hostCustNo != null" >
+        host_cust_no,
+      </if>
+      <if test="bankCardNo != null" >
+        bank_card_no,
+      </if>
+      <if test="bankCardGetType != null" >
+        bank_card_get_type,
+      </if>
+      <if test="loanPurpose != null" >
+        loan_purpose,
+      </if>
+      <if test="extraLoanPurpose != null" >
+        extra_loan_purpose,
+      </if>
+      <if test="lawsuitStatus != null" >
+        lawsuit_status,
+      </if>
+      <if test="isInuse != null" >
+        is_inuse,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="modifyTime != null" >
+        modify_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="projectId != null" >
+        #{projectId,jdbcType=BIGINT},
+      </if>
+      <if test="externalSerialNo != null" >
+        #{externalSerialNo,jdbcType=VARCHAR},
+      </if>
+      <if test="pledgeEstimateId != null" >
+        #{pledgeEstimateId,jdbcType=BIGINT},
+      </if>
+      <if test="signResult != null" >
+        #{signResult,jdbcType=INTEGER},
+      </if>
+      <if test="outerSignResult != null" >
+        #{outerSignResult,jdbcType=INTEGER},
+      </if>
+      <if test="fundOrgBusinessStatus != null" >
+        #{fundOrgBusinessStatus,jdbcType=INTEGER},
+      </if>
+      <if test="signFinishTime != null" >
+        #{signFinishTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="authResult != null" >
+        #{authResult,jdbcType=INTEGER},
+      </if>
+      <if test="yuntuOrderNo != null" >
+        #{yuntuOrderNo,jdbcType=VARCHAR},
+      </if>
+      <if test="yuntuOrderResult != null" >
+        #{yuntuOrderResult,jdbcType=INTEGER},
+      </if>
+      <if test="patchRecordNo != null" >
+        #{patchRecordNo,jdbcType=VARCHAR},
+      </if>
+      <if test="patchRecordStatus != null" >
+        #{patchRecordStatus,jdbcType=INTEGER},
+      </if>
+      <if test="settleStatus != null" >
+        #{settleStatus,jdbcType=INTEGER},
+      </if>
+      <if test="loanStatus != null" >
+        #{loanStatus,jdbcType=INTEGER},
+      </if>
+      <if test="loanResult != null" >
+        #{loanResult,jdbcType=INTEGER},
+      </if>
+      <if test="paymentStatus != null" >
+        #{paymentStatus,jdbcType=INTEGER},
+      </if>
+      <if test="overdueStatus != null" >
+        #{overdueStatus,jdbcType=INTEGER},
+      </if>
+      <if test="interviewId != null" >
+        #{interviewId,jdbcType=BIGINT},
+      </if>
+      <if test="signingAuthorizeLinkTotal != null" >
+        #{signingAuthorizeLinkTotal,jdbcType=VARCHAR},
+      </if>
+      <if test="interviewStatus != null" >
+        #{interviewStatus,jdbcType=INTEGER},
+      </if>
+      <if test="interviewVerifyResult != null" >
+        #{interviewVerifyResult,jdbcType=INTEGER},
+      </if>
+      <if test="flowType != null" >
+        #{flowType,jdbcType=VARCHAR},
+      </if>
+      <if test="flowNodeKey != null" >
+        #{flowNodeKey,jdbcType=VARCHAR},
+      </if>
+      <if test="flowNodeIndex != null" >
+        #{flowNodeIndex,jdbcType=INTEGER},
+      </if>
+      <if test="flowNodeName != null" >
+        #{flowNodeName,jdbcType=VARCHAR},
+      </if>
+      <if test="dataReviewTime != null" >
+        #{dataReviewTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="flowCreateTime != null" >
+        #{flowCreateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="businessApprovalTime != null" >
+        #{businessApprovalTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="loanApprovalTime != null" >
+        #{loanApprovalTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="paymentLoanDate != null" >
+        #{paymentLoanDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="flowFinishTime != null" >
+        #{flowFinishTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="bankSubAccount != null" >
+        #{bankSubAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="mangoAcctNo != null" >
+        #{mangoAcctNo,jdbcType=VARCHAR},
+      </if>
+      <if test="hostCustNo != null" >
+        #{hostCustNo,jdbcType=VARCHAR},
+      </if>
+      <if test="bankCardNo != null" >
+        #{bankCardNo,jdbcType=VARCHAR},
+      </if>
+      <if test="bankCardGetType != null" >
+        #{bankCardGetType,jdbcType=INTEGER},
+      </if>
+      <if test="loanPurpose != null" >
+        #{loanPurpose,jdbcType=VARCHAR},
+      </if>
+      <if test="extraLoanPurpose != null" >
+        #{extraLoanPurpose,jdbcType=VARCHAR},
+      </if>
+      <if test="lawsuitStatus != null" >
+        #{lawsuitStatus,jdbcType=INTEGER},
+      </if>
+      <if test="isInuse != null" >
+        #{isInuse,jdbcType=BIT},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyTime != null" >
+        #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.yoong.dist.api.domain.a1902_biz.LoanProjectExtExample" resultType="java.lang.Integer" >
+    select count(*) from loan_project_ext
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update loan_project_ext
+    <set >
+      <if test="record.id != null" >
+        id = #{record.id,jdbcType=BIGINT},
+      </if>
+      <if test="record.projectId != null" >
+        project_id = #{record.projectId,jdbcType=BIGINT},
+      </if>
+      <if test="record.externalSerialNo != null" >
+        external_serial_no = #{record.externalSerialNo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.pledgeEstimateId != null" >
+        pledge_estimate_id = #{record.pledgeEstimateId,jdbcType=BIGINT},
+      </if>
+      <if test="record.signResult != null" >
+        sign_result = #{record.signResult,jdbcType=INTEGER},
+      </if>
+      <if test="record.outerSignResult != null" >
+        outer_sign_result = #{record.outerSignResult,jdbcType=INTEGER},
+      </if>
+      <if test="record.fundOrgBusinessStatus != null" >
+        fund_org_business_status = #{record.fundOrgBusinessStatus,jdbcType=INTEGER},
+      </if>
+      <if test="record.signFinishTime != null" >
+        sign_finish_time = #{record.signFinishTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.authResult != null" >
+        auth_result = #{record.authResult,jdbcType=INTEGER},
+      </if>
+      <if test="record.yuntuOrderNo != null" >
+        yuntu_order_no = #{record.yuntuOrderNo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.yuntuOrderResult != null" >
+        yuntu_order_result = #{record.yuntuOrderResult,jdbcType=INTEGER},
+      </if>
+      <if test="record.patchRecordNo != null" >
+        patch_record_no = #{record.patchRecordNo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.patchRecordStatus != null" >
+        patch_record_status = #{record.patchRecordStatus,jdbcType=INTEGER},
+      </if>
+      <if test="record.settleStatus != null" >
+        settle_status = #{record.settleStatus,jdbcType=INTEGER},
+      </if>
+      <if test="record.loanStatus != null" >
+        loan_status = #{record.loanStatus,jdbcType=INTEGER},
+      </if>
+      <if test="record.loanResult != null" >
+        loan_result = #{record.loanResult,jdbcType=INTEGER},
+      </if>
+      <if test="record.paymentStatus != null" >
+        payment_status = #{record.paymentStatus,jdbcType=INTEGER},
+      </if>
+      <if test="record.overdueStatus != null" >
+        overdue_status = #{record.overdueStatus,jdbcType=INTEGER},
+      </if>
+      <if test="record.interviewId != null" >
+        interview_id = #{record.interviewId,jdbcType=BIGINT},
+      </if>
+      <if test="record.signingAuthorizeLinkTotal != null" >
+        signing_authorize_link_total = #{record.signingAuthorizeLinkTotal,jdbcType=VARCHAR},
+      </if>
+      <if test="record.interviewStatus != null" >
+        interview_status = #{record.interviewStatus,jdbcType=INTEGER},
+      </if>
+      <if test="record.interviewVerifyResult != null" >
+        interview_verify_result = #{record.interviewVerifyResult,jdbcType=INTEGER},
+      </if>
+      <if test="record.flowType != null" >
+        flow_type = #{record.flowType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.flowNodeKey != null" >
+        flow_node_key = #{record.flowNodeKey,jdbcType=VARCHAR},
+      </if>
+      <if test="record.flowNodeIndex != null" >
+        flow_node_index = #{record.flowNodeIndex,jdbcType=INTEGER},
+      </if>
+      <if test="record.flowNodeName != null" >
+        flow_node_name = #{record.flowNodeName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.dataReviewTime != null" >
+        data_review_time = #{record.dataReviewTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.flowCreateTime != null" >
+        flow_create_time = #{record.flowCreateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.businessApprovalTime != null" >
+        business_approval_time = #{record.businessApprovalTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.loanApprovalTime != null" >
+        loan_approval_time = #{record.loanApprovalTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.paymentLoanDate != null" >
+        payment_loan_date = #{record.paymentLoanDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.flowFinishTime != null" >
+        flow_finish_time = #{record.flowFinishTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.bankSubAccount != null" >
+        bank_sub_account = #{record.bankSubAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="record.mangoAcctNo != null" >
+        mango_acct_no = #{record.mangoAcctNo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.hostCustNo != null" >
+        host_cust_no = #{record.hostCustNo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bankCardNo != null" >
+        bank_card_no = #{record.bankCardNo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bankCardGetType != null" >
+        bank_card_get_type = #{record.bankCardGetType,jdbcType=INTEGER},
+      </if>
+      <if test="record.loanPurpose != null" >
+        loan_purpose = #{record.loanPurpose,jdbcType=VARCHAR},
+      </if>
+      <if test="record.extraLoanPurpose != null" >
+        extra_loan_purpose = #{record.extraLoanPurpose,jdbcType=VARCHAR},
+      </if>
+      <if test="record.lawsuitStatus != null" >
+        lawsuit_status = #{record.lawsuitStatus,jdbcType=INTEGER},
+      </if>
+      <if test="record.isInuse != null" >
+        is_inuse = #{record.isInuse,jdbcType=BIT},
+      </if>
+      <if test="record.createTime != null" >
+        create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.modifyTime != null" >
+        modify_time = #{record.modifyTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update loan_project_ext
+    set id = #{record.id,jdbcType=BIGINT},
+      project_id = #{record.projectId,jdbcType=BIGINT},
+      external_serial_no = #{record.externalSerialNo,jdbcType=VARCHAR},
+      pledge_estimate_id = #{record.pledgeEstimateId,jdbcType=BIGINT},
+      sign_result = #{record.signResult,jdbcType=INTEGER},
+      outer_sign_result = #{record.outerSignResult,jdbcType=INTEGER},
+      fund_org_business_status = #{record.fundOrgBusinessStatus,jdbcType=INTEGER},
+      sign_finish_time = #{record.signFinishTime,jdbcType=TIMESTAMP},
+      auth_result = #{record.authResult,jdbcType=INTEGER},
+      yuntu_order_no = #{record.yuntuOrderNo,jdbcType=VARCHAR},
+      yuntu_order_result = #{record.yuntuOrderResult,jdbcType=INTEGER},
+      patch_record_no = #{record.patchRecordNo,jdbcType=VARCHAR},
+      patch_record_status = #{record.patchRecordStatus,jdbcType=INTEGER},
+      settle_status = #{record.settleStatus,jdbcType=INTEGER},
+      loan_status = #{record.loanStatus,jdbcType=INTEGER},
+      loan_result = #{record.loanResult,jdbcType=INTEGER},
+      payment_status = #{record.paymentStatus,jdbcType=INTEGER},
+      overdue_status = #{record.overdueStatus,jdbcType=INTEGER},
+      interview_id = #{record.interviewId,jdbcType=BIGINT},
+      signing_authorize_link_total = #{record.signingAuthorizeLinkTotal,jdbcType=VARCHAR},
+      interview_status = #{record.interviewStatus,jdbcType=INTEGER},
+      interview_verify_result = #{record.interviewVerifyResult,jdbcType=INTEGER},
+      flow_type = #{record.flowType,jdbcType=VARCHAR},
+      flow_node_key = #{record.flowNodeKey,jdbcType=VARCHAR},
+      flow_node_index = #{record.flowNodeIndex,jdbcType=INTEGER},
+      flow_node_name = #{record.flowNodeName,jdbcType=VARCHAR},
+      data_review_time = #{record.dataReviewTime,jdbcType=TIMESTAMP},
+      flow_create_time = #{record.flowCreateTime,jdbcType=TIMESTAMP},
+      business_approval_time = #{record.businessApprovalTime,jdbcType=TIMESTAMP},
+      loan_approval_time = #{record.loanApprovalTime,jdbcType=TIMESTAMP},
+      payment_loan_date = #{record.paymentLoanDate,jdbcType=TIMESTAMP},
+      flow_finish_time = #{record.flowFinishTime,jdbcType=TIMESTAMP},
+      bank_sub_account = #{record.bankSubAccount,jdbcType=VARCHAR},
+      mango_acct_no = #{record.mangoAcctNo,jdbcType=VARCHAR},
+      host_cust_no = #{record.hostCustNo,jdbcType=VARCHAR},
+      bank_card_no = #{record.bankCardNo,jdbcType=VARCHAR},
+      bank_card_get_type = #{record.bankCardGetType,jdbcType=INTEGER},
+      loan_purpose = #{record.loanPurpose,jdbcType=VARCHAR},
+      extra_loan_purpose = #{record.extraLoanPurpose,jdbcType=VARCHAR},
+      lawsuit_status = #{record.lawsuitStatus,jdbcType=INTEGER},
+      is_inuse = #{record.isInuse,jdbcType=BIT},
+      create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      modify_time = #{record.modifyTime,jdbcType=TIMESTAMP}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yoong.dist.api.domain.a1902_biz.LoanProjectExt" >
+    update loan_project_ext
+    <set >
+      <if test="projectId != null" >
+        project_id = #{projectId,jdbcType=BIGINT},
+      </if>
+      <if test="externalSerialNo != null" >
+        external_serial_no = #{externalSerialNo,jdbcType=VARCHAR},
+      </if>
+      <if test="pledgeEstimateId != null" >
+        pledge_estimate_id = #{pledgeEstimateId,jdbcType=BIGINT},
+      </if>
+      <if test="signResult != null" >
+        sign_result = #{signResult,jdbcType=INTEGER},
+      </if>
+      <if test="outerSignResult != null" >
+        outer_sign_result = #{outerSignResult,jdbcType=INTEGER},
+      </if>
+      <if test="fundOrgBusinessStatus != null" >
+        fund_org_business_status = #{fundOrgBusinessStatus,jdbcType=INTEGER},
+      </if>
+      <if test="signFinishTime != null" >
+        sign_finish_time = #{signFinishTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="authResult != null" >
+        auth_result = #{authResult,jdbcType=INTEGER},
+      </if>
+      <if test="yuntuOrderNo != null" >
+        yuntu_order_no = #{yuntuOrderNo,jdbcType=VARCHAR},
+      </if>
+      <if test="yuntuOrderResult != null" >
+        yuntu_order_result = #{yuntuOrderResult,jdbcType=INTEGER},
+      </if>
+      <if test="patchRecordNo != null" >
+        patch_record_no = #{patchRecordNo,jdbcType=VARCHAR},
+      </if>
+      <if test="patchRecordStatus != null" >
+        patch_record_status = #{patchRecordStatus,jdbcType=INTEGER},
+      </if>
+      <if test="settleStatus != null" >
+        settle_status = #{settleStatus,jdbcType=INTEGER},
+      </if>
+      <if test="loanStatus != null" >
+        loan_status = #{loanStatus,jdbcType=INTEGER},
+      </if>
+      <if test="loanResult != null" >
+        loan_result = #{loanResult,jdbcType=INTEGER},
+      </if>
+      <if test="paymentStatus != null" >
+        payment_status = #{paymentStatus,jdbcType=INTEGER},
+      </if>
+      <if test="overdueStatus != null" >
+        overdue_status = #{overdueStatus,jdbcType=INTEGER},
+      </if>
+      <if test="interviewId != null" >
+        interview_id = #{interviewId,jdbcType=BIGINT},
+      </if>
+      <if test="signingAuthorizeLinkTotal != null" >
+        signing_authorize_link_total = #{signingAuthorizeLinkTotal,jdbcType=VARCHAR},
+      </if>
+      <if test="interviewStatus != null" >
+        interview_status = #{interviewStatus,jdbcType=INTEGER},
+      </if>
+      <if test="interviewVerifyResult != null" >
+        interview_verify_result = #{interviewVerifyResult,jdbcType=INTEGER},
+      </if>
+      <if test="flowType != null" >
+        flow_type = #{flowType,jdbcType=VARCHAR},
+      </if>
+      <if test="flowNodeKey != null" >
+        flow_node_key = #{flowNodeKey,jdbcType=VARCHAR},
+      </if>
+      <if test="flowNodeIndex != null" >
+        flow_node_index = #{flowNodeIndex,jdbcType=INTEGER},
+      </if>
+      <if test="flowNodeName != null" >
+        flow_node_name = #{flowNodeName,jdbcType=VARCHAR},
+      </if>
+      <if test="dataReviewTime != null" >
+        data_review_time = #{dataReviewTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="flowCreateTime != null" >
+        flow_create_time = #{flowCreateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="businessApprovalTime != null" >
+        business_approval_time = #{businessApprovalTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="loanApprovalTime != null" >
+        loan_approval_time = #{loanApprovalTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="paymentLoanDate != null" >
+        payment_loan_date = #{paymentLoanDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="flowFinishTime != null" >
+        flow_finish_time = #{flowFinishTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="bankSubAccount != null" >
+        bank_sub_account = #{bankSubAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="mangoAcctNo != null" >
+        mango_acct_no = #{mangoAcctNo,jdbcType=VARCHAR},
+      </if>
+      <if test="hostCustNo != null" >
+        host_cust_no = #{hostCustNo,jdbcType=VARCHAR},
+      </if>
+      <if test="bankCardNo != null" >
+        bank_card_no = #{bankCardNo,jdbcType=VARCHAR},
+      </if>
+      <if test="bankCardGetType != null" >
+        bank_card_get_type = #{bankCardGetType,jdbcType=INTEGER},
+      </if>
+      <if test="loanPurpose != null" >
+        loan_purpose = #{loanPurpose,jdbcType=VARCHAR},
+      </if>
+      <if test="extraLoanPurpose != null" >
+        extra_loan_purpose = #{extraLoanPurpose,jdbcType=VARCHAR},
+      </if>
+      <if test="lawsuitStatus != null" >
+        lawsuit_status = #{lawsuitStatus,jdbcType=INTEGER},
+      </if>
+      <if test="isInuse != null" >
+        is_inuse = #{isInuse,jdbcType=BIT},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyTime != null" >
+        modify_time = #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yoong.dist.api.domain.a1902_biz.LoanProjectExt" >
+    update loan_project_ext
+    set project_id = #{projectId,jdbcType=BIGINT},
+      external_serial_no = #{externalSerialNo,jdbcType=VARCHAR},
+      pledge_estimate_id = #{pledgeEstimateId,jdbcType=BIGINT},
+      sign_result = #{signResult,jdbcType=INTEGER},
+      outer_sign_result = #{outerSignResult,jdbcType=INTEGER},
+      fund_org_business_status = #{fundOrgBusinessStatus,jdbcType=INTEGER},
+      sign_finish_time = #{signFinishTime,jdbcType=TIMESTAMP},
+      auth_result = #{authResult,jdbcType=INTEGER},
+      yuntu_order_no = #{yuntuOrderNo,jdbcType=VARCHAR},
+      yuntu_order_result = #{yuntuOrderResult,jdbcType=INTEGER},
+      patch_record_no = #{patchRecordNo,jdbcType=VARCHAR},
+      patch_record_status = #{patchRecordStatus,jdbcType=INTEGER},
+      settle_status = #{settleStatus,jdbcType=INTEGER},
+      loan_status = #{loanStatus,jdbcType=INTEGER},
+      loan_result = #{loanResult,jdbcType=INTEGER},
+      payment_status = #{paymentStatus,jdbcType=INTEGER},
+      overdue_status = #{overdueStatus,jdbcType=INTEGER},
+      interview_id = #{interviewId,jdbcType=BIGINT},
+      signing_authorize_link_total = #{signingAuthorizeLinkTotal,jdbcType=VARCHAR},
+      interview_status = #{interviewStatus,jdbcType=INTEGER},
+      interview_verify_result = #{interviewVerifyResult,jdbcType=INTEGER},
+      flow_type = #{flowType,jdbcType=VARCHAR},
+      flow_node_key = #{flowNodeKey,jdbcType=VARCHAR},
+      flow_node_index = #{flowNodeIndex,jdbcType=INTEGER},
+      flow_node_name = #{flowNodeName,jdbcType=VARCHAR},
+      data_review_time = #{dataReviewTime,jdbcType=TIMESTAMP},
+      flow_create_time = #{flowCreateTime,jdbcType=TIMESTAMP},
+      business_approval_time = #{businessApprovalTime,jdbcType=TIMESTAMP},
+      loan_approval_time = #{loanApprovalTime,jdbcType=TIMESTAMP},
+      payment_loan_date = #{paymentLoanDate,jdbcType=TIMESTAMP},
+      flow_finish_time = #{flowFinishTime,jdbcType=TIMESTAMP},
+      bank_sub_account = #{bankSubAccount,jdbcType=VARCHAR},
+      mango_acct_no = #{mangoAcctNo,jdbcType=VARCHAR},
+      host_cust_no = #{hostCustNo,jdbcType=VARCHAR},
+      bank_card_no = #{bankCardNo,jdbcType=VARCHAR},
+      bank_card_get_type = #{bankCardGetType,jdbcType=INTEGER},
+      loan_purpose = #{loanPurpose,jdbcType=VARCHAR},
+      extra_loan_purpose = #{extraLoanPurpose,jdbcType=VARCHAR},
+      lawsuit_status = #{lawsuitStatus,jdbcType=INTEGER},
+      is_inuse = #{isInuse,jdbcType=BIT},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      modify_time = #{modifyTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

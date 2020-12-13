@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >
+
+<generatorConfiguration>
+    <!-- 数据库驱动包位置 -->
+    <classPathEntry location="./mybatis-generator/mysql-connector-java-8.0.12.jar"/>
+
+    <context id="mysql" defaultModelType="flat">
+        <commentGenerator>
+            <property name="suppressDate" value="true"/>
+            <property name="suppressAllComments" value="true"/>
+        </commentGenerator>
+
+        <!--com.mysql.cj.jdbc.Driver a1902_biz|a1902_stage|wong_user-->
+        <!--<jdbcConnection driverClass="com.mysql.cj.jdbc.Driver" connectionURL="jdbc:mysql://127.0.0.1:3306/a1902_biz?serverTimezone=UTC&amp;useSSL=false" userId="root" password="123456">-->
+        <!--    <property name="nullCatalogMeansCurrent" value="true"/>-->
+        <!--</jdbcConnection>-->
+
+        <!--<jdbcConnection driverClass="com.mysql.cj.jdbc.Driver"-->
+        <!--                connectionURL="jdbc:mysql://127.0.0.1:3306/a1902_stage?serverTimezone=UTC&amp;useSSL=false"-->
+        <!--                userId="root" password="123456">-->
+        <!--    <property name="nullCatalogMeansCurrent" value="true"/>-->
+        <!--</jdbcConnection>-->
+
+        <jdbcConnection driverClass="com.mysql.cj.jdbc.Driver"
+                        connectionURL="jdbc:mysql://127.0.0.1:3306/wong_user?serverTimezone=UTC&amp;useSSL=false"
+                        userId="root" password="123456">
+            <property name="nullCatalogMeansCurrent" value="true"/>
+        </jdbcConnection>
+
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="false"/>
+        </javaTypeResolver>
+
+        <!-- 生成Model类 a1902_biz|a1902_stage|wong_user -->
+        <javaModelGenerator targetPackage="com.yoong.dist.api.domain.wong_user" targetProject=".\src\main\java">
+            <property name="enableSubPackages" value="true"/>
+            <property name="trimStrings" value="true"/>
+        </javaModelGenerator>
+
+        <!-- 生成XML映射文件 -->
+        <sqlMapGenerator targetPackage="mapper.wong_user" targetProject="..\dist-service\src\main\resources">
+            <property name="enableSubPackages" value="true"/>
+        </sqlMapGenerator>
+
+        <!-- 生成Mapper接口 -->
+        <javaClientGenerator targetPackage="com.yoong.dist.service.core.mapper.wong_user"
+                             targetProject="..\dist-service\src\main\java" type="XMLMAPPER">
+            <property name="enableSubPackages" value="true"/>
+        </javaClientGenerator>
+
+        <!--a1902_biz-->
+        <!--<table tableName="customer_credit"></table>-->
+        <!--<table tableName="customer_credit_ext"></table>-->
+        <!--<table tableName="customer_credit_relavant"></table>-->
+        <!--<table tableName="loan_project_ext"></table>-->
+        <!--<table tableName="loan_project_info"></table>-->
+        <!--<table tableName="customer_credit_file">-->
+        <!--    <columnOverride column="is_inuse" javaType="java.lang.Integer"/>-->
+        <!--</table>-->
+
+        <!--a1902_stage-->
+        <!--<table tableName="api_send_record">-->
+        <!--    <generatedKey column="id" sqlStatement="MySql" identity="true"/>-->
+        <!--</table>-->
+        <!--<table tableName="api_service_record">-->
+        <!--    <generatedKey column="id" sqlStatement="MySql" identity="true"/>-->
+        <!--</table>-->
+        <!--<table tableName="bank_setting">-->
+        <!--    <generatedKey column="id" sqlStatement="MySql" identity="true"/>-->
+        <!--</table>-->
+        <!--<table tableName="callback_record">-->
+        <!--    <generatedKey column="id" sqlStatement="MySql" identity="true"/>-->
+        <!--</table>-->
+        <!--<table tableName="confirm_record">-->
+        <!--    <generatedKey column="id" sqlStatement="MySql" identity="true"/>-->
+        <!--</table>-->
+        <!--<table tableName="credit_record">-->
+        <!--    <generatedKey column="id" sqlStatement="MySql" identity="true"/>-->
+        <!--</table>-->
+        <!--<table tableName="loan_apply_record">-->
+        <!--    <generatedKey column="id" sqlStatement="MySql" identity="true"/>-->
+        <!--</table>-->
+        <!--<table tableName="loan_release_info">-->
+        <!--    <generatedKey column="id" sqlStatement="MySql" identity="true"/>-->
+        <!--</table>-->
+        <!--<table tableName="order_record">-->
+        <!--    <generatedKey column="id" sqlStatement="MySql" identity="true"/>-->
+        <!--</table>-->
+        <!--<table tableName="sys_dict">-->
+        <!--    <generatedKey column="id" sqlStatement="MySql" identity="true"/>-->
+        <!--</table>-->
+
+        <!--wong_user-->
+        <table tableName="account"></table>
+        <table tableName="admin"></table>
+        <table tableName="customer"></table>
+
+    </context>
+</generatorConfiguration>

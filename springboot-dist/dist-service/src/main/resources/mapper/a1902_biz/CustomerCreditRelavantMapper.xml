@@ -1,0 +1,1182 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yoong.dist.service.core.mapper.a1902_biz.CustomerCreditRelavantMapper" >
+  <resultMap id="BaseResultMap" type="com.yoong.dist.api.domain.a1902_biz.CustomerCreditRelavant" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="credit_id" property="creditId" jdbcType="BIGINT" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="en_name" property="enName" jdbcType="VARCHAR" />
+    <result column="cert_type" property="certType" jdbcType="VARCHAR" />
+    <result column="cert_no" property="certNo" jdbcType="VARCHAR" />
+    <result column="cert_valid_start_date" property="certValidStartDate" jdbcType="VARCHAR" />
+    <result column="cert_valid_end_date" property="certValidEndDate" jdbcType="VARCHAR" />
+    <result column="licence_issuing_authority" property="licenceIssuingAuthority" jdbcType="VARCHAR" />
+    <result column="cert_address_pid" property="certAddressPid" jdbcType="VARCHAR" />
+    <result column="cert_address_pname" property="certAddressPname" jdbcType="VARCHAR" />
+    <result column="cert_address_cid" property="certAddressCid" jdbcType="VARCHAR" />
+    <result column="cert_address_cname" property="certAddressCname" jdbcType="VARCHAR" />
+    <result column="cert_address_rid" property="certAddressRid" jdbcType="VARCHAR" />
+    <result column="cert_address_rname" property="certAddressRname" jdbcType="VARCHAR" />
+    <result column="cert_address" property="certAddress" jdbcType="VARCHAR" />
+    <result column="mobile_phone" property="mobilePhone" jdbcType="VARCHAR" />
+    <result column="birthday" property="birthday" jdbcType="VARCHAR" />
+    <result column="gender" property="gender" jdbcType="INTEGER" />
+    <result column="home_address_full_detail" property="homeAddressFullDetail" jdbcType="VARCHAR" />
+    <result column="domicile_address" property="domicileAddress" jdbcType="VARCHAR" />
+    <result column="work_unit" property="workUnit" jdbcType="VARCHAR" />
+    <result column="post_code" property="postCode" jdbcType="VARCHAR" />
+    <result column="marital_status" property="maritalStatus" jdbcType="INTEGER" />
+    <result column="borrower_relationship" property="borrowerRelationship" jdbcType="INTEGER" />
+    <result column="business_relationship" property="businessRelationship" jdbcType="INTEGER" />
+    <result column="cert_similarity_degree" property="certSimilarityDegree" jdbcType="INTEGER" />
+    <result column="cert_status" property="certStatus" jdbcType="INTEGER" />
+    <result column="cert_result" property="certResult" jdbcType="VARCHAR" />
+    <result column="cert_time" property="certTime" jdbcType="TIMESTAMP" />
+    <result column="bank_card_no" property="bankCardNo" jdbcType="VARCHAR" />
+    <result column="bank_card_reserve_mobile_phone" property="bankCardReserveMobilePhone" jdbcType="VARCHAR" />
+    <result column="bank_card_openning_bank_name" property="bankCardOpenningBankName" jdbcType="VARCHAR" />
+    <result column="bank_card_cnaps_code" property="bankCardCnapsCode" jdbcType="VARCHAR" />
+    <result column="auth_result" property="authResult" jdbcType="INTEGER" />
+    <result column="auth_remark" property="authRemark" jdbcType="VARCHAR" />
+    <result column="risk_serial_number" property="riskSerialNumber" jdbcType="VARCHAR" />
+    <result column="ocr_flow_no" property="ocrFlowNo" jdbcType="VARCHAR" />
+    <result column="bank_credit_result" property="bankCreditResult" jdbcType="INTEGER" />
+    <result column="bank_credit_remark" property="bankCreditRemark" jdbcType="VARCHAR" />
+    <result column="big_data_credit_result" property="bigDataCreditResult" jdbcType="INTEGER" />
+    <result column="big_data_credit_remark" property="bigDataCreditRemark" jdbcType="VARCHAR" />
+    <result column="bank_credit_staff_id" property="bankCreditStaffId" jdbcType="BIGINT" />
+    <result column="bank_credit_staff_name" property="bankCreditStaffName" jdbcType="VARCHAR" />
+    <result column="credit_result" property="creditResult" jdbcType="INTEGER" />
+    <result column="loan_record_status" property="loanRecordStatus" jdbcType="INTEGER" />
+    <result column="credit_remark" property="creditRemark" jdbcType="VARCHAR" />
+    <result column="signing_authorize_link" property="signingAuthorizeLink" jdbcType="VARCHAR" />
+    <result column="sign_result" property="signResult" jdbcType="INTEGER" />
+    <result column="send_sms_result" property="sendSmsResult" jdbcType="INTEGER" />
+    <result column="is_inuse" property="isInuse" jdbcType="BIT" />
+    <result column="due_12months_debt" property="due12monthsDebt" jdbcType="DECIMAL" />
+    <result column="due_24months_debt" property="due24monthsDebt" jdbcType="DECIMAL" />
+    <result column="due_36months_debt" property="due36monthsDebt" jdbcType="DECIMAL" />
+    <result column="due_48months_debt" property="due48monthsDebt" jdbcType="DECIMAL" />
+    <result column="due_60months_debt" property="due60monthsDebt" jdbcType="DECIMAL" />
+    <result column="loan_balance" property="loanBalance" jdbcType="DECIMAL" />
+    <result column="credit_card_num" property="creditCardNum" jdbcType="INTEGER" />
+    <result column="credit_limit_sum" property="creditLimitSum" jdbcType="INTEGER" />
+    <result column="avg_used_limit_last_six_month" property="avgUsedLimitLastSixMonth" jdbcType="INTEGER" />
+    <result column="overdue_num_last_year" property="overdueNumLastYear" jdbcType="INTEGER" />
+    <result column="overdue_amount" property="overdueAmount" jdbcType="INTEGER" />
+    <result column="guaranteed_amount" property="guaranteedAmount" jdbcType="INTEGER" />
+    <result column="auth_flow_no" property="authFlowNo" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="modify_time" property="modifyTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, credit_id, name, en_name, cert_type, cert_no, cert_valid_start_date, cert_valid_end_date, 
+    licence_issuing_authority, cert_address_pid, cert_address_pname, cert_address_cid, 
+    cert_address_cname, cert_address_rid, cert_address_rname, cert_address, mobile_phone, 
+    birthday, gender, home_address_full_detail, domicile_address, work_unit, post_code, 
+    marital_status, borrower_relationship, business_relationship, cert_similarity_degree, 
+    cert_status, cert_result, cert_time, bank_card_no, bank_card_reserve_mobile_phone, 
+    bank_card_openning_bank_name, bank_card_cnaps_code, auth_result, auth_remark, risk_serial_number, 
+    ocr_flow_no, bank_credit_result, bank_credit_remark, big_data_credit_result, big_data_credit_remark, 
+    bank_credit_staff_id, bank_credit_staff_name, credit_result, loan_record_status, 
+    credit_remark, signing_authorize_link, sign_result, send_sms_result, is_inuse, due_12months_debt, 
+    due_24months_debt, due_36months_debt, due_48months_debt, due_60months_debt, loan_balance, 
+    credit_card_num, credit_limit_sum, avg_used_limit_last_six_month, overdue_num_last_year, 
+    overdue_amount, guaranteed_amount, auth_flow_no, create_time, modify_time
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.yoong.dist.api.domain.a1902_biz.CustomerCreditRelavantExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from customer_credit_relavant
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from customer_credit_relavant
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from customer_credit_relavant
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.yoong.dist.api.domain.a1902_biz.CustomerCreditRelavantExample" >
+    delete from customer_credit_relavant
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.yoong.dist.api.domain.a1902_biz.CustomerCreditRelavant" >
+    insert into customer_credit_relavant (id, credit_id, name, 
+      en_name, cert_type, cert_no, 
+      cert_valid_start_date, cert_valid_end_date, licence_issuing_authority, 
+      cert_address_pid, cert_address_pname, cert_address_cid, 
+      cert_address_cname, cert_address_rid, cert_address_rname, 
+      cert_address, mobile_phone, birthday, 
+      gender, home_address_full_detail, domicile_address, 
+      work_unit, post_code, marital_status, 
+      borrower_relationship, business_relationship, 
+      cert_similarity_degree, cert_status, cert_result, 
+      cert_time, bank_card_no, bank_card_reserve_mobile_phone, 
+      bank_card_openning_bank_name, bank_card_cnaps_code, 
+      auth_result, auth_remark, risk_serial_number, 
+      ocr_flow_no, bank_credit_result, bank_credit_remark, 
+      big_data_credit_result, big_data_credit_remark, 
+      bank_credit_staff_id, bank_credit_staff_name, 
+      credit_result, loan_record_status, credit_remark, 
+      signing_authorize_link, sign_result, send_sms_result, 
+      is_inuse, due_12months_debt, due_24months_debt, 
+      due_36months_debt, due_48months_debt, due_60months_debt, 
+      loan_balance, credit_card_num, credit_limit_sum, 
+      avg_used_limit_last_six_month, overdue_num_last_year, 
+      overdue_amount, guaranteed_amount, auth_flow_no, 
+      create_time, modify_time)
+    values (#{id,jdbcType=BIGINT}, #{creditId,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR}, 
+      #{enName,jdbcType=VARCHAR}, #{certType,jdbcType=VARCHAR}, #{certNo,jdbcType=VARCHAR}, 
+      #{certValidStartDate,jdbcType=VARCHAR}, #{certValidEndDate,jdbcType=VARCHAR}, #{licenceIssuingAuthority,jdbcType=VARCHAR}, 
+      #{certAddressPid,jdbcType=VARCHAR}, #{certAddressPname,jdbcType=VARCHAR}, #{certAddressCid,jdbcType=VARCHAR}, 
+      #{certAddressCname,jdbcType=VARCHAR}, #{certAddressRid,jdbcType=VARCHAR}, #{certAddressRname,jdbcType=VARCHAR}, 
+      #{certAddress,jdbcType=VARCHAR}, #{mobilePhone,jdbcType=VARCHAR}, #{birthday,jdbcType=VARCHAR}, 
+      #{gender,jdbcType=INTEGER}, #{homeAddressFullDetail,jdbcType=VARCHAR}, #{domicileAddress,jdbcType=VARCHAR}, 
+      #{workUnit,jdbcType=VARCHAR}, #{postCode,jdbcType=VARCHAR}, #{maritalStatus,jdbcType=INTEGER}, 
+      #{borrowerRelationship,jdbcType=INTEGER}, #{businessRelationship,jdbcType=INTEGER}, 
+      #{certSimilarityDegree,jdbcType=INTEGER}, #{certStatus,jdbcType=INTEGER}, #{certResult,jdbcType=VARCHAR}, 
+      #{certTime,jdbcType=TIMESTAMP}, #{bankCardNo,jdbcType=VARCHAR}, #{bankCardReserveMobilePhone,jdbcType=VARCHAR}, 
+      #{bankCardOpenningBankName,jdbcType=VARCHAR}, #{bankCardCnapsCode,jdbcType=VARCHAR}, 
+      #{authResult,jdbcType=INTEGER}, #{authRemark,jdbcType=VARCHAR}, #{riskSerialNumber,jdbcType=VARCHAR}, 
+      #{ocrFlowNo,jdbcType=VARCHAR}, #{bankCreditResult,jdbcType=INTEGER}, #{bankCreditRemark,jdbcType=VARCHAR}, 
+      #{bigDataCreditResult,jdbcType=INTEGER}, #{bigDataCreditRemark,jdbcType=VARCHAR}, 
+      #{bankCreditStaffId,jdbcType=BIGINT}, #{bankCreditStaffName,jdbcType=VARCHAR}, 
+      #{creditResult,jdbcType=INTEGER}, #{loanRecordStatus,jdbcType=INTEGER}, #{creditRemark,jdbcType=VARCHAR}, 
+      #{signingAuthorizeLink,jdbcType=VARCHAR}, #{signResult,jdbcType=INTEGER}, #{sendSmsResult,jdbcType=INTEGER}, 
+      #{isInuse,jdbcType=BIT}, #{due12monthsDebt,jdbcType=DECIMAL}, #{due24monthsDebt,jdbcType=DECIMAL}, 
+      #{due36monthsDebt,jdbcType=DECIMAL}, #{due48monthsDebt,jdbcType=DECIMAL}, #{due60monthsDebt,jdbcType=DECIMAL}, 
+      #{loanBalance,jdbcType=DECIMAL}, #{creditCardNum,jdbcType=INTEGER}, #{creditLimitSum,jdbcType=INTEGER}, 
+      #{avgUsedLimitLastSixMonth,jdbcType=INTEGER}, #{overdueNumLastYear,jdbcType=INTEGER}, 
+      #{overdueAmount,jdbcType=INTEGER}, #{guaranteedAmount,jdbcType=INTEGER}, #{authFlowNo,jdbcType=VARCHAR}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{modifyTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.yoong.dist.api.domain.a1902_biz.CustomerCreditRelavant" >
+    insert into customer_credit_relavant
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="creditId != null" >
+        credit_id,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="enName != null" >
+        en_name,
+      </if>
+      <if test="certType != null" >
+        cert_type,
+      </if>
+      <if test="certNo != null" >
+        cert_no,
+      </if>
+      <if test="certValidStartDate != null" >
+        cert_valid_start_date,
+      </if>
+      <if test="certValidEndDate != null" >
+        cert_valid_end_date,
+      </if>
+      <if test="licenceIssuingAuthority != null" >
+        licence_issuing_authority,
+      </if>
+      <if test="certAddressPid != null" >
+        cert_address_pid,
+      </if>
+      <if test="certAddressPname != null" >
+        cert_address_pname,
+      </if>
+      <if test="certAddressCid != null" >
+        cert_address_cid,
+      </if>
+      <if test="certAddressCname != null" >
+        cert_address_cname,
+      </if>
+      <if test="certAddressRid != null" >
+        cert_address_rid,
+      </if>
+      <if test="certAddressRname != null" >
+        cert_address_rname,
+      </if>
+      <if test="certAddress != null" >
+        cert_address,
+      </if>
+      <if test="mobilePhone != null" >
+        mobile_phone,
+      </if>
+      <if test="birthday != null" >
+        birthday,
+      </if>
+      <if test="gender != null" >
+        gender,
+      </if>
+      <if test="homeAddressFullDetail != null" >
+        home_address_full_detail,
+      </if>
+      <if test="domicileAddress != null" >
+        domicile_address,
+      </if>
+      <if test="workUnit != null" >
+        work_unit,
+      </if>
+      <if test="postCode != null" >
+        post_code,
+      </if>
+      <if test="maritalStatus != null" >
+        marital_status,
+      </if>
+      <if test="borrowerRelationship != null" >
+        borrower_relationship,
+      </if>
+      <if test="businessRelationship != null" >
+        business_relationship,
+      </if>
+      <if test="certSimilarityDegree != null" >
+        cert_similarity_degree,
+      </if>
+      <if test="certStatus != null" >
+        cert_status,
+      </if>
+      <if test="certResult != null" >
+        cert_result,
+      </if>
+      <if test="certTime != null" >
+        cert_time,
+      </if>
+      <if test="bankCardNo != null" >
+        bank_card_no,
+      </if>
+      <if test="bankCardReserveMobilePhone != null" >
+        bank_card_reserve_mobile_phone,
+      </if>
+      <if test="bankCardOpenningBankName != null" >
+        bank_card_openning_bank_name,
+      </if>
+      <if test="bankCardCnapsCode != null" >
+        bank_card_cnaps_code,
+      </if>
+      <if test="authResult != null" >
+        auth_result,
+      </if>
+      <if test="authRemark != null" >
+        auth_remark,
+      </if>
+      <if test="riskSerialNumber != null" >
+        risk_serial_number,
+      </if>
+      <if test="ocrFlowNo != null" >
+        ocr_flow_no,
+      </if>
+      <if test="bankCreditResult != null" >
+        bank_credit_result,
+      </if>
+      <if test="bankCreditRemark != null" >
+        bank_credit_remark,
+      </if>
+      <if test="bigDataCreditResult != null" >
+        big_data_credit_result,
+      </if>
+      <if test="bigDataCreditRemark != null" >
+        big_data_credit_remark,
+      </if>
+      <if test="bankCreditStaffId != null" >
+        bank_credit_staff_id,
+      </if>
+      <if test="bankCreditStaffName != null" >
+        bank_credit_staff_name,
+      </if>
+      <if test="creditResult != null" >
+        credit_result,
+      </if>
+      <if test="loanRecordStatus != null" >
+        loan_record_status,
+      </if>
+      <if test="creditRemark != null" >
+        credit_remark,
+      </if>
+      <if test="signingAuthorizeLink != null" >
+        signing_authorize_link,
+      </if>
+      <if test="signResult != null" >
+        sign_result,
+      </if>
+      <if test="sendSmsResult != null" >
+        send_sms_result,
+      </if>
+      <if test="isInuse != null" >
+        is_inuse,
+      </if>
+      <if test="due12monthsDebt != null" >
+        due_12months_debt,
+      </if>
+      <if test="due24monthsDebt != null" >
+        due_24months_debt,
+      </if>
+      <if test="due36monthsDebt != null" >
+        due_36months_debt,
+      </if>
+      <if test="due48monthsDebt != null" >
+        due_48months_debt,
+      </if>
+      <if test="due60monthsDebt != null" >
+        due_60months_debt,
+      </if>
+      <if test="loanBalance != null" >
+        loan_balance,
+      </if>
+      <if test="creditCardNum != null" >
+        credit_card_num,
+      </if>
+      <if test="creditLimitSum != null" >
+        credit_limit_sum,
+      </if>
+      <if test="avgUsedLimitLastSixMonth != null" >
+        avg_used_limit_last_six_month,
+      </if>
+      <if test="overdueNumLastYear != null" >
+        overdue_num_last_year,
+      </if>
+      <if test="overdueAmount != null" >
+        overdue_amount,
+      </if>
+      <if test="guaranteedAmount != null" >
+        guaranteed_amount,
+      </if>
+      <if test="authFlowNo != null" >
+        auth_flow_no,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="modifyTime != null" >
+        modify_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="creditId != null" >
+        #{creditId,jdbcType=BIGINT},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="enName != null" >
+        #{enName,jdbcType=VARCHAR},
+      </if>
+      <if test="certType != null" >
+        #{certType,jdbcType=VARCHAR},
+      </if>
+      <if test="certNo != null" >
+        #{certNo,jdbcType=VARCHAR},
+      </if>
+      <if test="certValidStartDate != null" >
+        #{certValidStartDate,jdbcType=VARCHAR},
+      </if>
+      <if test="certValidEndDate != null" >
+        #{certValidEndDate,jdbcType=VARCHAR},
+      </if>
+      <if test="licenceIssuingAuthority != null" >
+        #{licenceIssuingAuthority,jdbcType=VARCHAR},
+      </if>
+      <if test="certAddressPid != null" >
+        #{certAddressPid,jdbcType=VARCHAR},
+      </if>
+      <if test="certAddressPname != null" >
+        #{certAddressPname,jdbcType=VARCHAR},
+      </if>
+      <if test="certAddressCid != null" >
+        #{certAddressCid,jdbcType=VARCHAR},
+      </if>
+      <if test="certAddressCname != null" >
+        #{certAddressCname,jdbcType=VARCHAR},
+      </if>
+      <if test="certAddressRid != null" >
+        #{certAddressRid,jdbcType=VARCHAR},
+      </if>
+      <if test="certAddressRname != null" >
+        #{certAddressRname,jdbcType=VARCHAR},
+      </if>
+      <if test="certAddress != null" >
+        #{certAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="mobilePhone != null" >
+        #{mobilePhone,jdbcType=VARCHAR},
+      </if>
+      <if test="birthday != null" >
+        #{birthday,jdbcType=VARCHAR},
+      </if>
+      <if test="gender != null" >
+        #{gender,jdbcType=INTEGER},
+      </if>
+      <if test="homeAddressFullDetail != null" >
+        #{homeAddressFullDetail,jdbcType=VARCHAR},
+      </if>
+      <if test="domicileAddress != null" >
+        #{domicileAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="workUnit != null" >
+        #{workUnit,jdbcType=VARCHAR},
+      </if>
+      <if test="postCode != null" >
+        #{postCode,jdbcType=VARCHAR},
+      </if>
+      <if test="maritalStatus != null" >
+        #{maritalStatus,jdbcType=INTEGER},
+      </if>
+      <if test="borrowerRelationship != null" >
+        #{borrowerRelationship,jdbcType=INTEGER},
+      </if>
+      <if test="businessRelationship != null" >
+        #{businessRelationship,jdbcType=INTEGER},
+      </if>
+      <if test="certSimilarityDegree != null" >
+        #{certSimilarityDegree,jdbcType=INTEGER},
+      </if>
+      <if test="certStatus != null" >
+        #{certStatus,jdbcType=INTEGER},
+      </if>
+      <if test="certResult != null" >
+        #{certResult,jdbcType=VARCHAR},
+      </if>
+      <if test="certTime != null" >
+        #{certTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="bankCardNo != null" >
+        #{bankCardNo,jdbcType=VARCHAR},
+      </if>
+      <if test="bankCardReserveMobilePhone != null" >
+        #{bankCardReserveMobilePhone,jdbcType=VARCHAR},
+      </if>
+      <if test="bankCardOpenningBankName != null" >
+        #{bankCardOpenningBankName,jdbcType=VARCHAR},
+      </if>
+      <if test="bankCardCnapsCode != null" >
+        #{bankCardCnapsCode,jdbcType=VARCHAR},
+      </if>
+      <if test="authResult != null" >
+        #{authResult,jdbcType=INTEGER},
+      </if>
+      <if test="authRemark != null" >
+        #{authRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="riskSerialNumber != null" >
+        #{riskSerialNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="ocrFlowNo != null" >
+        #{ocrFlowNo,jdbcType=VARCHAR},
+      </if>
+      <if test="bankCreditResult != null" >
+        #{bankCreditResult,jdbcType=INTEGER},
+      </if>
+      <if test="bankCreditRemark != null" >
+        #{bankCreditRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="bigDataCreditResult != null" >
+        #{bigDataCreditResult,jdbcType=INTEGER},
+      </if>
+      <if test="bigDataCreditRemark != null" >
+        #{bigDataCreditRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="bankCreditStaffId != null" >
+        #{bankCreditStaffId,jdbcType=BIGINT},
+      </if>
+      <if test="bankCreditStaffName != null" >
+        #{bankCreditStaffName,jdbcType=VARCHAR},
+      </if>
+      <if test="creditResult != null" >
+        #{creditResult,jdbcType=INTEGER},
+      </if>
+      <if test="loanRecordStatus != null" >
+        #{loanRecordStatus,jdbcType=INTEGER},
+      </if>
+      <if test="creditRemark != null" >
+        #{creditRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="signingAuthorizeLink != null" >
+        #{signingAuthorizeLink,jdbcType=VARCHAR},
+      </if>
+      <if test="signResult != null" >
+        #{signResult,jdbcType=INTEGER},
+      </if>
+      <if test="sendSmsResult != null" >
+        #{sendSmsResult,jdbcType=INTEGER},
+      </if>
+      <if test="isInuse != null" >
+        #{isInuse,jdbcType=BIT},
+      </if>
+      <if test="due12monthsDebt != null" >
+        #{due12monthsDebt,jdbcType=DECIMAL},
+      </if>
+      <if test="due24monthsDebt != null" >
+        #{due24monthsDebt,jdbcType=DECIMAL},
+      </if>
+      <if test="due36monthsDebt != null" >
+        #{due36monthsDebt,jdbcType=DECIMAL},
+      </if>
+      <if test="due48monthsDebt != null" >
+        #{due48monthsDebt,jdbcType=DECIMAL},
+      </if>
+      <if test="due60monthsDebt != null" >
+        #{due60monthsDebt,jdbcType=DECIMAL},
+      </if>
+      <if test="loanBalance != null" >
+        #{loanBalance,jdbcType=DECIMAL},
+      </if>
+      <if test="creditCardNum != null" >
+        #{creditCardNum,jdbcType=INTEGER},
+      </if>
+      <if test="creditLimitSum != null" >
+        #{creditLimitSum,jdbcType=INTEGER},
+      </if>
+      <if test="avgUsedLimitLastSixMonth != null" >
+        #{avgUsedLimitLastSixMonth,jdbcType=INTEGER},
+      </if>
+      <if test="overdueNumLastYear != null" >
+        #{overdueNumLastYear,jdbcType=INTEGER},
+      </if>
+      <if test="overdueAmount != null" >
+        #{overdueAmount,jdbcType=INTEGER},
+      </if>
+      <if test="guaranteedAmount != null" >
+        #{guaranteedAmount,jdbcType=INTEGER},
+      </if>
+      <if test="authFlowNo != null" >
+        #{authFlowNo,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyTime != null" >
+        #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.yoong.dist.api.domain.a1902_biz.CustomerCreditRelavantExample" resultType="java.lang.Integer" >
+    select count(*) from customer_credit_relavant
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update customer_credit_relavant
+    <set >
+      <if test="record.id != null" >
+        id = #{record.id,jdbcType=BIGINT},
+      </if>
+      <if test="record.creditId != null" >
+        credit_id = #{record.creditId,jdbcType=BIGINT},
+      </if>
+      <if test="record.name != null" >
+        name = #{record.name,jdbcType=VARCHAR},
+      </if>
+      <if test="record.enName != null" >
+        en_name = #{record.enName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.certType != null" >
+        cert_type = #{record.certType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.certNo != null" >
+        cert_no = #{record.certNo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.certValidStartDate != null" >
+        cert_valid_start_date = #{record.certValidStartDate,jdbcType=VARCHAR},
+      </if>
+      <if test="record.certValidEndDate != null" >
+        cert_valid_end_date = #{record.certValidEndDate,jdbcType=VARCHAR},
+      </if>
+      <if test="record.licenceIssuingAuthority != null" >
+        licence_issuing_authority = #{record.licenceIssuingAuthority,jdbcType=VARCHAR},
+      </if>
+      <if test="record.certAddressPid != null" >
+        cert_address_pid = #{record.certAddressPid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.certAddressPname != null" >
+        cert_address_pname = #{record.certAddressPname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.certAddressCid != null" >
+        cert_address_cid = #{record.certAddressCid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.certAddressCname != null" >
+        cert_address_cname = #{record.certAddressCname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.certAddressRid != null" >
+        cert_address_rid = #{record.certAddressRid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.certAddressRname != null" >
+        cert_address_rname = #{record.certAddressRname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.certAddress != null" >
+        cert_address = #{record.certAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="record.mobilePhone != null" >
+        mobile_phone = #{record.mobilePhone,jdbcType=VARCHAR},
+      </if>
+      <if test="record.birthday != null" >
+        birthday = #{record.birthday,jdbcType=VARCHAR},
+      </if>
+      <if test="record.gender != null" >
+        gender = #{record.gender,jdbcType=INTEGER},
+      </if>
+      <if test="record.homeAddressFullDetail != null" >
+        home_address_full_detail = #{record.homeAddressFullDetail,jdbcType=VARCHAR},
+      </if>
+      <if test="record.domicileAddress != null" >
+        domicile_address = #{record.domicileAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="record.workUnit != null" >
+        work_unit = #{record.workUnit,jdbcType=VARCHAR},
+      </if>
+      <if test="record.postCode != null" >
+        post_code = #{record.postCode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.maritalStatus != null" >
+        marital_status = #{record.maritalStatus,jdbcType=INTEGER},
+      </if>
+      <if test="record.borrowerRelationship != null" >
+        borrower_relationship = #{record.borrowerRelationship,jdbcType=INTEGER},
+      </if>
+      <if test="record.businessRelationship != null" >
+        business_relationship = #{record.businessRelationship,jdbcType=INTEGER},
+      </if>
+      <if test="record.certSimilarityDegree != null" >
+        cert_similarity_degree = #{record.certSimilarityDegree,jdbcType=INTEGER},
+      </if>
+      <if test="record.certStatus != null" >
+        cert_status = #{record.certStatus,jdbcType=INTEGER},
+      </if>
+      <if test="record.certResult != null" >
+        cert_result = #{record.certResult,jdbcType=VARCHAR},
+      </if>
+      <if test="record.certTime != null" >
+        cert_time = #{record.certTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.bankCardNo != null" >
+        bank_card_no = #{record.bankCardNo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bankCardReserveMobilePhone != null" >
+        bank_card_reserve_mobile_phone = #{record.bankCardReserveMobilePhone,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bankCardOpenningBankName != null" >
+        bank_card_openning_bank_name = #{record.bankCardOpenningBankName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bankCardCnapsCode != null" >
+        bank_card_cnaps_code = #{record.bankCardCnapsCode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.authResult != null" >
+        auth_result = #{record.authResult,jdbcType=INTEGER},
+      </if>
+      <if test="record.authRemark != null" >
+        auth_remark = #{record.authRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="record.riskSerialNumber != null" >
+        risk_serial_number = #{record.riskSerialNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ocrFlowNo != null" >
+        ocr_flow_no = #{record.ocrFlowNo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bankCreditResult != null" >
+        bank_credit_result = #{record.bankCreditResult,jdbcType=INTEGER},
+      </if>
+      <if test="record.bankCreditRemark != null" >
+        bank_credit_remark = #{record.bankCreditRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bigDataCreditResult != null" >
+        big_data_credit_result = #{record.bigDataCreditResult,jdbcType=INTEGER},
+      </if>
+      <if test="record.bigDataCreditRemark != null" >
+        big_data_credit_remark = #{record.bigDataCreditRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bankCreditStaffId != null" >
+        bank_credit_staff_id = #{record.bankCreditStaffId,jdbcType=BIGINT},
+      </if>
+      <if test="record.bankCreditStaffName != null" >
+        bank_credit_staff_name = #{record.bankCreditStaffName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.creditResult != null" >
+        credit_result = #{record.creditResult,jdbcType=INTEGER},
+      </if>
+      <if test="record.loanRecordStatus != null" >
+        loan_record_status = #{record.loanRecordStatus,jdbcType=INTEGER},
+      </if>
+      <if test="record.creditRemark != null" >
+        credit_remark = #{record.creditRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="record.signingAuthorizeLink != null" >
+        signing_authorize_link = #{record.signingAuthorizeLink,jdbcType=VARCHAR},
+      </if>
+      <if test="record.signResult != null" >
+        sign_result = #{record.signResult,jdbcType=INTEGER},
+      </if>
+      <if test="record.sendSmsResult != null" >
+        send_sms_result = #{record.sendSmsResult,jdbcType=INTEGER},
+      </if>
+      <if test="record.isInuse != null" >
+        is_inuse = #{record.isInuse,jdbcType=BIT},
+      </if>
+      <if test="record.due12monthsDebt != null" >
+        due_12months_debt = #{record.due12monthsDebt,jdbcType=DECIMAL},
+      </if>
+      <if test="record.due24monthsDebt != null" >
+        due_24months_debt = #{record.due24monthsDebt,jdbcType=DECIMAL},
+      </if>
+      <if test="record.due36monthsDebt != null" >
+        due_36months_debt = #{record.due36monthsDebt,jdbcType=DECIMAL},
+      </if>
+      <if test="record.due48monthsDebt != null" >
+        due_48months_debt = #{record.due48monthsDebt,jdbcType=DECIMAL},
+      </if>
+      <if test="record.due60monthsDebt != null" >
+        due_60months_debt = #{record.due60monthsDebt,jdbcType=DECIMAL},
+      </if>
+      <if test="record.loanBalance != null" >
+        loan_balance = #{record.loanBalance,jdbcType=DECIMAL},
+      </if>
+      <if test="record.creditCardNum != null" >
+        credit_card_num = #{record.creditCardNum,jdbcType=INTEGER},
+      </if>
+      <if test="record.creditLimitSum != null" >
+        credit_limit_sum = #{record.creditLimitSum,jdbcType=INTEGER},
+      </if>
+      <if test="record.avgUsedLimitLastSixMonth != null" >
+        avg_used_limit_last_six_month = #{record.avgUsedLimitLastSixMonth,jdbcType=INTEGER},
+      </if>
+      <if test="record.overdueNumLastYear != null" >
+        overdue_num_last_year = #{record.overdueNumLastYear,jdbcType=INTEGER},
+      </if>
+      <if test="record.overdueAmount != null" >
+        overdue_amount = #{record.overdueAmount,jdbcType=INTEGER},
+      </if>
+      <if test="record.guaranteedAmount != null" >
+        guaranteed_amount = #{record.guaranteedAmount,jdbcType=INTEGER},
+      </if>
+      <if test="record.authFlowNo != null" >
+        auth_flow_no = #{record.authFlowNo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.createTime != null" >
+        create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.modifyTime != null" >
+        modify_time = #{record.modifyTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update customer_credit_relavant
+    set id = #{record.id,jdbcType=BIGINT},
+      credit_id = #{record.creditId,jdbcType=BIGINT},
+      name = #{record.name,jdbcType=VARCHAR},
+      en_name = #{record.enName,jdbcType=VARCHAR},
+      cert_type = #{record.certType,jdbcType=VARCHAR},
+      cert_no = #{record.certNo,jdbcType=VARCHAR},
+      cert_valid_start_date = #{record.certValidStartDate,jdbcType=VARCHAR},
+      cert_valid_end_date = #{record.certValidEndDate,jdbcType=VARCHAR},
+      licence_issuing_authority = #{record.licenceIssuingAuthority,jdbcType=VARCHAR},
+      cert_address_pid = #{record.certAddressPid,jdbcType=VARCHAR},
+      cert_address_pname = #{record.certAddressPname,jdbcType=VARCHAR},
+      cert_address_cid = #{record.certAddressCid,jdbcType=VARCHAR},
+      cert_address_cname = #{record.certAddressCname,jdbcType=VARCHAR},
+      cert_address_rid = #{record.certAddressRid,jdbcType=VARCHAR},
+      cert_address_rname = #{record.certAddressRname,jdbcType=VARCHAR},
+      cert_address = #{record.certAddress,jdbcType=VARCHAR},
+      mobile_phone = #{record.mobilePhone,jdbcType=VARCHAR},
+      birthday = #{record.birthday,jdbcType=VARCHAR},
+      gender = #{record.gender,jdbcType=INTEGER},
+      home_address_full_detail = #{record.homeAddressFullDetail,jdbcType=VARCHAR},
+      domicile_address = #{record.domicileAddress,jdbcType=VARCHAR},
+      work_unit = #{record.workUnit,jdbcType=VARCHAR},
+      post_code = #{record.postCode,jdbcType=VARCHAR},
+      marital_status = #{record.maritalStatus,jdbcType=INTEGER},
+      borrower_relationship = #{record.borrowerRelationship,jdbcType=INTEGER},
+      business_relationship = #{record.businessRelationship,jdbcType=INTEGER},
+      cert_similarity_degree = #{record.certSimilarityDegree,jdbcType=INTEGER},
+      cert_status = #{record.certStatus,jdbcType=INTEGER},
+      cert_result = #{record.certResult,jdbcType=VARCHAR},
+      cert_time = #{record.certTime,jdbcType=TIMESTAMP},
+      bank_card_no = #{record.bankCardNo,jdbcType=VARCHAR},
+      bank_card_reserve_mobile_phone = #{record.bankCardReserveMobilePhone,jdbcType=VARCHAR},
+      bank_card_openning_bank_name = #{record.bankCardOpenningBankName,jdbcType=VARCHAR},
+      bank_card_cnaps_code = #{record.bankCardCnapsCode,jdbcType=VARCHAR},
+      auth_result = #{record.authResult,jdbcType=INTEGER},
+      auth_remark = #{record.authRemark,jdbcType=VARCHAR},
+      risk_serial_number = #{record.riskSerialNumber,jdbcType=VARCHAR},
+      ocr_flow_no = #{record.ocrFlowNo,jdbcType=VARCHAR},
+      bank_credit_result = #{record.bankCreditResult,jdbcType=INTEGER},
+      bank_credit_remark = #{record.bankCreditRemark,jdbcType=VARCHAR},
+      big_data_credit_result = #{record.bigDataCreditResult,jdbcType=INTEGER},
+      big_data_credit_remark = #{record.bigDataCreditRemark,jdbcType=VARCHAR},
+      bank_credit_staff_id = #{record.bankCreditStaffId,jdbcType=BIGINT},
+      bank_credit_staff_name = #{record.bankCreditStaffName,jdbcType=VARCHAR},
+      credit_result = #{record.creditResult,jdbcType=INTEGER},
+      loan_record_status = #{record.loanRecordStatus,jdbcType=INTEGER},
+      credit_remark = #{record.creditRemark,jdbcType=VARCHAR},
+      signing_authorize_link = #{record.signingAuthorizeLink,jdbcType=VARCHAR},
+      sign_result = #{record.signResult,jdbcType=INTEGER},
+      send_sms_result = #{record.sendSmsResult,jdbcType=INTEGER},
+      is_inuse = #{record.isInuse,jdbcType=BIT},
+      due_12months_debt = #{record.due12monthsDebt,jdbcType=DECIMAL},
+      due_24months_debt = #{record.due24monthsDebt,jdbcType=DECIMAL},
+      due_36months_debt = #{record.due36monthsDebt,jdbcType=DECIMAL},
+      due_48months_debt = #{record.due48monthsDebt,jdbcType=DECIMAL},
+      due_60months_debt = #{record.due60monthsDebt,jdbcType=DECIMAL},
+      loan_balance = #{record.loanBalance,jdbcType=DECIMAL},
+      credit_card_num = #{record.creditCardNum,jdbcType=INTEGER},
+      credit_limit_sum = #{record.creditLimitSum,jdbcType=INTEGER},
+      avg_used_limit_last_six_month = #{record.avgUsedLimitLastSixMonth,jdbcType=INTEGER},
+      overdue_num_last_year = #{record.overdueNumLastYear,jdbcType=INTEGER},
+      overdue_amount = #{record.overdueAmount,jdbcType=INTEGER},
+      guaranteed_amount = #{record.guaranteedAmount,jdbcType=INTEGER},
+      auth_flow_no = #{record.authFlowNo,jdbcType=VARCHAR},
+      create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      modify_time = #{record.modifyTime,jdbcType=TIMESTAMP}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yoong.dist.api.domain.a1902_biz.CustomerCreditRelavant" >
+    update customer_credit_relavant
+    <set >
+      <if test="creditId != null" >
+        credit_id = #{creditId,jdbcType=BIGINT},
+      </if>
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="enName != null" >
+        en_name = #{enName,jdbcType=VARCHAR},
+      </if>
+      <if test="certType != null" >
+        cert_type = #{certType,jdbcType=VARCHAR},
+      </if>
+      <if test="certNo != null" >
+        cert_no = #{certNo,jdbcType=VARCHAR},
+      </if>
+      <if test="certValidStartDate != null" >
+        cert_valid_start_date = #{certValidStartDate,jdbcType=VARCHAR},
+      </if>
+      <if test="certValidEndDate != null" >
+        cert_valid_end_date = #{certValidEndDate,jdbcType=VARCHAR},
+      </if>
+      <if test="licenceIssuingAuthority != null" >
+        licence_issuing_authority = #{licenceIssuingAuthority,jdbcType=VARCHAR},
+      </if>
+      <if test="certAddressPid != null" >
+        cert_address_pid = #{certAddressPid,jdbcType=VARCHAR},
+      </if>
+      <if test="certAddressPname != null" >
+        cert_address_pname = #{certAddressPname,jdbcType=VARCHAR},
+      </if>
+      <if test="certAddressCid != null" >
+        cert_address_cid = #{certAddressCid,jdbcType=VARCHAR},
+      </if>
+      <if test="certAddressCname != null" >
+        cert_address_cname = #{certAddressCname,jdbcType=VARCHAR},
+      </if>
+      <if test="certAddressRid != null" >
+        cert_address_rid = #{certAddressRid,jdbcType=VARCHAR},
+      </if>
+      <if test="certAddressRname != null" >
+        cert_address_rname = #{certAddressRname,jdbcType=VARCHAR},
+      </if>
+      <if test="certAddress != null" >
+        cert_address = #{certAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="mobilePhone != null" >
+        mobile_phone = #{mobilePhone,jdbcType=VARCHAR},
+      </if>
+      <if test="birthday != null" >
+        birthday = #{birthday,jdbcType=VARCHAR},
+      </if>
+      <if test="gender != null" >
+        gender = #{gender,jdbcType=INTEGER},
+      </if>
+      <if test="homeAddressFullDetail != null" >
+        home_address_full_detail = #{homeAddressFullDetail,jdbcType=VARCHAR},
+      </if>
+      <if test="domicileAddress != null" >
+        domicile_address = #{domicileAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="workUnit != null" >
+        work_unit = #{workUnit,jdbcType=VARCHAR},
+      </if>
+      <if test="postCode != null" >
+        post_code = #{postCode,jdbcType=VARCHAR},
+      </if>
+      <if test="maritalStatus != null" >
+        marital_status = #{maritalStatus,jdbcType=INTEGER},
+      </if>
+      <if test="borrowerRelationship != null" >
+        borrower_relationship = #{borrowerRelationship,jdbcType=INTEGER},
+      </if>
+      <if test="businessRelationship != null" >
+        business_relationship = #{businessRelationship,jdbcType=INTEGER},
+      </if>
+      <if test="certSimilarityDegree != null" >
+        cert_similarity_degree = #{certSimilarityDegree,jdbcType=INTEGER},
+      </if>
+      <if test="certStatus != null" >
+        cert_status = #{certStatus,jdbcType=INTEGER},
+      </if>
+      <if test="certResult != null" >
+        cert_result = #{certResult,jdbcType=VARCHAR},
+      </if>
+      <if test="certTime != null" >
+        cert_time = #{certTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="bankCardNo != null" >
+        bank_card_no = #{bankCardNo,jdbcType=VARCHAR},
+      </if>
+      <if test="bankCardReserveMobilePhone != null" >
+        bank_card_reserve_mobile_phone = #{bankCardReserveMobilePhone,jdbcType=VARCHAR},
+      </if>
+      <if test="bankCardOpenningBankName != null" >
+        bank_card_openning_bank_name = #{bankCardOpenningBankName,jdbcType=VARCHAR},
+      </if>
+      <if test="bankCardCnapsCode != null" >
+        bank_card_cnaps_code = #{bankCardCnapsCode,jdbcType=VARCHAR},
+      </if>
+      <if test="authResult != null" >
+        auth_result = #{authResult,jdbcType=INTEGER},
+      </if>
+      <if test="authRemark != null" >
+        auth_remark = #{authRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="riskSerialNumber != null" >
+        risk_serial_number = #{riskSerialNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="ocrFlowNo != null" >
+        ocr_flow_no = #{ocrFlowNo,jdbcType=VARCHAR},
+      </if>
+      <if test="bankCreditResult != null" >
+        bank_credit_result = #{bankCreditResult,jdbcType=INTEGER},
+      </if>
+      <if test="bankCreditRemark != null" >
+        bank_credit_remark = #{bankCreditRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="bigDataCreditResult != null" >
+        big_data_credit_result = #{bigDataCreditResult,jdbcType=INTEGER},
+      </if>
+      <if test="bigDataCreditRemark != null" >
+        big_data_credit_remark = #{bigDataCreditRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="bankCreditStaffId != null" >
+        bank_credit_staff_id = #{bankCreditStaffId,jdbcType=BIGINT},
+      </if>
+      <if test="bankCreditStaffName != null" >
+        bank_credit_staff_name = #{bankCreditStaffName,jdbcType=VARCHAR},
+      </if>
+      <if test="creditResult != null" >
+        credit_result = #{creditResult,jdbcType=INTEGER},
+      </if>
+      <if test="loanRecordStatus != null" >
+        loan_record_status = #{loanRecordStatus,jdbcType=INTEGER},
+      </if>
+      <if test="creditRemark != null" >
+        credit_remark = #{creditRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="signingAuthorizeLink != null" >
+        signing_authorize_link = #{signingAuthorizeLink,jdbcType=VARCHAR},
+      </if>
+      <if test="signResult != null" >
+        sign_result = #{signResult,jdbcType=INTEGER},
+      </if>
+      <if test="sendSmsResult != null" >
+        send_sms_result = #{sendSmsResult,jdbcType=INTEGER},
+      </if>
+      <if test="isInuse != null" >
+        is_inuse = #{isInuse,jdbcType=BIT},
+      </if>
+      <if test="due12monthsDebt != null" >
+        due_12months_debt = #{due12monthsDebt,jdbcType=DECIMAL},
+      </if>
+      <if test="due24monthsDebt != null" >
+        due_24months_debt = #{due24monthsDebt,jdbcType=DECIMAL},
+      </if>
+      <if test="due36monthsDebt != null" >
+        due_36months_debt = #{due36monthsDebt,jdbcType=DECIMAL},
+      </if>
+      <if test="due48monthsDebt != null" >
+        due_48months_debt = #{due48monthsDebt,jdbcType=DECIMAL},
+      </if>
+      <if test="due60monthsDebt != null" >
+        due_60months_debt = #{due60monthsDebt,jdbcType=DECIMAL},
+      </if>
+      <if test="loanBalance != null" >
+        loan_balance = #{loanBalance,jdbcType=DECIMAL},
+      </if>
+      <if test="creditCardNum != null" >
+        credit_card_num = #{creditCardNum,jdbcType=INTEGER},
+      </if>
+      <if test="creditLimitSum != null" >
+        credit_limit_sum = #{creditLimitSum,jdbcType=INTEGER},
+      </if>
+      <if test="avgUsedLimitLastSixMonth != null" >
+        avg_used_limit_last_six_month = #{avgUsedLimitLastSixMonth,jdbcType=INTEGER},
+      </if>
+      <if test="overdueNumLastYear != null" >
+        overdue_num_last_year = #{overdueNumLastYear,jdbcType=INTEGER},
+      </if>
+      <if test="overdueAmount != null" >
+        overdue_amount = #{overdueAmount,jdbcType=INTEGER},
+      </if>
+      <if test="guaranteedAmount != null" >
+        guaranteed_amount = #{guaranteedAmount,jdbcType=INTEGER},
+      </if>
+      <if test="authFlowNo != null" >
+        auth_flow_no = #{authFlowNo,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyTime != null" >
+        modify_time = #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yoong.dist.api.domain.a1902_biz.CustomerCreditRelavant" >
+    update customer_credit_relavant
+    set credit_id = #{creditId,jdbcType=BIGINT},
+      name = #{name,jdbcType=VARCHAR},
+      en_name = #{enName,jdbcType=VARCHAR},
+      cert_type = #{certType,jdbcType=VARCHAR},
+      cert_no = #{certNo,jdbcType=VARCHAR},
+      cert_valid_start_date = #{certValidStartDate,jdbcType=VARCHAR},
+      cert_valid_end_date = #{certValidEndDate,jdbcType=VARCHAR},
+      licence_issuing_authority = #{licenceIssuingAuthority,jdbcType=VARCHAR},
+      cert_address_pid = #{certAddressPid,jdbcType=VARCHAR},
+      cert_address_pname = #{certAddressPname,jdbcType=VARCHAR},
+      cert_address_cid = #{certAddressCid,jdbcType=VARCHAR},
+      cert_address_cname = #{certAddressCname,jdbcType=VARCHAR},
+      cert_address_rid = #{certAddressRid,jdbcType=VARCHAR},
+      cert_address_rname = #{certAddressRname,jdbcType=VARCHAR},
+      cert_address = #{certAddress,jdbcType=VARCHAR},
+      mobile_phone = #{mobilePhone,jdbcType=VARCHAR},
+      birthday = #{birthday,jdbcType=VARCHAR},
+      gender = #{gender,jdbcType=INTEGER},
+      home_address_full_detail = #{homeAddressFullDetail,jdbcType=VARCHAR},
+      domicile_address = #{domicileAddress,jdbcType=VARCHAR},
+      work_unit = #{workUnit,jdbcType=VARCHAR},
+      post_code = #{postCode,jdbcType=VARCHAR},
+      marital_status = #{maritalStatus,jdbcType=INTEGER},
+      borrower_relationship = #{borrowerRelationship,jdbcType=INTEGER},
+      business_relationship = #{businessRelationship,jdbcType=INTEGER},
+      cert_similarity_degree = #{certSimilarityDegree,jdbcType=INTEGER},
+      cert_status = #{certStatus,jdbcType=INTEGER},
+      cert_result = #{certResult,jdbcType=VARCHAR},
+      cert_time = #{certTime,jdbcType=TIMESTAMP},
+      bank_card_no = #{bankCardNo,jdbcType=VARCHAR},
+      bank_card_reserve_mobile_phone = #{bankCardReserveMobilePhone,jdbcType=VARCHAR},
+      bank_card_openning_bank_name = #{bankCardOpenningBankName,jdbcType=VARCHAR},
+      bank_card_cnaps_code = #{bankCardCnapsCode,jdbcType=VARCHAR},
+      auth_result = #{authResult,jdbcType=INTEGER},
+      auth_remark = #{authRemark,jdbcType=VARCHAR},
+      risk_serial_number = #{riskSerialNumber,jdbcType=VARCHAR},
+      ocr_flow_no = #{ocrFlowNo,jdbcType=VARCHAR},
+      bank_credit_result = #{bankCreditResult,jdbcType=INTEGER},
+      bank_credit_remark = #{bankCreditRemark,jdbcType=VARCHAR},
+      big_data_credit_result = #{bigDataCreditResult,jdbcType=INTEGER},
+      big_data_credit_remark = #{bigDataCreditRemark,jdbcType=VARCHAR},
+      bank_credit_staff_id = #{bankCreditStaffId,jdbcType=BIGINT},
+      bank_credit_staff_name = #{bankCreditStaffName,jdbcType=VARCHAR},
+      credit_result = #{creditResult,jdbcType=INTEGER},
+      loan_record_status = #{loanRecordStatus,jdbcType=INTEGER},
+      credit_remark = #{creditRemark,jdbcType=VARCHAR},
+      signing_authorize_link = #{signingAuthorizeLink,jdbcType=VARCHAR},
+      sign_result = #{signResult,jdbcType=INTEGER},
+      send_sms_result = #{sendSmsResult,jdbcType=INTEGER},
+      is_inuse = #{isInuse,jdbcType=BIT},
+      due_12months_debt = #{due12monthsDebt,jdbcType=DECIMAL},
+      due_24months_debt = #{due24monthsDebt,jdbcType=DECIMAL},
+      due_36months_debt = #{due36monthsDebt,jdbcType=DECIMAL},
+      due_48months_debt = #{due48monthsDebt,jdbcType=DECIMAL},
+      due_60months_debt = #{due60monthsDebt,jdbcType=DECIMAL},
+      loan_balance = #{loanBalance,jdbcType=DECIMAL},
+      credit_card_num = #{creditCardNum,jdbcType=INTEGER},
+      credit_limit_sum = #{creditLimitSum,jdbcType=INTEGER},
+      avg_used_limit_last_six_month = #{avgUsedLimitLastSixMonth,jdbcType=INTEGER},
+      overdue_num_last_year = #{overdueNumLastYear,jdbcType=INTEGER},
+      overdue_amount = #{overdueAmount,jdbcType=INTEGER},
+      guaranteed_amount = #{guaranteedAmount,jdbcType=INTEGER},
+      auth_flow_no = #{authFlowNo,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      modify_time = #{modifyTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

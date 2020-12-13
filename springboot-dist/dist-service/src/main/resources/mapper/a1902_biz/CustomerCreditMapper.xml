@@ -1,0 +1,576 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yoong.dist.service.core.mapper.a1902_biz.CustomerCreditMapper" >
+  <resultMap id="BaseResultMap" type="com.yoong.dist.api.domain.a1902_biz.CustomerCredit" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="source" property="source" jdbcType="INTEGER" />
+    <result column="credit_no" property="creditNo" jdbcType="VARCHAR" />
+    <result column="customer_id" property="customerId" jdbcType="BIGINT" />
+    <result column="customer_name" property="customerName" jdbcType="VARCHAR" />
+    <result column="cert_type" property="certType" jdbcType="VARCHAR" />
+    <result column="cert_no" property="certNo" jdbcType="VARCHAR" />
+    <result column="biz_type" property="bizType" jdbcType="VARCHAR" />
+    <result column="biz_product_type" property="bizProductType" jdbcType="VARCHAR" />
+    <result column="business_breed_id" property="businessBreedId" jdbcType="BIGINT" />
+    <result column="auth_type" property="authType" jdbcType="VARCHAR" />
+    <result column="sign_type" property="signType" jdbcType="INTEGER" />
+    <result column="outer_sign_type" property="outerSignType" jdbcType="INTEGER" />
+    <result column="agency_org_id" property="agencyOrgId" jdbcType="BIGINT" />
+    <result column="agency_org_name" property="agencyOrgName" jdbcType="VARCHAR" />
+    <result column="branch_org_id" property="branchOrgId" jdbcType="BIGINT" />
+    <result column="branch_org_name" property="branchOrgName" jdbcType="VARCHAR" />
+    <result column="sub_org_id" property="subOrgId" jdbcType="BIGINT" />
+    <result column="sub_org_name" property="subOrgName" jdbcType="VARCHAR" />
+    <result column="apply_time" property="applyTime" jdbcType="TIMESTAMP" />
+    <result column="fund_org_id" property="fundOrgId" jdbcType="BIGINT" />
+    <result column="fund_org_name" property="fundOrgName" jdbcType="VARCHAR" />
+    <result column="outer_fund_system_type" property="outerFundSystemType" jdbcType="INTEGER" />
+    <result column="customer_manager_id" property="customerManagerId" jdbcType="BIGINT" />
+    <result column="customer_manager_name" property="customerManagerName" jdbcType="VARCHAR" />
+    <result column="save_status" property="saveStatus" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="modify_time" property="modifyTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, source, credit_no, customer_id, customer_name, cert_type, cert_no, biz_type, 
+    biz_product_type, business_breed_id, auth_type, sign_type, outer_sign_type, agency_org_id, 
+    agency_org_name, branch_org_id, branch_org_name, sub_org_id, sub_org_name, apply_time, 
+    fund_org_id, fund_org_name, outer_fund_system_type, customer_manager_id, customer_manager_name, 
+    save_status, create_time, modify_time
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.yoong.dist.api.domain.a1902_biz.CustomerCreditExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from customer_credit
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from customer_credit
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from customer_credit
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.yoong.dist.api.domain.a1902_biz.CustomerCreditExample" >
+    delete from customer_credit
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.yoong.dist.api.domain.a1902_biz.CustomerCredit" >
+    insert into customer_credit (id, source, credit_no, 
+      customer_id, customer_name, cert_type, 
+      cert_no, biz_type, biz_product_type, 
+      business_breed_id, auth_type, sign_type, 
+      outer_sign_type, agency_org_id, agency_org_name, 
+      branch_org_id, branch_org_name, sub_org_id, 
+      sub_org_name, apply_time, fund_org_id, 
+      fund_org_name, outer_fund_system_type, customer_manager_id, 
+      customer_manager_name, save_status, create_time, 
+      modify_time)
+    values (#{id,jdbcType=BIGINT}, #{source,jdbcType=INTEGER}, #{creditNo,jdbcType=VARCHAR}, 
+      #{customerId,jdbcType=BIGINT}, #{customerName,jdbcType=VARCHAR}, #{certType,jdbcType=VARCHAR}, 
+      #{certNo,jdbcType=VARCHAR}, #{bizType,jdbcType=VARCHAR}, #{bizProductType,jdbcType=VARCHAR}, 
+      #{businessBreedId,jdbcType=BIGINT}, #{authType,jdbcType=VARCHAR}, #{signType,jdbcType=INTEGER}, 
+      #{outerSignType,jdbcType=INTEGER}, #{agencyOrgId,jdbcType=BIGINT}, #{agencyOrgName,jdbcType=VARCHAR}, 
+      #{branchOrgId,jdbcType=BIGINT}, #{branchOrgName,jdbcType=VARCHAR}, #{subOrgId,jdbcType=BIGINT}, 
+      #{subOrgName,jdbcType=VARCHAR}, #{applyTime,jdbcType=TIMESTAMP}, #{fundOrgId,jdbcType=BIGINT}, 
+      #{fundOrgName,jdbcType=VARCHAR}, #{outerFundSystemType,jdbcType=INTEGER}, #{customerManagerId,jdbcType=BIGINT}, 
+      #{customerManagerName,jdbcType=VARCHAR}, #{saveStatus,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{modifyTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.yoong.dist.api.domain.a1902_biz.CustomerCredit" >
+    insert into customer_credit
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="source != null" >
+        source,
+      </if>
+      <if test="creditNo != null" >
+        credit_no,
+      </if>
+      <if test="customerId != null" >
+        customer_id,
+      </if>
+      <if test="customerName != null" >
+        customer_name,
+      </if>
+      <if test="certType != null" >
+        cert_type,
+      </if>
+      <if test="certNo != null" >
+        cert_no,
+      </if>
+      <if test="bizType != null" >
+        biz_type,
+      </if>
+      <if test="bizProductType != null" >
+        biz_product_type,
+      </if>
+      <if test="businessBreedId != null" >
+        business_breed_id,
+      </if>
+      <if test="authType != null" >
+        auth_type,
+      </if>
+      <if test="signType != null" >
+        sign_type,
+      </if>
+      <if test="outerSignType != null" >
+        outer_sign_type,
+      </if>
+      <if test="agencyOrgId != null" >
+        agency_org_id,
+      </if>
+      <if test="agencyOrgName != null" >
+        agency_org_name,
+      </if>
+      <if test="branchOrgId != null" >
+        branch_org_id,
+      </if>
+      <if test="branchOrgName != null" >
+        branch_org_name,
+      </if>
+      <if test="subOrgId != null" >
+        sub_org_id,
+      </if>
+      <if test="subOrgName != null" >
+        sub_org_name,
+      </if>
+      <if test="applyTime != null" >
+        apply_time,
+      </if>
+      <if test="fundOrgId != null" >
+        fund_org_id,
+      </if>
+      <if test="fundOrgName != null" >
+        fund_org_name,
+      </if>
+      <if test="outerFundSystemType != null" >
+        outer_fund_system_type,
+      </if>
+      <if test="customerManagerId != null" >
+        customer_manager_id,
+      </if>
+      <if test="customerManagerName != null" >
+        customer_manager_name,
+      </if>
+      <if test="saveStatus != null" >
+        save_status,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="modifyTime != null" >
+        modify_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="source != null" >
+        #{source,jdbcType=INTEGER},
+      </if>
+      <if test="creditNo != null" >
+        #{creditNo,jdbcType=VARCHAR},
+      </if>
+      <if test="customerId != null" >
+        #{customerId,jdbcType=BIGINT},
+      </if>
+      <if test="customerName != null" >
+        #{customerName,jdbcType=VARCHAR},
+      </if>
+      <if test="certType != null" >
+        #{certType,jdbcType=VARCHAR},
+      </if>
+      <if test="certNo != null" >
+        #{certNo,jdbcType=VARCHAR},
+      </if>
+      <if test="bizType != null" >
+        #{bizType,jdbcType=VARCHAR},
+      </if>
+      <if test="bizProductType != null" >
+        #{bizProductType,jdbcType=VARCHAR},
+      </if>
+      <if test="businessBreedId != null" >
+        #{businessBreedId,jdbcType=BIGINT},
+      </if>
+      <if test="authType != null" >
+        #{authType,jdbcType=VARCHAR},
+      </if>
+      <if test="signType != null" >
+        #{signType,jdbcType=INTEGER},
+      </if>
+      <if test="outerSignType != null" >
+        #{outerSignType,jdbcType=INTEGER},
+      </if>
+      <if test="agencyOrgId != null" >
+        #{agencyOrgId,jdbcType=BIGINT},
+      </if>
+      <if test="agencyOrgName != null" >
+        #{agencyOrgName,jdbcType=VARCHAR},
+      </if>
+      <if test="branchOrgId != null" >
+        #{branchOrgId,jdbcType=BIGINT},
+      </if>
+      <if test="branchOrgName != null" >
+        #{branchOrgName,jdbcType=VARCHAR},
+      </if>
+      <if test="subOrgId != null" >
+        #{subOrgId,jdbcType=BIGINT},
+      </if>
+      <if test="subOrgName != null" >
+        #{subOrgName,jdbcType=VARCHAR},
+      </if>
+      <if test="applyTime != null" >
+        #{applyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="fundOrgId != null" >
+        #{fundOrgId,jdbcType=BIGINT},
+      </if>
+      <if test="fundOrgName != null" >
+        #{fundOrgName,jdbcType=VARCHAR},
+      </if>
+      <if test="outerFundSystemType != null" >
+        #{outerFundSystemType,jdbcType=INTEGER},
+      </if>
+      <if test="customerManagerId != null" >
+        #{customerManagerId,jdbcType=BIGINT},
+      </if>
+      <if test="customerManagerName != null" >
+        #{customerManagerName,jdbcType=VARCHAR},
+      </if>
+      <if test="saveStatus != null" >
+        #{saveStatus,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyTime != null" >
+        #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.yoong.dist.api.domain.a1902_biz.CustomerCreditExample" resultType="java.lang.Integer" >
+    select count(*) from customer_credit
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update customer_credit
+    <set >
+      <if test="record.id != null" >
+        id = #{record.id,jdbcType=BIGINT},
+      </if>
+      <if test="record.source != null" >
+        source = #{record.source,jdbcType=INTEGER},
+      </if>
+      <if test="record.creditNo != null" >
+        credit_no = #{record.creditNo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.customerId != null" >
+        customer_id = #{record.customerId,jdbcType=BIGINT},
+      </if>
+      <if test="record.customerName != null" >
+        customer_name = #{record.customerName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.certType != null" >
+        cert_type = #{record.certType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.certNo != null" >
+        cert_no = #{record.certNo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bizType != null" >
+        biz_type = #{record.bizType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bizProductType != null" >
+        biz_product_type = #{record.bizProductType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.businessBreedId != null" >
+        business_breed_id = #{record.businessBreedId,jdbcType=BIGINT},
+      </if>
+      <if test="record.authType != null" >
+        auth_type = #{record.authType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.signType != null" >
+        sign_type = #{record.signType,jdbcType=INTEGER},
+      </if>
+      <if test="record.outerSignType != null" >
+        outer_sign_type = #{record.outerSignType,jdbcType=INTEGER},
+      </if>
+      <if test="record.agencyOrgId != null" >
+        agency_org_id = #{record.agencyOrgId,jdbcType=BIGINT},
+      </if>
+      <if test="record.agencyOrgName != null" >
+        agency_org_name = #{record.agencyOrgName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.branchOrgId != null" >
+        branch_org_id = #{record.branchOrgId,jdbcType=BIGINT},
+      </if>
+      <if test="record.branchOrgName != null" >
+        branch_org_name = #{record.branchOrgName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.subOrgId != null" >
+        sub_org_id = #{record.subOrgId,jdbcType=BIGINT},
+      </if>
+      <if test="record.subOrgName != null" >
+        sub_org_name = #{record.subOrgName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.applyTime != null" >
+        apply_time = #{record.applyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.fundOrgId != null" >
+        fund_org_id = #{record.fundOrgId,jdbcType=BIGINT},
+      </if>
+      <if test="record.fundOrgName != null" >
+        fund_org_name = #{record.fundOrgName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.outerFundSystemType != null" >
+        outer_fund_system_type = #{record.outerFundSystemType,jdbcType=INTEGER},
+      </if>
+      <if test="record.customerManagerId != null" >
+        customer_manager_id = #{record.customerManagerId,jdbcType=BIGINT},
+      </if>
+      <if test="record.customerManagerName != null" >
+        customer_manager_name = #{record.customerManagerName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.saveStatus != null" >
+        save_status = #{record.saveStatus,jdbcType=INTEGER},
+      </if>
+      <if test="record.createTime != null" >
+        create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.modifyTime != null" >
+        modify_time = #{record.modifyTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update customer_credit
+    set id = #{record.id,jdbcType=BIGINT},
+      source = #{record.source,jdbcType=INTEGER},
+      credit_no = #{record.creditNo,jdbcType=VARCHAR},
+      customer_id = #{record.customerId,jdbcType=BIGINT},
+      customer_name = #{record.customerName,jdbcType=VARCHAR},
+      cert_type = #{record.certType,jdbcType=VARCHAR},
+      cert_no = #{record.certNo,jdbcType=VARCHAR},
+      biz_type = #{record.bizType,jdbcType=VARCHAR},
+      biz_product_type = #{record.bizProductType,jdbcType=VARCHAR},
+      business_breed_id = #{record.businessBreedId,jdbcType=BIGINT},
+      auth_type = #{record.authType,jdbcType=VARCHAR},
+      sign_type = #{record.signType,jdbcType=INTEGER},
+      outer_sign_type = #{record.outerSignType,jdbcType=INTEGER},
+      agency_org_id = #{record.agencyOrgId,jdbcType=BIGINT},
+      agency_org_name = #{record.agencyOrgName,jdbcType=VARCHAR},
+      branch_org_id = #{record.branchOrgId,jdbcType=BIGINT},
+      branch_org_name = #{record.branchOrgName,jdbcType=VARCHAR},
+      sub_org_id = #{record.subOrgId,jdbcType=BIGINT},
+      sub_org_name = #{record.subOrgName,jdbcType=VARCHAR},
+      apply_time = #{record.applyTime,jdbcType=TIMESTAMP},
+      fund_org_id = #{record.fundOrgId,jdbcType=BIGINT},
+      fund_org_name = #{record.fundOrgName,jdbcType=VARCHAR},
+      outer_fund_system_type = #{record.outerFundSystemType,jdbcType=INTEGER},
+      customer_manager_id = #{record.customerManagerId,jdbcType=BIGINT},
+      customer_manager_name = #{record.customerManagerName,jdbcType=VARCHAR},
+      save_status = #{record.saveStatus,jdbcType=INTEGER},
+      create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      modify_time = #{record.modifyTime,jdbcType=TIMESTAMP}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yoong.dist.api.domain.a1902_biz.CustomerCredit" >
+    update customer_credit
+    <set >
+      <if test="source != null" >
+        source = #{source,jdbcType=INTEGER},
+      </if>
+      <if test="creditNo != null" >
+        credit_no = #{creditNo,jdbcType=VARCHAR},
+      </if>
+      <if test="customerId != null" >
+        customer_id = #{customerId,jdbcType=BIGINT},
+      </if>
+      <if test="customerName != null" >
+        customer_name = #{customerName,jdbcType=VARCHAR},
+      </if>
+      <if test="certType != null" >
+        cert_type = #{certType,jdbcType=VARCHAR},
+      </if>
+      <if test="certNo != null" >
+        cert_no = #{certNo,jdbcType=VARCHAR},
+      </if>
+      <if test="bizType != null" >
+        biz_type = #{bizType,jdbcType=VARCHAR},
+      </if>
+      <if test="bizProductType != null" >
+        biz_product_type = #{bizProductType,jdbcType=VARCHAR},
+      </if>
+      <if test="businessBreedId != null" >
+        business_breed_id = #{businessBreedId,jdbcType=BIGINT},
+      </if>
+      <if test="authType != null" >
+        auth_type = #{authType,jdbcType=VARCHAR},
+      </if>
+      <if test="signType != null" >
+        sign_type = #{signType,jdbcType=INTEGER},
+      </if>
+      <if test="outerSignType != null" >
+        outer_sign_type = #{outerSignType,jdbcType=INTEGER},
+      </if>
+      <if test="agencyOrgId != null" >
+        agency_org_id = #{agencyOrgId,jdbcType=BIGINT},
+      </if>
+      <if test="agencyOrgName != null" >
+        agency_org_name = #{agencyOrgName,jdbcType=VARCHAR},
+      </if>
+      <if test="branchOrgId != null" >
+        branch_org_id = #{branchOrgId,jdbcType=BIGINT},
+      </if>
+      <if test="branchOrgName != null" >
+        branch_org_name = #{branchOrgName,jdbcType=VARCHAR},
+      </if>
+      <if test="subOrgId != null" >
+        sub_org_id = #{subOrgId,jdbcType=BIGINT},
+      </if>
+      <if test="subOrgName != null" >
+        sub_org_name = #{subOrgName,jdbcType=VARCHAR},
+      </if>
+      <if test="applyTime != null" >
+        apply_time = #{applyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="fundOrgId != null" >
+        fund_org_id = #{fundOrgId,jdbcType=BIGINT},
+      </if>
+      <if test="fundOrgName != null" >
+        fund_org_name = #{fundOrgName,jdbcType=VARCHAR},
+      </if>
+      <if test="outerFundSystemType != null" >
+        outer_fund_system_type = #{outerFundSystemType,jdbcType=INTEGER},
+      </if>
+      <if test="customerManagerId != null" >
+        customer_manager_id = #{customerManagerId,jdbcType=BIGINT},
+      </if>
+      <if test="customerManagerName != null" >
+        customer_manager_name = #{customerManagerName,jdbcType=VARCHAR},
+      </if>
+      <if test="saveStatus != null" >
+        save_status = #{saveStatus,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyTime != null" >
+        modify_time = #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yoong.dist.api.domain.a1902_biz.CustomerCredit" >
+    update customer_credit
+    set source = #{source,jdbcType=INTEGER},
+      credit_no = #{creditNo,jdbcType=VARCHAR},
+      customer_id = #{customerId,jdbcType=BIGINT},
+      customer_name = #{customerName,jdbcType=VARCHAR},
+      cert_type = #{certType,jdbcType=VARCHAR},
+      cert_no = #{certNo,jdbcType=VARCHAR},
+      biz_type = #{bizType,jdbcType=VARCHAR},
+      biz_product_type = #{bizProductType,jdbcType=VARCHAR},
+      business_breed_id = #{businessBreedId,jdbcType=BIGINT},
+      auth_type = #{authType,jdbcType=VARCHAR},
+      sign_type = #{signType,jdbcType=INTEGER},
+      outer_sign_type = #{outerSignType,jdbcType=INTEGER},
+      agency_org_id = #{agencyOrgId,jdbcType=BIGINT},
+      agency_org_name = #{agencyOrgName,jdbcType=VARCHAR},
+      branch_org_id = #{branchOrgId,jdbcType=BIGINT},
+      branch_org_name = #{branchOrgName,jdbcType=VARCHAR},
+      sub_org_id = #{subOrgId,jdbcType=BIGINT},
+      sub_org_name = #{subOrgName,jdbcType=VARCHAR},
+      apply_time = #{applyTime,jdbcType=TIMESTAMP},
+      fund_org_id = #{fundOrgId,jdbcType=BIGINT},
+      fund_org_name = #{fundOrgName,jdbcType=VARCHAR},
+      outer_fund_system_type = #{outerFundSystemType,jdbcType=INTEGER},
+      customer_manager_id = #{customerManagerId,jdbcType=BIGINT},
+      customer_manager_name = #{customerManagerName,jdbcType=VARCHAR},
+      save_status = #{saveStatus,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      modify_time = #{modifyTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>
