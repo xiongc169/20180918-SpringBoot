@@ -1,0 +1,83 @@
+<configuration scan="false" debug="false">
+    <property name="log.dir" value="/home/data/venus-estage"></property>
+    <property name="log.root.level" value="INFO"></property>
+
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level [%t] %logger{32}.%M:%L %msg%n</pattern>
+            <immediateFlush>false</immediateFlush>
+        </encoder>
+    </appender>
+
+    <appender name="FILE_INFO" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${log.dir}/info.log</file>
+        <Append>true</Append>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${log.dir}/bak/info.%d{yyyy-MM-dd-HH}.log.zip</fileNamePattern>
+            <!-- keep 15 days worth of history -->
+            <maxHistory>15</maxHistory>
+        </rollingPolicy>
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>INFO</level>
+            <onMatch>ACCEPT</onMatch>
+            <onMismatch>DENY</onMismatch>
+        </filter>
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <charset>utf-8</charset>
+            <ImmediateFlush>true</ImmediateFlush>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level [%t] %logger{32}.%M:%L %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="FILE_WARN" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${log.dir}/warn.log</file>
+        <Append>true</Append>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${log.dir}/bak/warn.%d{yyyy-MM-dd-HH}.log.zip</fileNamePattern>
+            <!-- keep 15 days worth of history -->
+            <maxHistory>15</maxHistory>
+        </rollingPolicy>
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>WARN</level>
+            <onMatch>ACCEPT</onMatch>
+            <onMismatch>DENY</onMismatch>
+        </filter>
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <charset>utf-8</charset>
+            <ImmediateFlush>true</ImmediateFlush>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level [%t] %logger{32}.%M:%L %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="FILE_ERROR" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${log.dir}/error.log</file>
+        <Append>true</Append>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${log.dir}/bak/error.%d{yyyy-MM-dd}.log.zip</fileNamePattern>
+            <!-- keep 15 days worth of history -->
+            <maxHistory>15</maxHistory>
+        </rollingPolicy>
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>ERROR</level>
+            <onMatch>ACCEPT</onMatch>
+            <onMismatch>DENY</onMismatch>
+        </filter>
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <charset>utf-8</charset>
+            <ImmediateFlush>true</ImmediateFlush>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level [%t] %logger{32}.%M:%L %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <root level="${log.root.level}">
+        <appender-ref ref="STDOUT"/>
+        <appender-ref ref="FILE_INFO"/>
+        <appender-ref ref="FILE_WARN"/>
+        <appender-ref ref="FILE_ERROR"/>
+    </root>
+
+    <!--<logger name="com.ftcs" level="ERROR">-->
+    <!--   <appender-ref ref="FILE_ERROR"/>-->
+    <!--</logger>-->
+
+</configuration>

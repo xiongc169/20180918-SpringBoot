@@ -22,7 +22,7 @@ import java.util.Optional;
  * @Version 1.0
  */
 @Slf4j
-@Service("stageCommonServiceImpl")
+@Service("stageCommonService")
 public class StageCommonServiceImpl extends AbstractStageService implements StageCommonService {
 
     @Autowired

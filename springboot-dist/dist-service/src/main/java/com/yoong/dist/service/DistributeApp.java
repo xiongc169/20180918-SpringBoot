@@ -2,6 +2,7 @@ package com.yoong.dist.service;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.ImportResource;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -16,6 +17,7 @@ import java.util.Date;
  * @Version 1.0
  */
 //@SpringBootApplication(exclude = DataSourceAutoConfiguration.class)
+@ImportResource("classpath:spring/spring.xml")
 @SpringBootApplication
 public class DistributeApp {
 
