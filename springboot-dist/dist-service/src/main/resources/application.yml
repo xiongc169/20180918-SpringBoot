@@ -6,17 +6,17 @@ spring:
     name: distributeApp
   datasource:
     a1902biz:
-      url: jdbc:mysql://127.0.0.1:3306/a1902_biz?serverTimezone=UTC&amp;useSSL=false
+      url: jdbc:mysql://127.0.0.1:3306/a1902_biz?serverTimezone=UTC&useSSL=false
       username: root
       password: 123456
       driverClassName: com.mysql.cj.jdbc.Driver
     a1902stage:
-      url: jdbc:mysql://127.0.0.1:3306/a1902_biz?serverTimezone=UTC&amp;useSSL=false
+      url: jdbc:mysql://127.0.0.1:3306/a1902_stage?serverTimezone=UTC&useSSL=false
       username: root
       password: 123456
       driverClassName: com.mysql.cj.jdbc.Driver
     wonguser:
-      url: jdbc:mysql://127.0.0.1:3306/a1902_biz?serverTimezone=UTC&amp;useSSL=false
+      url: jdbc:mysql://127.0.0.1:3306/wong_user?serverTimezone=UTC&useSSL=false
       username: root
       password: 123456
       driverClassName: com.mysql.cj.jdbc.Driver

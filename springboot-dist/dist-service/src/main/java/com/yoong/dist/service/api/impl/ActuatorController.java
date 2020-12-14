@@ -1,15 +1,15 @@
 package com.yoong.dist.service.api.impl;
 
-//import com.yoong.dist.api.domain.a1902_stage.ApiSendRecord;
-//import com.yoong.dist.api.domain.a1902_stage.CreditRecord;
-//import com.yoong.dist.api.domain.wong_user.Account;
-//import com.yoong.dist.service.core.mapper.a1902_stage.ApiSendRecordMapper;
-//import com.yoong.dist.service.core.mapper.wong_user.AccountMapper;
-//import com.yoong.dist.service.core.service.a1902_stage.CreditRecordService;
-
+import com.yoong.dist.api.domain.a1902_biz.CustomerCredit;
+import com.yoong.dist.api.domain.a1902_stage.ApiSendRecord;
+import com.yoong.dist.api.domain.wong_user.Account;
+import com.yoong.dist.service.core.mapper.a1902_biz.CustomerCreditMapper;
+import com.yoong.dist.service.core.mapper.a1902_stage.ApiSendRecordMapper;
+import com.yoong.dist.service.core.mapper.wong_user.AccountMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.context.WebApplicationContext;
@@ -20,7 +20,6 @@ import java.util.Date;
 import java.util.Enumeration;
 
 //import org.springframework.data.redis.core.RedisTemplate;
-//import org.springframework.transaction.annotation.Transactional;
 
 /**
  * @Desc ActuatorController
@@ -41,15 +40,15 @@ public class ActuatorController {
     @Autowired
     private ServletContext servletContext;
 
-    //@Autowired
-    //private ApiSendRecordMapper apiSendRecordMapper;
-    //
-    //@Autowired
-    //private CreditRecordService creditRecordService;
-    //
-    //@Autowired
-    //private AccountMapper accountMapper;
-    //
+    @Autowired
+    private CustomerCreditMapper customerCreditMapper;
+
+    @Autowired
+    private ApiSendRecordMapper apiSendRecordMapper;
+
+    @Autowired
+    private AccountMapper accountMapper;
+
     //@Autowired
     //private RedisTemplate redisTemplate;
 
@@ -73,33 +72,29 @@ public class ActuatorController {
     }
 
     /**
-     * http://127.0.0.1:9712/actuator/insert?orderNo=12345
+     * http://127.0.0.1:8080/actuator/insert?orderNo=12345
      */
     @ResponseBody
     @RequestMapping("/insert")
-    //@Transactional
-//    @Transactional(transactionManager = "estageTransactionManager")
-//    @Transactional(transactionManager = "clsTransactionManager")
-//    @Transactional(transactionManager = "wongTransactionManager")
+    //@Transactional//仅 @Primary=a1902StageTransactionManager 注解的事务生效
+    //@Transactional(transactionManager = "a1902StageTransactionManager")//仅 a1902StageTransactionManager 事务生效
+    //@Transactional(transactionManager = "a1902BizTransactionManager")//仅 a1902BizTransactionManager 事务生效
+    //@Transactional(transactionManager = "wongUserTransactionManager")//仅 wongUserTransactionManager 事务生效
     public String insert(String orderNo) {
-        //ApiSendRecord sendRecord = new ApiSendRecord();
-        //sendRecord.setApiServiceId(1l);
-        //Integer insertSendRows = apiSendRecordMapper.insertSelective(sendRecord);
+        CustomerCredit customerCredit = new CustomerCredit();
+        customerCredit.setAgencyOrgId(1111l);
+        Integer insertCreditRows = customerCreditMapper.insert(customerCredit);
+        System.out.println(insertCreditRows);
 
-        //CreditRecord creditRecord = new CreditRecord();
-        //creditRecord.setOrderNo(orderNo);
-        //Integer insertCreditRows = creditRecordService.insert(creditRecord);
+        ApiSendRecord sendRecord = new ApiSendRecord();
+        sendRecord.setApiServiceId(1l);
+        Integer insertSendRows = apiSendRecordMapper.insertSelective(sendRecord);
+        System.out.println(insertSendRows);
 
-        //SysDicttt sysDicttt = new SysDicttt();
-        //sysDicttt.setKeyCode(orderNo);
-        //sysDicttt.setKeyValue(orderNo);
-        //sysDicttt.setName(orderNo);
-        //sysDicttt.setType(orderNo);
-        //Integer insertSysDictRows = sysDictttMapper.insertSelective(sysDicttt);
-
-        //Account account = new Account();
-        //account.setAccountId(orderNo);
-        //Integer insertAccountRows = accountMapper.insertSelective(account);
+        Account account = new Account();
+        account.setAccountId(orderNo);
+        Integer insertAccountRows = accountMapper.insertSelective(account);
+        System.out.println(insertAccountRows);
 
         //int bb = 100 / 0;
 
@@ -108,18 +103,30 @@ public class ActuatorController {
     }
 
     /**
-     * http://127.0.0.1:9712/actuator/insertXaTx?orderNo=1000
+     * http://127.0.0.1:8080/actuator/insertXaTx?orderNo=1000
      */
     @ResponseBody
     @RequestMapping("/insertXaTx")
-    //@Transactional(transactionManager = "estageTransactionManager")
+    @Transactional//分布式事务
     public String insertXaTx(String orderNo) {
+        CustomerCredit customerCredit = new CustomerCredit();
+        customerCredit.setAgencyOrgId(1111l);
+        Integer insertCreditRows = customerCreditMapper.insert(customerCredit);
+        System.out.println(insertCreditRows);
 
-        //Account account = new Account();
-        //account.setAccountId(orderNo);
-        //Integer insertAccountRows = accountMapper.insertSelective(account);
+        ApiSendRecord sendRecord = new ApiSendRecord();
+        sendRecord.setApiServiceId(1l);
+        Integer insertSendRows = apiSendRecordMapper.insertSelective(sendRecord);
+        System.out.println(insertSendRows);
+
+        Account account = new Account();
+        account.setAccountId(orderNo);
+        Integer insertAccountRows = accountMapper.insertSelective(account);
+        System.out.println(insertAccountRows);
+
+        //int bb = 100 / 0;
+
         String time = sdFormat.format(new Date());
-        int bb = 100 / 0;
         return time;
     }
 
