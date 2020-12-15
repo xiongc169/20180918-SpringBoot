@@ -1,8 +1,7 @@
 package com.yoong.autoconfig.config.autoconfig02;
 
-import com.yoong.autoconfig.domain.fruit.Apple;
 import com.yoong.autoconfig.domain.fruit.Cherry;
-import org.springframework.boot.autoconfigure.condition.*;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingClass;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -25,12 +24,12 @@ import org.springframework.context.annotation.Configuration;
 public class CherryAutoConfiguration {
 
     public CherryAutoConfiguration() {
-        System.out.println("***************************************** CherryAutoConfig() ******************************************************************");
+        System.out.println("********** CherryAutoConfiguration() **********");
     }
 
     @Bean
     public Cherry cherry() {
-        System.out.println("************************************* CherryAutoConfig.cherry() **************************************************************");
+        System.out.println("********** CherryAutoConfiguration.cherry() **********");
         Cherry cherry = new Cherry();
         return cherry;
     }

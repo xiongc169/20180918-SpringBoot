@@ -3,7 +3,6 @@ package com.yoong.autoconfig.config.autoconfig01;
 import com.yoong.autoconfig.domain.fruit.Apple;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
 
 /**
  * @Desc Apple配置类
@@ -18,7 +17,7 @@ import org.springframework.context.annotation.Configuration;
 public class AppleConfiguration {
 
     public AppleConfiguration() {
-        System.out.println("***************************************** AppleConfig() **************************************************");
+        System.out.println("********** AppleConfiguration() **********");
     }
 
     @Bean

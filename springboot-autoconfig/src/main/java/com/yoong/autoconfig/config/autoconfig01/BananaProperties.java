@@ -22,7 +22,7 @@ import org.springframework.stereotype.Component;
 public class BananaProperties {
 
     public BananaProperties() {
-        System.out.println("***************************************** BananaProperties() *****************************************");
+        System.out.println("********** BananaProperties() **********");
     }
 
     private String banId = "default-banId";

@@ -1,8 +1,7 @@
 package com.yoong.autoconfig.config.autoconfig01;
 
 import com.yoong.autoconfig.domain.fruit.Apple;
-import com.yoong.autoconfig.domain.fruit.DragonFruit;
-import org.springframework.boot.autoconfigure.condition.*;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
 
@@ -25,14 +24,15 @@ import org.springframework.context.annotation.Configuration;
 //@ConditionalOnNotWebApplication
 public class BananaAutoConfiguration {
 
-    public BananaAutoConfiguration() {
-        System.out.println("***************************************** BananaAutoConfig() *****************************************");
+    public BananaAutoConfiguration(BananaProperties properties) {
+        System.out.println("********** BananaAutoConfiguration() **********");
+        //输出：ban01-Id ban01-Name
+        System.out.println(properties.getBanId() + " " + properties.getBanName());
 
         //若注释 @EnableConfigurationProperties(BananaProperties.class) 注解，输出：default-banId default-banName
         //若启用 @EnableConfigurationProperties(BananaProperties.class) 注解，输出：default-banId default-banName
         //若在 Controller 中用 @Autowired 注入 BananaProperties，输出：ban01-Id ban01-Name
-        BananaProperties properties = new BananaProperties();
-        System.out.println(properties.getBanId() + " " + properties.getBanName());
+        BananaProperties newProperties = new BananaProperties();
+        System.out.println(newProperties.getBanId() + " " + newProperties.getBanName());
     }
-
 }
