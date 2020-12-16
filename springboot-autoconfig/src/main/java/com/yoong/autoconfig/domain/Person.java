@@ -19,8 +19,8 @@ import java.util.Map;
  * @Version 1.0
  */
 @Data
-@Component
 @ConfigurationProperties(prefix = "person")
+@Component
 public class Person {
     private String lastName;
     private Integer age;
@@ -29,4 +29,8 @@ public class Person {
     private Map<String, Object> maps;
     private List<Object> lists;
     private Dog dog;//此处省略Dog类的bean实现，只有两个简单的属性{name:steven,age:2}
+
+    public Person() {
+        System.out.println("********** Person() **********");
+    }
 }
