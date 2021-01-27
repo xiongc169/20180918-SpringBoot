@@ -12,6 +12,7 @@ import org.springframework.context.annotation.ImportResource;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.ConfigurableEnvironment;
 import org.springframework.core.env.Environment;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -32,8 +33,9 @@ import java.util.Date;
 @Import(MyImportSelector.class)
 //@ImportResource(locations = "classpath:spring/importRes.xml")
 //@ConfigurationProperties("spring.data")
-@PropertySource("classpath:spring/importRes.xml")
+//@PropertySource("classpath:spring/importRes.xml")
 //@PropertyResource("classpath:spring/importRes.xml")
+@EnableTransactionManagement
 public class AutoconfigApp {
 
     private static SimpleDateFormat sdFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss:SSS");

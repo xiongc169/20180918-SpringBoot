@@ -23,7 +23,8 @@ public class ReportController {
     private SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss:SSSS");
 
     /**
-     * http://127.0.0.1:8031/report/getReport
+     * user/[password]
+     * http://127.0.0.1:8030/report/getReport
      */
     @ResponseBody
     @RequestMapping("/getReport")
