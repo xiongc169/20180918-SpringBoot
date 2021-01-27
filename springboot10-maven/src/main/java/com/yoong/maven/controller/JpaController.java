@@ -23,13 +23,13 @@ import java.util.Date;
 @RequestMapping("/jpa")
 public class JpaController {
 
+    private SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss:SSSS");
+
     @Autowired
     private DepartmentRepository departmentRepository;
 
-    private SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss:SSSS");
-
     /**
-     * http://127.0.0.1:8080/jpa/getTime
+     * http://127.0.0.1:8000/jpa/getTime
      */
     @ResponseBody
     @RequestMapping("/getTime")
@@ -40,7 +40,7 @@ public class JpaController {
     }
 
     /**
-     * http://127.0.0.1:8080/jpa/saveDepartment
+     * http://127.0.0.1:8000/jpa/saveDepartment
      */
     @ResponseBody
     @RequestMapping("/saveDepartment")

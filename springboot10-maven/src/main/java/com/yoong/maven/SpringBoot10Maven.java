@@ -8,7 +8,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
- * @Desc MavenApp
+ * @Desc SpringBoot10Maven
  * <p>
  * @Author yoong
  * <p>
@@ -26,8 +26,8 @@ public class SpringBoot10Maven {
      * 入口函数
      */
     public static void main(String[] args) {
-        System.out.println(sdFormat.format(new Date()) + " MavenApp Start...");
+        System.out.println(sdFormat.format(new Date()) + " SpringBoot10Maven Start...");
         SpringApplication.run(SpringBoot10Maven.class);
-        System.out.println(sdFormat.format(new Date()) + " MavenApp Finished");
+        System.out.println(sdFormat.format(new Date()) + " SpringBoot10Maven Finished");
     }
 }

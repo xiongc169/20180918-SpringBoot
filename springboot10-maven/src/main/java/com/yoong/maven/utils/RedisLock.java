@@ -1,16 +1,17 @@
-package com.yoong.maven.distLock;
+package com.yoong.maven.utils;
 
-import com.yoong.maven.utils.RedisUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
+import redis.clients.jedis.Jedis;
+import redis.clients.jedis.JedisPool;
 
 import java.util.concurrent.TimeUnit;
 
 /**
- * @Desc 分布式锁
+ * @Desc DistributedLock
  * <p>
  * @Author yoong
  * <p>
@@ -19,10 +20,7 @@ import java.util.concurrent.TimeUnit;
  * @Version 1.0
  */
 @Component
-public class DistributeLock {
-
-    @Autowired
-    private RedisUtils redisUtils;
+public class RedisLock {
 
     private static Object object = new Object();
 
@@ -32,6 +30,15 @@ public class DistributeLock {
 
     @Autowired
     private RedisTemplate redisTemplate;
+    //#endregion
+
+
+    //#region  XML配置手动注入
+    @Autowired
+    private Jedis jedis;
+
+    @Autowired
+    private JedisPool jedisPool;
     //#endregion
 
     public boolean lock(String key, Long timeOut, int retryTimes) {
@@ -44,26 +51,12 @@ public class DistributeLock {
 //        } while (retryTimes >= 0);
 
         synchronized (object) {
-            if (StringUtils.isEmpty(redisUtils.stringRedisTemplateGet(key))) {
-                redisUtils.jedisPoolSet(key, key, timeOut);
+            if (StringUtils.isEmpty(stringRedisTemplate.opsForValue().get(key))) {
+                //jedis.auth("admin");
+                Long effectRows = jedisPool.getResource().setnx(key, key);
                 return true;
             }
         }
         return false;
-    }
-
-    public Boolean releaseLock(String key) {
-        Boolean result = redisUtils.stringRedisTemplateDel(key);
-        return result;
-    }
-
-    public boolean lock2(String key, String value, Long timeOut, int retryTimes) {
-        Boolean setResult = stringRedisTemplate.opsForValue().setIfAbsent(key, value, timeOut, TimeUnit.MILLISECONDS);
-        return setResult;
-    }
-
-    public boolean releaseLock2(String key) {
-        Boolean delResult = stringRedisTemplate.delete(key);
-        return delResult;
     }
 }
