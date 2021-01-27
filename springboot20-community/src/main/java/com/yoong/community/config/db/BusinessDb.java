@@ -20,7 +20,9 @@ import java.util.Map;
 
 @Configuration
 @EnableTransactionManagement
-@EnableJpaRepositories(entityManagerFactoryRef = "entityManagerFactoryBusiness", transactionManagerRef = "transactionManagerBusiness", basePackages = {"com.yoong.community.core.domain.business"})//设置Repository所在位置
+@EnableJpaRepositories(entityManagerFactoryRef = "entityManagerFactoryBusiness",
+        transactionManagerRef = "transactionManagerBusiness",
+        basePackages = {"com.yoong.community.core.domain.business"})//设置Repository所在位置
 public class BusinessDb {
 
     @Autowired

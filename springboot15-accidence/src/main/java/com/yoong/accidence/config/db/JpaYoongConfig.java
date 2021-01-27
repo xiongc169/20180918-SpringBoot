@@ -18,7 +18,6 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 import javax.persistence.EntityManager;
 import javax.sql.DataSource;
 import java.util.Map;
-import java.util.Properties;
 
 //TODO: 启动报错：No bean named 'org.springframework.context.annotation.ConfigurationClassPostProcessor.importRegistry' available
 @Configuration
@@ -35,37 +34,39 @@ public class JpaYoongConfig {
 
     @Primary
     @Bean(name = "entityManagerSecondary")
-    public EntityManager entityManager(EntityManagerFactoryBuilder builder) {
-        return entityManagerFactoryPrimary(builder).getObject().createEntityManager();
+    public EntityManager entityManagerSecondary(EntityManagerFactoryBuilder builder) {
+        return entityManagerFactorySecondary(builder).getObject().createEntityManager();
     }
 
     @Autowired
-    private Properties jpaProperties;
+    private JpaProperties jpaProperties;
 
-    //@Autowired
-    //private JpaProperties jpaProperties;
+    @Autowired
+    private HibernateProperties hibernateProperties;
 
-    //@Autowired
-    //private HibernateProperties hibernateProperties;
+    private Map<String, Object> getVendorProperties(DataSource dataSource) {
+        //SpringBoot 1.5
+        //return jpaProperties.getHibernateProperties(new HibernateSettings());
+        //SpringBoot 2.0
+        Map<String, Object> properties = hibernateProperties.determineHibernateProperties(jpaProperties.getProperties(), new HibernateSettings());
+        return properties;
+    }
 
     @Primary
     @Bean(name = "entityManagerFactorySecondary")
-    public LocalContainerEntityManagerFactoryBean entityManagerFactoryPrimary(EntityManagerFactoryBuilder builder) {
-        //SpringBoot 2.0
-        //Map<String, Object> properties = hibernateProperties.determineHibernateProperties(jpaProperties.getProperties(), new HibernateSettings());
+    public LocalContainerEntityManagerFactoryBean entityManagerFactorySecondary(EntityManagerFactoryBuilder builder) {
         LocalContainerEntityManagerFactoryBean entityManagerFactoryBean = builder
                 .dataSource(secondaryDataSource)
-                //.properties(properties)
+                .properties(getVendorProperties(secondaryDataSource))
                 .packages("com.yoong.accidence.domain.yoong") //设置实体类所在位置
                 .persistenceUnit("secondaryPersistenceUnit")
                 .build();
-        entityManagerFactoryBean.setJpaProperties(jpaProperties);
         return entityManagerFactoryBean;
     }
 
     @Primary
     @Bean(name = "transactionManagerSecondary")
-    public PlatformTransactionManager transactionManagerPrimary(EntityManagerFactoryBuilder builder) {
-        return new JpaTransactionManager(entityManagerFactoryPrimary(builder).getObject());
+    public PlatformTransactionManager transactionManagerSecondary(EntityManagerFactoryBuilder builder) {
+        return new JpaTransactionManager(entityManagerFactorySecondary(builder).getObject());
     }
 }

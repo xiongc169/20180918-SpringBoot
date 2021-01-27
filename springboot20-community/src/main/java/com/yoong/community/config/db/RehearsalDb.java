@@ -20,7 +20,9 @@ import java.util.Map;
 
 @Configuration
 @EnableTransactionManagement
-@EnableJpaRepositories(entityManagerFactoryRef = "entityManagerFactoryRehearsal", transactionManagerRef = "transactionManagerRehearsal", basePackages = {"com.yoong.community.core.domain.rehearsal"})
+@EnableJpaRepositories(entityManagerFactoryRef = "entityManagerFactoryRehearsal",
+        transactionManagerRef = "transactionManagerRehearsal",
+        basePackages = {"com.yoong.community.core.domain.rehearsal"})
 public class RehearsalDb {
 
     @Autowired

@@ -21,7 +21,9 @@ import java.util.Map;
 
 @Configuration
 @EnableTransactionManagement
-@EnableJpaRepositories(entityManagerFactoryRef = "entityManagerFactoryWong", transactionManagerRef = "transactionManagerWong", basePackages = {"com.yoong.community.core.domain.wong"})
+@EnableJpaRepositories(entityManagerFactoryRef = "entityManagerFactoryWong",
+        transactionManagerRef = "transactionManagerWong",
+        basePackages = {"com.yoong.community.core.domain.wong"})
 public class WongDb {
 
     @Autowired

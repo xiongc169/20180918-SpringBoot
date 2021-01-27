@@ -18,7 +18,6 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 import javax.persistence.EntityManager;
 import javax.sql.DataSource;
 import java.util.Map;
-import java.util.Properties;
 
 //TODO: 启动报错：No bean named 'org.springframework.context.annotation.ConfigurationClassPostProcessor.importRegistry' available
 @Configuration
@@ -35,31 +34,33 @@ public class JpaWongConfig {
 
     @Primary
     @Bean(name = "entityManagerPrimary")
-    public EntityManager entityManager(EntityManagerFactoryBuilder builder) {
+    public EntityManager entityManagerPrimary(EntityManagerFactoryBuilder builder) {
         return entityManagerFactoryPrimary(builder).getObject().createEntityManager();
     }
 
     @Autowired
-    private Properties jpaProperties;
+    private JpaProperties jpaProperties;
 
-    //@Autowired
-    //private JpaProperties jpaProperties;
+    @Autowired
+    private HibernateProperties hibernateProperties;
 
-    //@Autowired
-    //private HibernateProperties hibernateProperties;
+    private Map<String, Object> getVendorProperties(DataSource dataSource) {
+        //SpringBoot 1.5
+        //return jpaProperties.getHibernateProperties(new HibernateSettings());
+        //SpringBoot 2.0
+        Map<String, Object> properties = hibernateProperties.determineHibernateProperties(jpaProperties.getProperties(), new HibernateSettings());
+        return properties;
+    }
 
     @Primary
     @Bean(name = "entityManagerFactoryPrimary")
     public LocalContainerEntityManagerFactoryBean entityManagerFactoryPrimary(EntityManagerFactoryBuilder builder) {
-        //SpringBoot 2.0
-        //Map<String, Object> properties = hibernateProperties.determineHibernateProperties(jpaProperties.getProperties(), new HibernateSettings());
         LocalContainerEntityManagerFactoryBean entityManagerFactoryBean = builder
                 .dataSource(primaryDataSource)
-                //.properties(properties)
+                .properties(getVendorProperties(primaryDataSource))
                 .packages("com.yoong.accidence.domain.wong") //设置实体类所在位置
                 .persistenceUnit("primaryPersistenceUnit")
                 .build();
-        entityManagerFactoryBean.setJpaProperties(jpaProperties);
         return entityManagerFactoryBean;
     }
 
