@@ -1,11 +1,8 @@
-package com.yoong.accidence;
+package com.yoong.community;
 
 import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -30,7 +27,7 @@ import java.util.Date;
 //@ComponentScan
 @SpringBootApplication
 @EnableTransactionManagement
-public class AccidenceApp {
+public class SpringBoot20Community {
 
     private static SimpleDateFormat sdFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss:SSS");
 
@@ -39,7 +36,7 @@ public class AccidenceApp {
      */
     public static void main(String[] args) {
         System.out.println(sdFormat.format(new Date()) + " AccidenceApp Start...");
-        ConfigurableApplicationContext configurableApplicationContext = SpringApplication.run(AccidenceApp.class, args);
+        ConfigurableApplicationContext configurableApplicationContext = SpringApplication.run(SpringBoot20Community.class, args);
         System.out.println(sdFormat.format(new Date()) + " AccidenceApp Finished");
     }
 

@@ -3,9 +3,9 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.yoong.practice</groupId>
-    <artifactId>springboot-accidence</artifactId>
+    <artifactId>springboot20-community</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>springboot-accidence</name>
+    <name>springboot20-community</name>
 
     <!-- Spring Boot版本信息的优先级：dependency_version > parent_version > dependencyManagement_version -->
     <!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-parent -->

@@ -1,9 +1,9 @@
-package com.yoong.accidence.controller;
+package com.yoong.community.controller;
 
-import com.yoong.accidence.domain.wong.Customer;
-import com.yoong.accidence.domain.wong.ICustomerRepository;
-import com.yoong.accidence.domain.yoong.AttachmentInfo;
-import com.yoong.accidence.domain.yoong.IAttachmentInfoRepository;
+import com.yoong.community.domain.wong.Customer;
+import com.yoong.community.domain.wong.ICustomerRepository;
+import com.yoong.community.domain.yoong.AttachmentInfo;
+import com.yoong.community.domain.yoong.IAttachmentInfoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;

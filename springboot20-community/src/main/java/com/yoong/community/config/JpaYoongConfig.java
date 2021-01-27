@@ -1,4 +1,4 @@
-package com.yoong.accidence.config;
+package com.yoong.community.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -24,17 +24,17 @@ import java.util.Properties;
 //@Configuration
 //@EnableTransactionManagement
 //@EnableJpaRepositories(
-//        entityManagerFactoryRef = "entityManagerFactoryPrimary",
-//        transactionManagerRef = "transactionManagerPrimary",
-//        basePackages = {"com.yoong.accidence.domain.wong"}) //设置Repository所在位置
-public class JpaWongConfig {
+//        entityManagerFactoryRef = "entityManagerFactorySecondary",
+//        transactionManagerRef = "transactionManagerSecondary",
+//        basePackages = {"com.yoong.accidence.domain.yoong"}) //设置Repository所在位置
+public class JpaYoongConfig {
 
     @Autowired
-    @Qualifier("wongSource")
-    private DataSource primaryDataSource;
+    @Qualifier("yoongSource")
+    private DataSource secondaryDataSource;
 
     @Primary
-    @Bean(name = "entityManagerPrimary")
+    @Bean(name = "entityManagerSecondary")
     public EntityManager entityManager(EntityManagerFactoryBuilder builder) {
         return entityManagerFactoryPrimary(builder).getObject().createEntityManager();
     }
@@ -49,22 +49,22 @@ public class JpaWongConfig {
     //private HibernateProperties hibernateProperties;
 
     @Primary
-    @Bean(name = "entityManagerFactoryPrimary")
+    @Bean(name = "entityManagerFactorySecondary")
     public LocalContainerEntityManagerFactoryBean entityManagerFactoryPrimary(EntityManagerFactoryBuilder builder) {
         //SpringBoot 2.0
         //Map<String, Object> properties = hibernateProperties.determineHibernateProperties(jpaProperties.getProperties(), new HibernateSettings());
         LocalContainerEntityManagerFactoryBean entityManagerFactoryBean = builder
-                .dataSource(primaryDataSource)
+                .dataSource(secondaryDataSource)
                 //.properties(properties)
-                .packages("com.yoong.accidence.domain.wong") //设置实体类所在位置
-                .persistenceUnit("primaryPersistenceUnit")
+                .packages("com.yoong.accidence.domain.yoong") //设置实体类所在位置
+                .persistenceUnit("secondaryPersistenceUnit")
                 .build();
         entityManagerFactoryBean.setJpaProperties(jpaProperties);
         return entityManagerFactoryBean;
     }
 
     @Primary
-    @Bean(name = "transactionManagerPrimary")
+    @Bean(name = "transactionManagerSecondary")
     public PlatformTransactionManager transactionManagerPrimary(EntityManagerFactoryBuilder builder) {
         return new JpaTransactionManager(entityManagerFactoryPrimary(builder).getObject());
     }
