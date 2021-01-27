@@ -1,7 +1,7 @@
 package com.yoong.maven.controller;
 
-import com.yoong.maven.dao.DepartmentRepository;
-import com.yoong.maven.domain.Department;
+import com.yoong.maven.core.dao.DepartmentRepository;
+import com.yoong.maven.core.domain.Department;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -11,7 +11,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
- * @Desc BaseController
+ * @Desc JpaController
  * <p>
  * @Author yoong
  * <p>
@@ -20,8 +20,8 @@ import java.util.Date;
  * @Version 1.0
  */
 @Controller
-@RequestMapping("/base")
-public class BaseController {
+@RequestMapping("/jpa")
+public class JpaController {
 
     @Autowired
     private DepartmentRepository departmentRepository;
@@ -29,7 +29,7 @@ public class BaseController {
     private SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss:SSSS");
 
     /**
-     * http://127.0.0.1:8080/base/getTime
+     * http://127.0.0.1:8080/jpa/getTime
      */
     @ResponseBody
     @RequestMapping("/getTime")
@@ -40,7 +40,7 @@ public class BaseController {
     }
 
     /**
-     * http://127.0.0.1:8080/base/saveDepartment
+     * http://127.0.0.1:8080/jpa/saveDepartment
      */
     @ResponseBody
     @RequestMapping("/saveDepartment")

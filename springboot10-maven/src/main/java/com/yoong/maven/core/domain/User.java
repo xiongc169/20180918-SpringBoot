@@ -1,4 +1,4 @@
-package com.yoong.maven.domain;
+package com.yoong.maven.core.domain;
 
 import javax.persistence.Basic;
 import javax.persistence.Column;

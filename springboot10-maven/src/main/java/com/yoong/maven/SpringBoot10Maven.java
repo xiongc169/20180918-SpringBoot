@@ -18,7 +18,7 @@ import java.util.Date;
  */
 @ImportResource("classpath*:redis-config.xml")
 @SpringBootApplication
-public class MavenApp {
+public class SpringBoot10Maven {
 
     private static SimpleDateFormat sdFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss:SSS");
 
@@ -27,7 +27,7 @@ public class MavenApp {
      */
     public static void main(String[] args) {
         System.out.println(sdFormat.format(new Date()) + " MavenApp Start...");
-        SpringApplication.run(MavenApp.class);
+        SpringApplication.run(SpringBoot10Maven.class);
         System.out.println(sdFormat.format(new Date()) + " MavenApp Finished");
     }
 }

@@ -1,6 +1,6 @@
-package com.yoong.maven.dao;
+package com.yoong.maven.core.dao;
 
-import com.yoong.maven.domain.Department;
+import com.yoong.maven.core.domain.Department;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
