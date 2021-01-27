@@ -1,6 +1,0 @@
-server:
-  port: 8012
-
-spring:
-  application:
-    name: springboot15-accidence

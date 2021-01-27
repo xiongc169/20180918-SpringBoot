@@ -1,16 +1,19 @@
 package com.yoong.accidence;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ConfigurableApplicationContext;
+import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
- * @Desc SpringBoot入门系列
- * http://www.spring4all.com/article/246
+ * @Desc Spring Boot 两种多数据源配置：JdbcTemplate、Spring-data-jpa
+ * http://www.spring4all.com/article/253
  * <p>
  * @Author yoong
  * <p>
@@ -18,10 +21,13 @@ import java.util.Date;
  * <p>
  * @Version 1.0
  */
+@Controller
+//@Configuration
+//@EnableAutoConfiguration
+//@ComponentScan
 @SpringBootApplication
+@EnableTransactionManagement
 public class SpringBoot15Accidence {
-
-    private static Logger logger = LoggerFactory.getLogger(SpringBoot15Accidence.class);
 
     private static SimpleDateFormat sdFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss:SSS");
 
@@ -30,8 +36,20 @@ public class SpringBoot15Accidence {
      */
     public static void main(String[] args) {
         System.out.println(sdFormat.format(new Date()) + " SpringBoot15Accidence Start...");
-        SpringApplication.run(SpringBoot15Accidence.class, args);
+        ConfigurableApplicationContext configurableApplicationContext = SpringApplication.run(SpringBoot15Accidence.class, args);
         System.out.println(sdFormat.format(new Date()) + " SpringBoot15Accidence Finished");
-        logger.info("SpringBoot15Accidence Finished");
+    }
+
+    /**
+     * 启用SpringBoot20Community类的@Controller注解即可
+     * http://127.0.0.1:8012/getApp
+     */
+    @ResponseBody
+    @RequestMapping("/getApp")
+    public String getApp() {
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss:SSSS");
+        String result = "AccidenceApp: " + format.format(new Date());
+        System.out.println(result);
+        return result;
     }
 }

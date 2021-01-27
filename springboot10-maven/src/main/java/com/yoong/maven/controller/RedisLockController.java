@@ -1,7 +1,6 @@
 package com.yoong.maven.controller;
 
 import com.chesheng.lock.redis.spring.boot.autoconfigure.lock.DistributedLock;
-import com.yoong.maven.utils.RedisLock;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.StringRedisTemplate;
@@ -46,9 +45,6 @@ public class RedisLockController {
     @Autowired
     private JedisPool jedisPool;
     //#endregion
-
-    @Autowired
-    private RedisLock redisLock;
 
     @Autowired
     private DistributedLock csDistributeLock;
@@ -103,13 +99,13 @@ public class RedisLockController {
     @RequestMapping("/secondDistLock")
     public void secondDistLock(String key) {
         try {
-            if (redisLock.lock(key, 1000l, 1)) {
+            if (jedisPool.getResource().setnx(key, key) > 0) {
                 System.out.println(format.format(new Date()) + " " + Thread.currentThread().getId() + " 获取分布式锁 " + key);
-                Thread.sleep(2000);
-                stringRedisTemplate.delete(key);
+                Thread.sleep(500);
+                jedisPool.getResource().del(key);
                 System.out.println(format.format(new Date()) + " " + Thread.currentThread().getId() + " 释放分布式锁 " + key);
             } else {
-                //System.out.println(format.format(new Date()) + " " + Thread.currentThread().getId() + " 获取锁失败，退出 " + key);
+                System.out.println(format.format(new Date()) + " " + Thread.currentThread().getId() + " 获取锁失败，退出 " + key);
             }
         } catch (Exception ex) {
             ex.printStackTrace();
