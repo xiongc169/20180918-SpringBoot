@@ -7,7 +7,13 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
- * PracticeApp
+ * @Desc SpringBoot35Practice
+ * <p>
+ * @Author yoong
+ * <p>
+ * @Date 2018-8-30
+ * <p>
+ * @Version 1.0
  */
 @SpringBootApplication
 public class SpringBoot35Practice {
@@ -18,8 +24,8 @@ public class SpringBoot35Practice {
      * 入口函数
      */
     public static void main(String[] args) {
-        System.out.println(sdFormat.format(new Date()) + " PracticeApp Start...");
+        System.out.println(sdFormat.format(new Date()) + " SpringBoot35Practice Start...");
         SpringApplication.run(SpringBoot35Practice.class, args);
-        System.out.println(sdFormat.format(new Date()) + " PracticeApp Finished");
+        System.out.println(sdFormat.format(new Date()) + " SpringBoot35Practice Finished");
     }
 }

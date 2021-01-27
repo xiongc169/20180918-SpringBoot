@@ -35,13 +35,13 @@ public class SpringBoot20Community {
      * 入口函数
      */
     public static void main(String[] args) {
-        System.out.println(sdFormat.format(new Date()) + " AccidenceApp Start...");
+        System.out.println(sdFormat.format(new Date()) + " SpringBoot20Community Start...");
         ConfigurableApplicationContext configurableApplicationContext = SpringApplication.run(SpringBoot20Community.class, args);
-        System.out.println(sdFormat.format(new Date()) + " AccidenceApp Finished");
+        System.out.println(sdFormat.format(new Date()) + " SpringBoot20Community Finished");
     }
 
     /**
-     * 启用AccidenceApp类的@Controller注解即可
+     * 启用SpringBoot20Community类的@Controller注解即可
      * http://127.0.0.1:8012/getApp
      */
     @ResponseBody

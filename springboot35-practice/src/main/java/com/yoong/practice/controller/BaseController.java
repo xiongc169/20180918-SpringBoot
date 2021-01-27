@@ -7,12 +7,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-/**
- * @Desc BaseController
- * @Author
- * @Date
- * @Version 1.0
- */
 @Controller
 @RequestMapping("/base")
 public class BaseController {
@@ -20,7 +14,7 @@ public class BaseController {
     private SimpleDateFormat sdFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss:SSSS");
 
     /**
-     * http://127.0.0.1:8060/base/getTime
+     * http://127.0.0.1:8050/base/getTime
      */
     @ResponseBody
     @RequestMapping("/getTime")

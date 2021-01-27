@@ -1,9 +1,9 @@
 server:
-  port: 8061
+  port: 8051
 
 spring:
   application:
-    name: springboot-practice
+    name: springboot35-practice
   datasource:
     url: jdbc:mysql://127.0.0.1:3306/wong_user?characterEncoding=utf8&useSSL=false&serverTimezone=UTC
     username: root

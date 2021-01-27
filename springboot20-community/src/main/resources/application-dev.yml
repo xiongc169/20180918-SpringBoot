@@ -1,11 +1,11 @@
 #配置环境：application.yml、application-local.yml、application-dev.yml、application-test.yml、application-pre.yml、application-product.yml
 server:
-  port: 8012
+  port: 8022
 
 #localhost 127.0.0.1
 spring:
   application:
-    name: springboot-accidence
+    name: springboot20-community
   datasource:
     wong:
       jdbc-url: jdbc:mysql://localhost:3306/wong_user?characterEncoding=utf8&serverTimezone=UTC

@@ -25,9 +25,9 @@ public class SpringBoot25Literature {
      * 入口函数
      */
     public static void main(String[] args) {
-        System.out.println(sdFormat.format(new Date()) + " LiteratureApp Start...");
+        System.out.println(sdFormat.format(new Date()) + " SpringBoot25Literature Start...");
         SpringApplication.run(SpringBoot25Literature.class, args);
-        System.out.println(sdFormat.format(new Date()) + " LiteratureApp Finished");
+        System.out.println(sdFormat.format(new Date()) + " SpringBoot25Literature Finished");
     }
 }
 

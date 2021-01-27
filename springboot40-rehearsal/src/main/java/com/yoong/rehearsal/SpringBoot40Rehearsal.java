@@ -7,7 +7,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
- * @Desc RehearsalApp
+ * @Desc SpringBoot40Rehearsal
  * <p>
  * @Author yoong
  * <p>
@@ -24,8 +24,8 @@ public class SpringBoot40Rehearsal {
      * 入口函数
      */
     public static void main(String[] args) {
-        System.out.println(sdFormat.format(new Date()) + " RehearsalApp Start...");
+        System.out.println(sdFormat.format(new Date()) + " SpringBoot40Rehearsal Start...");
         SpringApplication.run(SpringBoot40Rehearsal.class);
-        System.out.println(sdFormat.format(new Date()) + " RehearsalApp Finished");
+        System.out.println(sdFormat.format(new Date()) + " SpringBoot40Rehearsal Finished");
     }
 }

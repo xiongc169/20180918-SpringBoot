@@ -23,6 +23,8 @@ import java.text.SimpleDateFormat;
 @RequestMapping("/base")
 public class BaseController {
 
+    private SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss:SSSS");
+
     @Autowired
     private User user;
 
@@ -40,8 +42,6 @@ public class BaseController {
 
     @Autowired
     private RedisUtils redisUtils;
-
-    private SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss:SSSS");
 
     /**
      * http://127.0.0.1:8040/base/getUser

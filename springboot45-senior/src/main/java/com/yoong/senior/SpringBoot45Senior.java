@@ -8,7 +8,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
- * @Desc SeniorApp
+ * @Desc SpringBoot45Senior
  * <p>
  * @Author yoong
  * <p>
@@ -25,8 +25,8 @@ public class SpringBoot45Senior {
      * 入口函数
      */
     public static void main(String[] args) {
-        System.out.println(sdFormat.format(new Date()) + " SeniorApp Start...");
+        System.out.println(sdFormat.format(new Date()) + " SpringBoot45Senior Start...");
         ConfigurableApplicationContext configurableApplicationContext = SpringApplication.run(SpringBoot45Senior.class, args);
-        System.out.println(sdFormat.format(new Date()) + " SeniorApp Finished");
+        System.out.println(sdFormat.format(new Date()) + " SpringBoot45Senior Finished");
     }
 }

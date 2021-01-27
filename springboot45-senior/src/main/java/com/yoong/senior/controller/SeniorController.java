@@ -19,6 +19,9 @@ public class SeniorController {
     @Autowired
     private ServletContext servletContext;
 
+    /**
+     * http://127.0.0.1:8070/senior/getTime
+     */
     @ResponseBody
     @RequestMapping("/getTime")
     public String getTime() {
@@ -28,5 +31,4 @@ public class SeniorController {
         String time = sdFormat.format(new Date());
         return time;
     }
-
 }
