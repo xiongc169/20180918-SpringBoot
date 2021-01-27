@@ -3,9 +3,9 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.yoong.practice</groupId>
-    <artifactId>springboot-maven</artifactId>
+    <artifactId>springboot10-maven</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>springboot-maven</name>
+    <name>springboot10-maven</name>
     <description>web + jpa + redis</description>
 
     <!-- Spring Boot版本信息的优先级：dependency_version > parent_version > dependencyManagement_version -->
