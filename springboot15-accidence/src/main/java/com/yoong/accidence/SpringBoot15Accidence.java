@@ -29,9 +29,9 @@ public class SpringBoot15Accidence {
      * 入口函数
      */
     public static void main(String[] args) {
-        System.out.println(sdFormat.format(new Date()) + " CommunityApp Start...");
+        System.out.println(sdFormat.format(new Date()) + " SpringBoot15Accidence Start...");
         SpringApplication.run(SpringBoot15Accidence.class, args);
-        System.out.println(sdFormat.format(new Date()) + " CommunityApp Finished");
-        logger.info("CommunityApp Finished");
+        System.out.println(sdFormat.format(new Date()) + " SpringBoot15Accidence Finished");
+        logger.info("SpringBoot15Accidence Finished");
     }
 }

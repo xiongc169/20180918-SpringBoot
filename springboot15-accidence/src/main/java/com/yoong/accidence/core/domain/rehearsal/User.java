@@ -1,4 +1,4 @@
-package com.yoong.accidence.domain.rehearsal;
+package com.yoong.accidence.core.domain.rehearsal;
 
 import javax.persistence.*;
 import java.io.Serializable;

@@ -20,7 +20,7 @@ import java.util.Map;
 
 @Configuration
 @EnableTransactionManagement
-@EnableJpaRepositories(entityManagerFactoryRef = "entityManagerFactoryRehearsal", transactionManagerRef = "transactionManagerRehearsal", basePackages = {"com.yoong.community.domain.rehearsal"})
+@EnableJpaRepositories(entityManagerFactoryRef = "entityManagerFactoryRehearsal", transactionManagerRef = "transactionManagerRehearsal", basePackages = {"com.yoong.accidence.core.domain.rehearsal"})
 public class RehearsalDb {
 
     @Autowired
@@ -37,7 +37,7 @@ public class RehearsalDb {
         return builder
                 .dataSource(rehearsalDataSource)
                 .properties(getVendorProperties(rehearsalDataSource))
-                .packages("com.yoong.community.domain.rehearsal") //设置实体类所在位置
+                .packages("com.yoong.accidence.core.domain.rehearsal") //设置实体类所在位置
                 .persistenceUnit("rehearsalPersistenceUnit")
                 .build();
     }

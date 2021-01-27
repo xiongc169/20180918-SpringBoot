@@ -1,18 +1,17 @@
 package com.yoong.accidence.controller;
 
-import com.yoong.accidence.service.business.AttachmentService;
-import com.yoong.accidence.service.rehearsal.DepartmentService;
-import com.yoong.accidence.service.wong.AccountService;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import com.yoong.accidence.core.domain.business.AttachmentInfo;
+import com.yoong.accidence.core.domain.rehearsal.Department;
+import com.yoong.accidence.core.domain.wong.Account;
+import com.yoong.accidence.core.service.business.AttachmentService;
+import com.yoong.accidence.core.service.rehearsal.DepartmentService;
+import com.yoong.accidence.core.service.wong.AccountService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-import com.yoong.accidence.domain.business.AttachmentInfo;
-import com.yoong.accidence.domain.rehearsal.Department;
-import com.yoong.accidence.domain.wong.Account;
 
+import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -29,8 +28,6 @@ import java.util.Date;
 @RequestMapping("/datasource")
 public class DatasourceController {
 
-    private Logger logger = LoggerFactory.getLogger(DatasourceController.class);
-
     @Autowired
     private AccountService accountService;
 
@@ -41,29 +38,7 @@ public class DatasourceController {
     private DepartmentService deptService;
 
     /**
-     * 页面测试：http://127.0.0.1:8021/datasource/welcome
-     */
-    @RequestMapping("/welcome")
-    public String welcome() {
-        logger.debug("2018年9月30日10:28:48");
-        System.out.println("enter welcome");
-        return "welcome";
-    }
-
-    /**
-     * 传参测试：http://127.0.0.1:8021/datasource/login
-     */
-    @ResponseBody
-    @RequestMapping("/login")
-    public String login(String name, String password) {
-        if (name != null && name.equals("sa") && password != null && password.equals("123456")) {
-            return "Login Success";
-        }
-        return "Login Failure";
-    }
-
-    /**
-     * 多数据源测试：http://127.0.0.1:8021/datasource/multiDataSource
+     * http://127.0.0.1:8010/datasource/multiDataSource
      */
     @ResponseBody
     @RequestMapping("/multiDataSource")
@@ -82,6 +57,8 @@ public class DatasourceController {
             //添加附件
             AttachmentInfo attachment = new AttachmentInfo();
             attachment.setFileName("git stash.png");
+            attachment.setIsDelete(0);
+            attachment.setModifyTime(new Timestamp(1611736681000l));
             attachment = attachmentService.addAttachment(attachment);
             System.out.println("AttachmentId: " + attachment.getId());
             //添加部门

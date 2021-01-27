@@ -1,6 +1,6 @@
 package com.yoong.accidence.controller;
 
-import com.yoong.accidence.domain.rehearsal.User;
+import com.yoong.accidence.core.domain.rehearsal.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.data.redis.connection.RedisConnection;
@@ -29,7 +29,7 @@ import java.util.Date;
 @RequestMapping("/redis")
 public class RedisController {
 
-    private SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMdd-HHmmssSSSS");
+    private SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss:SSSS");
 
     @Autowired
     private StringRedisTemplate stringRedisTemplate;
@@ -44,7 +44,7 @@ public class RedisController {
     //http://127.0.0.1:8091/actuator/health
 
     /**
-     * Redis测试：http://127.0.0.1:8021/redis/saveRedis
+     * http://127.0.0.1:8010/redis/saveRedis
      */
     @ResponseBody
     @RequestMapping("/saveRedis")
@@ -70,7 +70,7 @@ public class RedisController {
     }
 
     /**
-     * Redis测试：http://127.0.0.1:8021/redis/saveRedis2
+     * http://127.0.0.1:8010/redis/saveRedis2
      */
     @ResponseBody
     @RequestMapping("/saveRedis2")
@@ -97,7 +97,6 @@ public class RedisController {
             }
         });
         System.out.println(result02);
-
         return result02.toString();
     }
 }

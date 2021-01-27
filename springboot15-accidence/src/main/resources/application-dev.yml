@@ -1,9 +1,9 @@
 server:
-  port: 8021
+  port: 8011
 
 spring:
   application:
-    name: springboot-community
+    name: springboot15-accidence
   # Redis 配置
   redis:
     host: 127.0.0.1

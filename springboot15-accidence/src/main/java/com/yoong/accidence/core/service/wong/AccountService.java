@@ -1,9 +1,9 @@
-package com.yoong.accidence.service.wong;
+package com.yoong.accidence.core.service.wong;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import com.yoong.accidence.domain.wong.Account;
-import com.yoong.accidence.domain.wong.AccountRepository;
+import com.yoong.accidence.core.domain.wong.Account;
+import com.yoong.accidence.core.domain.wong.AccountRepository;
 
 @Service
 public class AccountService {

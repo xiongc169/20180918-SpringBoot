@@ -1,7 +1,7 @@
 package com.yoong.accidence.config;
 
 import com.yoong.accidence.config.redis.RedisObjectSerializer;
-import com.yoong.accidence.domain.rehearsal.User;
+import com.yoong.accidence.core.domain.rehearsal.User;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.redis.connection.jedis.JedisConnectionFactory;

@@ -21,7 +21,7 @@ import java.util.Map;
 
 @Configuration
 @EnableTransactionManagement
-@EnableJpaRepositories(entityManagerFactoryRef = "entityManagerFactoryWong", transactionManagerRef = "transactionManagerWong", basePackages = {"com.yoong.community.domain.wong"})
+@EnableJpaRepositories(entityManagerFactoryRef = "entityManagerFactoryWong", transactionManagerRef = "transactionManagerWong", basePackages = {"com.yoong.accidence.core.domain.wong"})
 public class WongDb {
 
     @Autowired
@@ -40,7 +40,7 @@ public class WongDb {
         return builder
                 .dataSource(wongDataSource)
                 .properties(getVendorProperties(wongDataSource))
-                .packages("com.yoong.community.domain.wong") //设置实体类所在位置
+                .packages("com.yoong.accidence.core.domain.wong") //设置实体类所在位置
                 .persistenceUnit("wongPersistenceUnit")
                 .build();
     }

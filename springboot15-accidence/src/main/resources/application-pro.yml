@@ -1,6 +1,6 @@
 server:
-  port: 8024
+  port: 8014
 
 spring:
   application:
-    name: springboot-community
+    name: springboot15-accidence

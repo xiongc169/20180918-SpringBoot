@@ -1,4 +1,4 @@
-package com.yoong.accidence.domain.wong;
+package com.yoong.accidence.core.domain.wong;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
