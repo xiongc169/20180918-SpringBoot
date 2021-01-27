@@ -1,9 +1,9 @@
 server:
-  port: 8080
+  port: 8090
 
 spring:
   application:
-    name: distributeApp
+    name: springboot-dist
   datasource:
     a1902biz:
       url: jdbc:mysql://127.0.0.1:3306/a1902_biz?serverTimezone=UTC&useSSL=false

@@ -40,7 +40,7 @@ public class SpringBoot50Autoconfig {
      * 入口函数
      */
     public static void main(String[] args) {
-        System.out.println(sdFormat.format(new Date()) + " AutoconfigApp Start...");
+        System.out.println(sdFormat.format(new Date()) + " SpringBoot50Autoconfig Start...");
         ConfigurableApplicationContext configurableApplicationContext = SpringApplication.run(SpringBoot50Autoconfig.class, args);
         String[] beanDefinitionNames = configurableApplicationContext.getBeanDefinitionNames();
         Environment environment = configurableApplicationContext.getEnvironment();
@@ -48,6 +48,6 @@ public class SpringBoot50Autoconfig {
         String lastName = configurableEnvironment.getProperty("person.lastName");
 
         SpringUtils.applicationContext = configurableApplicationContext;
-        System.out.println(sdFormat.format(new Date()) + " AutoconfigApp Finished");
+        System.out.println(sdFormat.format(new Date()) + " SpringBoot50Autoconfig Finished");
     }
 }

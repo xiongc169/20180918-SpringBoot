@@ -1,8 +1,8 @@
 server:
-  port: 8051
+  port: 8081
 spring:
   application:
-    name: springboot-autoconfig
+    name: springboot50-autoconfig
 
 #SpringBoot 1.0 Actuator配置
 #Actuator: auditevents,beans,caches,conditions,configprops,env,flyway,health,info,liquibase,metrics,mappings,scheduledtasks,sessions,shutdown,threaddump,httptrace

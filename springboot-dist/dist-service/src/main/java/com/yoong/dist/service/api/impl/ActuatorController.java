@@ -53,7 +53,7 @@ public class ActuatorController {
     //private RedisTemplate redisTemplate;
 
     /**
-     * http://127.0.0.1:8080/actuator/getServletContext
+     * http://127.0.0.1:8090/actuator/getServletContext
      */
     @ResponseBody
     @RequestMapping("/getServletContext")
@@ -72,7 +72,7 @@ public class ActuatorController {
     }
 
     /**
-     * http://127.0.0.1:8080/actuator/insert?orderNo=12345
+     * http://127.0.0.1:8090/actuator/insert?orderNo=12345
      */
     @ResponseBody
     @RequestMapping("/insert")
@@ -103,7 +103,7 @@ public class ActuatorController {
     }
 
     /**
-     * http://127.0.0.1:8080/actuator/insertXaTx?orderNo=1000
+     * http://127.0.0.1:8090/actuator/insertXaTx?orderNo=1000
      */
     @ResponseBody
     @RequestMapping("/insertXaTx")
@@ -131,7 +131,7 @@ public class ActuatorController {
     }
 
     /**
-     * http://127.0.0.1:9712/actuator/log
+     * http://127.0.0.1:8090/actuator/log
      */
     @ResponseBody
     @RequestMapping("/log")
@@ -145,7 +145,7 @@ public class ActuatorController {
     }
 
     /**
-     * http://127.0.0.1:9712/actuator/getRedis
+     * http://127.0.0.1:8090/actuator/getRedis
      */
     @ResponseBody
     @RequestMapping("/getRedis")
