@@ -36,7 +36,7 @@ public class SingleDataSourceController {
     private SimpleDateFormat format2 = new SimpleDateFormat("yyyyMMddHHmmssSSSS");
 
     /**
-     * http://127.0.0.1:8022/sDatasource/getTime
+     * http://127.0.0.1:8012/sDatasource/getTime
      */
     @ResponseBody
     @RequestMapping("/getTime")
@@ -47,7 +47,7 @@ public class SingleDataSourceController {
     }
 
     /**
-     * http://127.0.0.1:8022/sDatasource/addCustomer
+     * http://127.0.0.1:8012/sDatasource/addCustomer
      */
     @ResponseBody
     @RequestMapping("/addCustomer")

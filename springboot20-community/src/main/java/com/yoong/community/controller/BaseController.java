@@ -30,7 +30,7 @@ public class BaseController {
     private AttachmentService attachmentService;
 
     /**
-     * http://127.0.0.1:8010/base/welcome
+     * http://127.0.0.1:8020/base/welcome
      */
     @RequestMapping("/welcome")
     public String welcome() {
@@ -40,7 +40,7 @@ public class BaseController {
     }
 
     /**
-     * http://127.0.0.1:8010/base/login
+     * http://127.0.0.1:8020/base/login
      */
     @ResponseBody
     @RequestMapping("/login")
@@ -52,7 +52,7 @@ public class BaseController {
     }
 
     /**
-     * http://127.0.0.1:8010/base/add
+     * http://127.0.0.1:8020/base/add
      */
     @ResponseBody
     @RequestMapping("/add")

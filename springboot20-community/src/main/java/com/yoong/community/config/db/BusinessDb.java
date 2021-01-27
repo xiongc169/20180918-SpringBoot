@@ -1,4 +1,4 @@
-package com.yoong.community.config.datasource;
+package com.yoong.community.config.db;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -20,7 +20,7 @@ import java.util.Map;
 
 @Configuration
 @EnableTransactionManagement
-@EnableJpaRepositories(entityManagerFactoryRef = "entityManagerFactoryBusiness", transactionManagerRef = "transactionManagerBusiness", basePackages = {"com.yoong.accidence.core.domain.business"})//设置Repository所在位置
+@EnableJpaRepositories(entityManagerFactoryRef = "entityManagerFactoryBusiness", transactionManagerRef = "transactionManagerBusiness", basePackages = {"com.yoong.community.core.domain.business"})//设置Repository所在位置
 public class BusinessDb {
 
     @Autowired
@@ -45,7 +45,7 @@ public class BusinessDb {
             LocalContainerEntityManagerFactoryBean bean = builder
                     .dataSource(businessDataSource)
                     .properties(getVendorProperties(businessDataSource))
-                    .packages("com.yoong.accidence.core.domain")//设置实体类所在位置
+                    .packages("com.yoong.community.core.domain")//设置实体类所在位置
                     .persistenceUnit("businessPersistenceUnit")
                     .build();
             return bean;

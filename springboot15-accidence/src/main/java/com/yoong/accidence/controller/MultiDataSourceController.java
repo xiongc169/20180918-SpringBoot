@@ -31,7 +31,7 @@ public class MultiDataSourceController {
     private JdbcTemplate yoongTemplate;
 
     /**
-     * http://127.0.0.1:8022/mDatasource/multiDataSource
+     * http://127.0.0.1:8012/mDatasource/multiDataSource
      */
     @ResponseBody
     @RequestMapping("/multiDataSource")
