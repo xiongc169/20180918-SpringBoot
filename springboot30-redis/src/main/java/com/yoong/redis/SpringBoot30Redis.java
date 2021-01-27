@@ -7,7 +7,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
- * @Desc RedisApp
+ * @Desc SpringBoot30Redis
  * <p>
  * @Author yoong
  * <p>
@@ -24,8 +24,8 @@ public class SpringBoot30Redis {
      * 入口函数
      */
     public static void main(String[] args) {
-        System.out.println(sdFormat.format(new Date()) + " RedisApp Start...");
+        System.out.println(sdFormat.format(new Date()) + " SpringBoot30Redis Start...");
         SpringApplication.run(SpringBoot30Redis.class);
-        System.out.println(sdFormat.format(new Date()) + " RedisApp Finished");
+        System.out.println(sdFormat.format(new Date()) + " SpringBoot30Redis Finished");
     }
 }

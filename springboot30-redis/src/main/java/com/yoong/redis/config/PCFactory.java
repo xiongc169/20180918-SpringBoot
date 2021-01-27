@@ -1,4 +1,4 @@
-package com.yoong.redis.utils;
+package com.yoong.redis.config;
 
 import org.springframework.context.annotation.Configuration;
 
