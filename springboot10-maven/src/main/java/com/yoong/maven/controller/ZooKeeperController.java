@@ -53,13 +53,13 @@ public class ZooKeeperController {
     public void distLock(String key) {
         try {
             InterProcessMutex lock = new InterProcessMutex(curatorFramework, "/" + key);
-            if (lock.acquire(1, TimeUnit.MILLISECONDS)) {
+            if (lock.acquire(-1, TimeUnit.MILLISECONDS)) {
                 System.out.println(format.format(new Date()) + " " + Thread.currentThread().getId() + " 获取分布式锁 " + key);
-                Thread.sleep(500);
+                Thread.sleep(1000);
                 lock.release();
                 System.out.println(format.format(new Date()) + " " + Thread.currentThread().getId() + " 释放分布式锁 " + key);
             } else {
-                System.out.println(format.format(new Date()) + " " + Thread.currentThread().getId() + " 获取锁失败，退出 " + key);
+                System.out.println("        " + format.format(new Date()) + " " + Thread.currentThread().getId() + " 获取锁失败，退出 " + key);
             }
         } catch (Exception ex) {
             ex.printStackTrace();

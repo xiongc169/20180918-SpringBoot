@@ -65,7 +65,7 @@ public class RedisLockController {
                 csDistributeLock.releaseLock(key);
                 System.out.println(format.format(new Date()) + " " + Thread.currentThread().getId() + " 释放分布式锁 " + key);
             } else {
-                System.out.println(format.format(new Date()) + " " + Thread.currentThread().getId() + " 获取锁失败，退出 " + key);
+                System.out.println("        " + format.format(new Date()) + " " + Thread.currentThread().getId() + " 获取锁失败，退出 " + key);
             }
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -85,7 +85,7 @@ public class RedisLockController {
                 stringRedisTemplate.delete(key);
                 System.out.println(format.format(new Date()) + " " + Thread.currentThread().getId() + " 释放分布式锁 " + key);
             } else {
-                System.out.println(format.format(new Date()) + " " + Thread.currentThread().getId() + " 获取锁失败，退出 " + key);
+                System.out.println("        " + format.format(new Date()) + " " + Thread.currentThread().getId() + " 获取锁失败，退出 " + key);
             }
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -105,7 +105,7 @@ public class RedisLockController {
                 jedisPool.getResource().del(key);
                 System.out.println(format.format(new Date()) + " " + Thread.currentThread().getId() + " 释放分布式锁 " + key);
             } else {
-                System.out.println(format.format(new Date()) + " " + Thread.currentThread().getId() + " 获取锁失败，退出 " + key);
+                System.out.println("        " + format.format(new Date()) + " " + Thread.currentThread().getId() + " 获取锁失败，退出 " + key);
             }
         } catch (Exception ex) {
             ex.printStackTrace();
