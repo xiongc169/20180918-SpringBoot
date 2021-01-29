@@ -9,4 +9,4 @@ springboot40-rehearsal: [8060,8070)，空
 springboot45-senior: [8070,8080)，空
 
 springboot50-autoconfig: [8080, 8090)，自动配置原理
-springboot-dist: [8090,8900), 多数据源MyBatis + Dubbo + 分层(filter/adapter/plugin)
+springboot-dist: [8090,8900), Dubbo + 分层(filter/adapter/plugin) + 多数据源MyBatis + 分布式事务
