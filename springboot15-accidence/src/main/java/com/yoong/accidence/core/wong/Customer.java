@@ -1,4 +1,4 @@
-package com.yoong.accidence.domain.wong;
+package com.yoong.accidence.core.wong;
 
 import org.hibernate.annotations.GenericGenerator;
 

@@ -1,4 +1,4 @@
-package com.yoong.dist.service.core.config.db_distribute;
+package com.yoong.dist.service.core.config.db_distributed;
 
 import com.mysql.cj.jdbc.MysqlXADataSource;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -18,14 +18,15 @@ import java.sql.SQLException;
 @Configuration
 @MapperScan(basePackages = "com.yoong.dist.service.core.mapper.wong_user", sqlSessionFactoryRef = "wongUserSqlSessionFactory")
 public class WongUserDbConfig {
+
     // 配置数据源
     @Bean
-    public DataSource wongUserDataSource(WongUserConfig wongUserConfig) throws SQLException {
+    public DataSource wongUserDataSource(WongUserDataSourceConfig wongUserDataSourceConfig) throws SQLException {
         MysqlXADataSource mysqlXaDataSource = new MysqlXADataSource();
-        mysqlXaDataSource.setUrl(wongUserConfig.getUrl());
+        mysqlXaDataSource.setUrl(wongUserDataSourceConfig.getUrl());
         mysqlXaDataSource.setPinGlobalTxToPhysicalConnection(true);
-        mysqlXaDataSource.setPassword(wongUserConfig.getPassword());
-        mysqlXaDataSource.setUser(wongUserConfig.getUsername());
+        mysqlXaDataSource.setPassword(wongUserDataSourceConfig.getPassword());
+        mysqlXaDataSource.setUser(wongUserDataSourceConfig.getUsername());
         mysqlXaDataSource.setPinGlobalTxToPhysicalConnection(true);
 
         AtomikosDataSourceBean xaDataSource = new AtomikosDataSourceBean();
@@ -44,8 +45,7 @@ public class WongUserDbConfig {
     }
 
     @Bean(name = "wongUserSqlSessionFactory")
-    public SqlSessionFactory wongUserSqlSessionFactory(@Qualifier("wongUserDataSource") DataSource dataSource)
-            throws Exception {
+    public SqlSessionFactory wongUserSqlSessionFactory(@Qualifier("wongUserDataSource") DataSource dataSource) throws Exception {
         SqlSessionFactoryBean bean = new SqlSessionFactoryBean();
         bean.setDataSource(dataSource);
         ResourcePatternResolver resolver = new PathMatchingResourcePatternResolver();
@@ -54,9 +54,7 @@ public class WongUserDbConfig {
     }
 
     @Bean(name = "wongUserSqlSessionTemplate")
-    public SqlSessionTemplate wongUserSqlSessionTemplate(
-            @Qualifier("wongUserSqlSessionFactory") SqlSessionFactory sqlSessionFactory) throws Exception {
+    public SqlSessionTemplate wongUserSqlSessionTemplate(@Qualifier("wongUserSqlSessionFactory") SqlSessionFactory sqlSessionFactory) throws Exception {
         return new SqlSessionTemplate(sqlSessionFactory);
     }
-
 }

@@ -1,4 +1,4 @@
-package com.yoong.dist.service.core.config.db_distribute;
+package com.yoong.dist.service.core.config.db_distributed;
 
 import com.mysql.cj.jdbc.MysqlXADataSource;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -19,15 +19,16 @@ import java.sql.SQLException;
 @Configuration
 @MapperScan(basePackages = "com.yoong.dist.service.core.mapper.a1902_stage", sqlSessionFactoryRef = "a1902StageSqlSessionFactory")
 public class A1902StageDbConfig {
+
     // 配置数据源
     @Bean
     @Primary
-    public DataSource a1902StageDataSource(A1902StageConfig a1902StageConfig) throws SQLException {
+    public DataSource a1902StageDataSource(A1902StageDataSourceConfig a1902StageDataSourceConfig) throws SQLException {
         MysqlXADataSource mysqlXaDataSource = new MysqlXADataSource();
-        mysqlXaDataSource.setUrl(a1902StageConfig.getUrl());
+        mysqlXaDataSource.setUrl(a1902StageDataSourceConfig.getUrl());
         mysqlXaDataSource.setPinGlobalTxToPhysicalConnection(true);
-        mysqlXaDataSource.setPassword(a1902StageConfig.getPassword());
-        mysqlXaDataSource.setUser(a1902StageConfig.getUsername());
+        mysqlXaDataSource.setPassword(a1902StageDataSourceConfig.getPassword());
+        mysqlXaDataSource.setUser(a1902StageDataSourceConfig.getUsername());
         mysqlXaDataSource.setPinGlobalTxToPhysicalConnection(true);
 
         AtomikosDataSourceBean xaDataSource = new AtomikosDataSourceBean();
@@ -58,5 +59,4 @@ public class A1902StageDbConfig {
     public SqlSessionTemplate a1902StageSqlSessionTemplate(@Qualifier("a1902StageSqlSessionFactory") SqlSessionFactory sqlSessionFactory) throws Exception {
         return new SqlSessionTemplate(sqlSessionFactory);
     }
-
 }

@@ -28,7 +28,7 @@ import java.util.Map;
 @EnableJpaRepositories(
         entityManagerFactoryRef = "entityManagerFactoryPrimary",
         transactionManagerRef = "transactionManagerPrimary",
-        basePackages = {"com.yoong.accidence.domain.wong"}) //设置Repository所在位置
+        basePackages = {"com.yoong.accidence.core.wong"}) //设置Repository所在位置
 public class JpaWongConfig {
 
     @Autowired
@@ -62,7 +62,7 @@ public class JpaWongConfig {
         LocalContainerEntityManagerFactoryBean entityManagerFactoryBean = builder
                 .dataSource(primaryDataSource)
                 .properties(getVendorProperties(primaryDataSource))
-                .packages("com.yoong.accidence.domain.wong") //设置实体类所在位置
+                .packages("com.yoong.accidence.core.wong") //设置实体类所在位置
                 .persistenceUnit("primaryPersistenceUnit")
                 .build();
         return entityManagerFactoryBean;

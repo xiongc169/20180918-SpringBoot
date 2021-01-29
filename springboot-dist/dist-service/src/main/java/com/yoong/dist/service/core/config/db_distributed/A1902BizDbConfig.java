@@ -1,4 +1,4 @@
-package com.yoong.dist.service.core.config.db_distribute;
+package com.yoong.dist.service.core.config.db_distributed;
 
 import com.mysql.cj.jdbc.MysqlXADataSource;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -21,12 +21,12 @@ public class A1902BizDbConfig {
 
     // 配置数据源
     @Bean
-    public DataSource a1902BizDataSource(A1902BizConfig a1902BizConfig) throws SQLException {
+    public DataSource a1902BizDataSource(A1902BizDataSourceConfig a1902BizDataSourceConfig) throws SQLException {
         MysqlXADataSource mysqlXaDataSource = new MysqlXADataSource();
-        mysqlXaDataSource.setUrl(a1902BizConfig.getUrl());
+        mysqlXaDataSource.setUrl(a1902BizDataSourceConfig.getUrl());
         mysqlXaDataSource.setPinGlobalTxToPhysicalConnection(true);
-        mysqlXaDataSource.setPassword(a1902BizConfig.getPassword());
-        mysqlXaDataSource.setUser(a1902BizConfig.getUsername());
+        mysqlXaDataSource.setPassword(a1902BizDataSourceConfig.getPassword());
+        mysqlXaDataSource.setUser(a1902BizDataSourceConfig.getUsername());
         mysqlXaDataSource.setPinGlobalTxToPhysicalConnection(true);
 
         AtomikosDataSourceBean xaDataSource = new AtomikosDataSourceBean();
@@ -45,12 +45,11 @@ public class A1902BizDbConfig {
     }
 
     @Bean(name = "a1902BizSqlSessionFactory")
-    public SqlSessionFactory a1902BizSqlSessionFactory(@Qualifier("a1902BizDataSource") DataSource dataSource)
-            throws Exception {
+    public SqlSessionFactory a1902BizSqlSessionFactory(@Qualifier("a1902BizDataSource") DataSource dataSource) throws Exception {
         SqlSessionFactoryBean bean = new SqlSessionFactoryBean();
+        bean.setDataSource(dataSource);
         ResourcePatternResolver resolver = new PathMatchingResourcePatternResolver();
         bean.setMapperLocations(resolver.getResources("classpath*:mapper/a1902_biz/*.xml"));
-        bean.setDataSource(dataSource);
         return bean.getObject();
     }
 
