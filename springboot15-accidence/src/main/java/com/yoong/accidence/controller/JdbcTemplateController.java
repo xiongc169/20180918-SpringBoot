@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
- * @Desc MultiDataSourceController
+ * @Desc JdbcTemplateController
  * <p>
  * @Author yoong
  * <p>
@@ -19,8 +19,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
  * @Version 1.0
  */
 @Controller
-@RequestMapping("/mDatasource")
-public class MultiDataSourceController {
+@RequestMapping("/jdbcTpl")
+public class JdbcTemplateController {
 
     @Autowired
     @Qualifier("wongTemplate")
@@ -31,12 +31,12 @@ public class MultiDataSourceController {
     private JdbcTemplate yoongTemplate;
 
     /**
-     * http://127.0.0.1:8012/mDatasource/multiDataSource
+     * http://127.0.0.1:8012/jdbcTpl/insertMultiSource
      */
     @ResponseBody
-    @RequestMapping("/multiDataSource")
+    @RequestMapping("/insertMultiSource")
     @Transactional
-    public void multiDataSource() {
+    public void insertMultiSource() {
         try {
             String addAccount = "INSERT INTO `account` (`account_id`, `password`, `contact_name`, `mobile`, `phone`, `email`, `customer_id`, `customer_no`, `customer_name`, `create_time`, `modify_time`, `note1`, `note2`, `is_delete`) " +
                     "VALUES ('111111111', 'password', 'name', 'mobile', NULL, NULL, NULL, NULL, NULL, NOW(), NOW(), NULL, NULL, '0');";

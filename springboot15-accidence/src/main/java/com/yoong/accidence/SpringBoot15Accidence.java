@@ -41,7 +41,7 @@ public class SpringBoot15Accidence {
     }
 
     /**
-     * 启用SpringBoot20Community类的@Controller注解即可
+     * 启用SpringBoot15Accidence类的@Controller注解即可
      * http://127.0.0.1:8012/getApp
      */
     @ResponseBody

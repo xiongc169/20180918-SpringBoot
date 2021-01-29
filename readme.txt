@@ -1,5 +1,5 @@
 springboot10-maven: [8000, 8010)，JPA + Redis + ZK + CS分布式锁
-springboot15-accidence: [8010, 8020)，多数据源JdbcTemplate
+springboot15-accidence: [8010, 8020)，多数据源JdbcTemplate + JPA
 springboot20-community: [8020, 8030)，多数据源JPA + Redis
 springboot25-literature: [8030, 8040)，空，《SpringBoot实战》丁雪丰译
 

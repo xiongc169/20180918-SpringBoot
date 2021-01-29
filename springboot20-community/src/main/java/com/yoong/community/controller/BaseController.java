@@ -24,7 +24,7 @@ import java.sql.Timestamp;
 @RequestMapping("/base")
 public class BaseController {
 
-    private Logger logger = LoggerFactory.getLogger(DatasourceController.class);
+    private Logger logger = LoggerFactory.getLogger(BaseController.class);
 
     @Autowired
     private AttachmentService attachmentService;

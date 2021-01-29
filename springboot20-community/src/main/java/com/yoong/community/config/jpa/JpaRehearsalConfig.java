@@ -1,4 +1,4 @@
-package com.yoong.community.config.db;
+package com.yoong.community.config.jpa;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -23,7 +23,7 @@ import java.util.Map;
 @EnableJpaRepositories(entityManagerFactoryRef = "entityManagerFactoryRehearsal",
         transactionManagerRef = "transactionManagerRehearsal",
         basePackages = {"com.yoong.community.core.domain.rehearsal"})
-public class RehearsalDb {
+public class JpaRehearsalConfig {
 
     @Autowired
     @Qualifier("rehearsalDataSource")

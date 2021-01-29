@@ -10,14 +10,14 @@ public class JdbcTemplateConfig {
 
     @Bean(name = "wongTemplate")
     public JdbcTemplate wongTemplate(@Qualifier("wongSource") javax.sql.DataSource wongSource) {
-        //System.out.println("DataSource.wongTemplate");
+        //System.out.println("JdbcTemplateConfig.wongTemplate");
         JdbcTemplate template = new JdbcTemplate(wongSource);
         return template;
     }
 
     @Bean(name = "yoongTemplate")
     public JdbcTemplate yoongTemplate(@Qualifier("yoongSource") javax.sql.DataSource yoongSource) {
-        //System.out.println("DataSource.yoongTemplate");
+        //System.out.println("JdbcTemplateConfig.yoongTemplate");
         JdbcTemplate template = new JdbcTemplate(yoongSource);
         return template;
     }

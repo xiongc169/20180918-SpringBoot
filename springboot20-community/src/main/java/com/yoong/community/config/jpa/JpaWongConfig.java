@@ -1,4 +1,4 @@
-package com.yoong.community.config.db;
+package com.yoong.community.config.jpa;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -24,7 +24,7 @@ import java.util.Map;
 @EnableJpaRepositories(entityManagerFactoryRef = "entityManagerFactoryWong",
         transactionManagerRef = "transactionManagerWong",
         basePackages = {"com.yoong.community.core.domain.wong"})
-public class WongDb {
+public class JpaWongConfig {
 
     @Autowired
     @Qualifier("wongDataSource")

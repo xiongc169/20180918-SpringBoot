@@ -13,7 +13,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
- * @Desc SingleDataSourceController
+ * @Desc JpaController
  * <p>
  * @Author yoong
  * <p>
@@ -22,8 +22,8 @@ import java.util.Date;
  * @Version 1.0
  */
 @Controller
-@RequestMapping("/sDatasource")
-public class SingleDataSourceController {
+@RequestMapping("/jpa")
+public class JpaController {
 
     @Autowired
     private ICustomerRepository customerRepository;
@@ -36,7 +36,7 @@ public class SingleDataSourceController {
     private SimpleDateFormat format2 = new SimpleDateFormat("yyyyMMddHHmmssSSSS");
 
     /**
-     * http://127.0.0.1:8012/sDatasource/getTime
+     * http://127.0.0.1:8012/jpa/getTime
      */
     @ResponseBody
     @RequestMapping("/getTime")
@@ -47,11 +47,11 @@ public class SingleDataSourceController {
     }
 
     /**
-     * http://127.0.0.1:8012/sDatasource/addCustomer
+     * http://127.0.0.1:8012/jpa/insertMultiSource
      */
     @ResponseBody
-    @RequestMapping("/addCustomer")
-    public String addCustomer() {
+    @RequestMapping("/insertMultiSource")
+    public String insertMultiSource() {
         Customer customer = new Customer();
         String customerId = format2.format(new Date());
         customer.setCustomerId(customerId);

@@ -28,8 +28,8 @@ import java.util.Date;
  * @Version 1.0
  */
 @Controller
-@RequestMapping("/datasource")
-public class DatasourceController {
+@RequestMapping("/jpa")
+public class JpaController {
 
     @Autowired
     private AccountService accountService;
@@ -41,11 +41,11 @@ public class DatasourceController {
     private DepartmentService deptService;
 
     /**
-     * http://127.0.0.1:8020/datasource/multiDataSource
+     * http://127.0.0.1:8020/jpa/insertMultiSource
      */
     @ResponseBody
-    @RequestMapping("/multiDataSource")
-    public void multiDataSource() {
+    @RequestMapping("/insertMultiSource")
+    public void insertMultiSource() {
         try {
             //添加子账号
             SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMdd-HHmmssSSSS");
