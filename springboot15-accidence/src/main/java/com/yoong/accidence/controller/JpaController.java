@@ -62,6 +62,7 @@ public class JpaController {
 
         AttachmentInfo attachmentInfo = new AttachmentInfo();
         //会向wong_user.attachment_info表中新增，抛出异常：Table 'wong_user.attachment_info' doesn't exist
+        //PS：已解决，从库也加了@Primary注解导致的。
         attachmentInfoRepository.saveAndFlush(attachmentInfo);
         return null;
     }

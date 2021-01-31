@@ -1,4 +1,4 @@
-springboot10-maven: [8000, 8010)，单数据源JPA + Redis + ZK + CS分布式锁
+springboot10-maven: [8000, 8010)，单数据源JPA + CS分布式锁 + Redis + ZK + 分布式ID之雪花算法
 springboot15-accidence: [8010, 8020)，多数据源JdbcTemplate + JPA
 springboot20-community: [8020, 8030)，多数据源JPA + Redis
 springboot25-literature: [8030, 8040)，空，《SpringBoot实战》丁雪丰译
