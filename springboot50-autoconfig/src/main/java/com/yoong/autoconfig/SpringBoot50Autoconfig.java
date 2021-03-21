@@ -1,5 +1,6 @@
 package com.yoong.autoconfig;
 
+import com.yoong.autoconfig.config.MyImportBeanDefinitionRegistrar;
 import com.yoong.autoconfig.config.MyImportSelector;
 import com.yoong.autoconfig.utils.SpringUtils;
 import org.springframework.boot.SpringApplication;
@@ -8,7 +9,7 @@ import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.Import;
 import org.springframework.core.env.ConfigurableEnvironment;
 import org.springframework.core.env.Environment;
-import org.springframework.transaction.annotation.EnableTransactionManagement;
+//import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -26,12 +27,14 @@ import java.util.Date;
  */
 @SpringBootApplication
 //@Import(PersonAutoConfiguration.class)
-@Import(MyImportSelector.class)
+//@Import(MyImportSelector.class)
+//@Import(MyImportBeanDefinitionRegistrar.class)
+@Import({MyImportSelector.class, MyImportBeanDefinitionRegistrar.class})
 //@ImportResource(locations = "classpath:spring/importRes.xml")
 //@ConfigurationProperties("spring.data")
 //@PropertySource("classpath:spring/importRes.xml")
 //@PropertyResource("classpath:spring/importRes.xml")
-@EnableTransactionManagement
+//@EnableTransactionManagement
 public class SpringBoot50Autoconfig {
 
     private static SimpleDateFormat sdFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss:SSS");

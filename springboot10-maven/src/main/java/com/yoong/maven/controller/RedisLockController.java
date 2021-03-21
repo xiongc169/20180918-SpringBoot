@@ -111,4 +111,54 @@ public class RedisLockController {
             ex.printStackTrace();
         }
     }
+
+    /**
+     * 非公平锁
+     * http://127.0.0.1:8000/redisLock/retryDistLock?key=name
+     */
+    @ResponseBody
+    @RequestMapping("/retryDistLock")
+    public void retryDistLock(String key) {
+        try {
+            Integer retry = 5;
+            for (int i = 0; i < retry; i++) {
+                if (stringRedisTemplate.opsForValue().setIfAbsent(key, key, 5000, TimeUnit.MILLISECONDS)) {
+                    System.out.println(format.format(new Date()) + " " + Thread.currentThread().getId() + " 获取分布式锁 " + key);
+                    Thread.sleep(300);
+                    stringRedisTemplate.delete(key);
+                    System.out.println(format.format(new Date()) + " " + Thread.currentThread().getId() + " 释放分布式锁 " + key);
+                    break;
+                } else {
+                    System.out.println("        " + format.format(new Date()) + " " + Thread.currentThread().getId() + " 获取锁失败，稍后重试 " + key);
+                    Thread.sleep(200);
+                }
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    /**
+     * 验证token，保证接口幂等性
+     * http://127.0.0.1:8000/redisLock/verifyToken?key=name
+     */
+    @ResponseBody
+    @RequestMapping("/verifyToken")
+    public void verifyToken(String key) {
+        try {
+            Integer retry = 5;
+            for (int i = 0; i < retry; i++) {
+                if (stringRedisTemplate.delete(key)) {
+                    System.out.println(format.format(new Date()) + "该Token有效 ");
+                    Thread.sleep(300);
+                    break;
+                } else {
+                    System.out.println(format.format(new Date()) + "该Token已有效 ");
+                    Thread.sleep(200);
+                }
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }
 }

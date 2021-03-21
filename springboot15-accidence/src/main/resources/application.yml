@@ -7,11 +7,18 @@ spring:
   application:
     name: springboot15-accidence
   datasource:
-    url: jdbc:mysql://localhost:3306/wong_user?characterEncoding=utf8&serverTimezone=UTC
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    name: wong_user
-    username: root
-    password: 123456
+    wong:
+      jdbc-url: jdbc:mysql://localhost:3306/wong_user?characterEncoding=utf8&serverTimezone=UTC
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      name: wong_user
+      username: root
+      password: 123456
+    yoong:
+      jdbc-url: jdbc:mysql://localhost:3306/yoong_business?characterEncoding=utf8&serverTimezone=UTC
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      name: yoong_business
+      username: root
+      password: 123456
   jpa:
     database-platform: org.hibernate.dialect.MySQL5Dialect
 

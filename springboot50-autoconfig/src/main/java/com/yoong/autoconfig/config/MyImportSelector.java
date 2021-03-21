@@ -11,6 +11,17 @@ import org.springframework.context.ApplicationContextAware;
 import org.springframework.context.annotation.DeferredImportSelector;
 import org.springframework.core.type.AnnotationMetadata;
 
+/**
+ * @Desc 深入理解Spring的ImportSelector接口
+ * 实践：配合 @Import(MyImportSelector.class) 使用
+ * https://www.cnblogs.com/niechen/p/9262452.html
+ * <p>
+ * @Author yoong
+ * <p>
+ * @Date 2019年4月14日19:30:00
+ * <p>
+ * @Version 1.0
+ */
 //@Component
 public class MyImportSelector implements DeferredImportSelector, BeanFactoryAware, ApplicationContextAware {
 

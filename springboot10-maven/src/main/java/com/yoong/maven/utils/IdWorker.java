@@ -125,9 +125,22 @@ public class IdWorker {
 
     //---------------测试---------------
     public static void main(String[] args) {
+        int aa = 1 << 31;//-2147483648
+        long bb = 1L << 31;//2147483648
+
+        int cc = 1024 >> 4;//64
+        int dd = 1024 >>> 4;//64
+        int ee = -1024 >> 4;//-64
+        int ff = -1024 >>> 4;//268435392
+        String minus = Long.toBinaryString(-1);//1111111111111111111111111111111111111111111111111111111111111111
+
+        //Long workerId = -1L ^ (-1L << 5);
+        //System.out.println(workerId);
+        //
         IdWorker worker = new IdWorker(1, 1, 1);
         for (int i = 0; i < 30; i++) {
-            System.out.println(worker.nextId());
+            Long id = worker.nextId();
+            System.out.println(id);
         }
     }
 }

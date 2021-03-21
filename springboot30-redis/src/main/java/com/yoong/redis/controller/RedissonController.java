@@ -1,5 +1,6 @@
 package com.yoong.redis.controller;
 
+import org.redisson.api.RLock;
 import org.redisson.api.RedissonClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -34,7 +35,18 @@ public class RedissonController {
     @RequestMapping("/firstLock")
     public void firstLock(String key) {
         try {
-            if (redissonClient.getLock(key).tryLock()) {
+            redissonClient.getLock(key).lock();
+            redissonClient.getLock(key).tryLock();
+            redissonClient.getFairLock(key).lock();
+            redissonClient.getFairLock(key).tryLock();
+
+            RLock rLock01 = redissonClient.getLock("key1");
+            RLock rLock02 = redissonClient.getLock("key2");
+            RLock rLock03 = redissonClient.getLock("key3");
+            redissonClient.getMultiLock(rLock01, rLock02, rLock03).lock();
+            redissonClient.getRedLock(rLock01, rLock02, rLock03).lock();
+
+            if (redissonClient.getFairLock(key).tryLock()) {
                 System.out.println(format.format(new Date()) + " " + Thread.currentThread().getId() + " 获取分布式锁 " + key);
                 Thread.sleep(500);
                 redissonClient.getLock(key).unlock();
