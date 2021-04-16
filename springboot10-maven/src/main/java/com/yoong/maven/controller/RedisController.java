@@ -1,5 +1,7 @@
 package com.yoong.maven.controller;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.data.redis.connection.RedisConnection;
@@ -31,6 +33,8 @@ import java.util.concurrent.TimeUnit;
 @Controller
 @RequestMapping("/redis")
 public class RedisController {
+
+    private Logger logger = LoggerFactory.getLogger(getClass());
 
     private SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss:SSSS");
 
@@ -154,5 +158,25 @@ public class RedisController {
             ex.printStackTrace();
         }
         return "query3 failure";
+    }
+
+    /**
+     * http://127.0.0.1:8000/redis/throughput?key=name
+     */
+    @ResponseBody
+    @RequestMapping("/throughput")
+    public void redisThroughput(String key) {
+        try {
+            //String result01 = stringRedisTemplate.opsForValue().get(key);
+            //logger.info(format.format(new Date()) + "  " + result01);
+
+            //Object result02 = redisTemplate.opsForValue().get(key);
+            //logger.info(format.format(new Date()) + "  " + result02);
+
+            String result03 = jedisPool.getResource().get(key);
+            logger.info(format.format(new Date()) + "  " + result03);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
     }
 }

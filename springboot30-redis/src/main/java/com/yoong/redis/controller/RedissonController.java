@@ -1,5 +1,6 @@
 package com.yoong.redis.controller;
 
+import org.redisson.api.RBucket;
 import org.redisson.api.RLock;
 import org.redisson.api.RedissonClient;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -54,6 +55,20 @@ public class RedissonController {
             } else {
                 System.out.println("        " + format.format(new Date()) + " " + Thread.currentThread().getId() + " 获取锁失败，退出 " + key);
             }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    /**
+     * http://127.0.0.1:8040/redisson/throughput?key=name
+     */
+    @ResponseBody
+    @RequestMapping("/throughput")
+    public void redisThroughput(String key) {
+        try {
+            RBucket<String> result01 = redissonClient.getBucket(key);
+            System.out.println(format.format(new Date()) + "  " + result01.get());
         } catch (Exception ex) {
             ex.printStackTrace();
         }
