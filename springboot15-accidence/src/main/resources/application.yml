@@ -1,6 +1,6 @@
 #配置环境：application.yml、application-local.yml、application-dev.yml、application-test.yml、application-pre.yml、application-product.yml
 server:
-  port: 8011
+  port: 8012
 
 #localhost 127.0.0.1
 spring:
